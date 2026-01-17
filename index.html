@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>LDT NET TELECOM - Soluções em TI & Automação</title>
+    
+    <!-- Tailwind CSS CDN (para protótipo rápido) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts futuristas -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet"/>
+    
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background: linear-gradient(135deg, #0a001f, #1a0033, #000814);
+            color: #e0f7ff;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .glass {
+            background: rgba(20, 20, 60, 0.35);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+        .neon-text {
+            text-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff, 0 0 30px #ff6600;
+        }
+        .neon-border {
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 15px #00ffff80;
+        }
+        .orange-glow {
+            box-shadow: 0 0 20px #ff660080;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .floating { animation: float 6s ease-in-out infinite; }
+    </style>
+</head>
+<body class="relative min-h-screen">
+
+    <!-- Partículas de fundo (futurista) -->
+    <div id="particles-js" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Navbar fixa glass -->
+    <nav class="fixed top-0 w-full glass z-50 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold neon-text">LDT NET</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#sobre" class="hover:text-cyan-300 transition">Sobre</a>
+                <a href="#servicos" class="hover:text-cyan-300 transition">Serviços</a>
+                <a href="#contato" class="hover:text-cyan-300 transition">Contato</a>
+            </div>
+            <button class="md:hidden text-cyan-400">Menu</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="text-center max-w-5xl">
+            <img 
+                src="https://thumbs.dreamstime.com/b/futuristic-sci-fi-interface-control-panel-blue-orange-glowing-lights-ui-ux-hud-gui-neon-high-resolution-image-355103247.jpg" 
+                alt="LDT NET Logo Futurista" 
+                class="mx-auto w-64 md:w-96 mb-8 floating neon-border rounded-2xl"
+            />
+            
+            <h1 class="text-5xl md:text-7xl font-bold neon-text mb-4">
+                LDT NET TELECOM
+            </h1>
+            
+            <p class="text-xl md:text-3xl text-cyan-200 mb-10">
+                Infraestrutura de Rede • Automação Inteligente • Suporte Técnico Local
+                <br class="hidden md:block"/>
+                <span class="text-orange-400 font-bold">Natal/RN - 2026</span>
+            </p>
+
+            <a href="#contato" 
+               class="inline-block bg-gradient-to-r from-cyan-500 to-orange-500 text-white px-10 py-5 rounded-full text-xl font-bold hover:scale-105 transition transform neon-border orange-glow">
+               FALE COM O TÉCNICO AGORA
+            </a>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto glass rounded-3xl p-10 md:p-16">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold neon-text mb-6">Quem sou eu?</h2>
+                    <p class="text-lg leading-relaxed text-gray-300">
+                        Técnico experiente em redes, servidores e automação residencial/industrial.<br><br>
+                        Atuando em Natal/RN com foco em soluções reais, rápidas e confiáveis. 
+                        Diagnóstico preciso, configuração profissional e suporte próximo.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <img 
+                        src="https://thumbs.dreamstime.com/b/futuristic-hud-interface-glowing-blue-orange-elements-radar-screen-gaming-dashboard-ui-panel-crosshairs-target-lock-tech-366212546.jpg" 
+                        alt="Ambiente de Monitoramento LDT NET" 
+                        class="rounded-2xl neon-border shadow-2xl mx-auto w-full max-w-md"
+                    />
+                    <p class="mt-4 text-sm text-cyan-300">Centro de Operações LDT NET</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-24 px-6 bg-black/30">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-bold neon-text text-center mb-16">Serviços Principais</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass p-8 rounded-2xl hover:scale-105 transition transform duration-300">
+                    <img 
+                        src="https://thumbs.dreamstime.com/z/wireless-router-glowing-wi-fi-icon-connected-to-internet-cable-modern-tech-device-ensures-online-access-high-speed-data-367434907.jpg" 
+                        alt="Rede Wi-Fi" 
+                        class="w-full h-48 object-cover rounded-xl mb-6 neon-border"
+                    />
+                    <h3 class="text-2xl font-bold mb-4 text-orange-400">Redes Wi-Fi & Cabeamento</h3>
+                    <p>Projetos completos, análise de cobertura, otimização e segurança avançada.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass p-8 rounded-2xl hover:scale-105 transition transform duration-300">
+                    <img 
+                        src="https://thumbs.dreamstime.com/b/futuristic-smart-home-control-interface-showcasing-advanced-technology-connectivity-features-illustrates-sleek-357826288.jpg" 
+                        alt="Automação Residencial" 
+                        class="w-full h-48 object-cover rounded-xl mb-6 neon-border"
+                    />
+                    <h3 class="text-2xl font-bold mb-4 text-cyan-400">Automação Residencial</h3>
+                    <p>Luzes, tomadas, câmeras, assistentes e cenários inteligentes – tudo simples e funcional.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass p-8 rounded-2xl hover:scale-105 transition transform duration-300">
+                    <img 
+                        src="https://thumbs.dreamstime.com/b/futuristic-sci-fi-interface-control-panel-blue-orange-glowing-lights-ui-ux-hud-gui-neon-high-resolution-image-355103247.jpg" 
+                        alt="Manutenção TI" 
+                        class="w-full h-48 object-cover rounded-xl mb-6 neon-border"
+                    />
+                    <h3 class="text-2xl font-bold mb-4 text-orange-400">Manutenção & Suporte TI</h3>
+                    <p>Computadores, servidores, backups, recuperação de dados e muito mais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato + Formulário -->
+    <section id="contato" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto glass rounded-3xl p-10 md:p-16">
+            <h2 class="text-5xl font-bold neon-text text-center mb-10">Fale comigo agora</h2>
+            <p class="text-center text-xl mb-12 text-cyan-200">
+                Orçamento rápido • Atendimento em até 24h • WhatsApp + Formulário
+            </p>
+
+            <form action="https://formspree.io/f/xaqqqvra" method="POST" class="space-y-6 max-w-2xl mx-auto">
+                <input type="text" name="nome" placeholder="Seu Nome" required class="w-full p-5 bg-transparent border neon-border rounded-xl focus:outline-none focus:border-orange-400 transition"/>
+                <input type="tel" name="whatsapp" placeholder="WhatsApp (com DDD)" required class="w-full p-5 bg-transparent border neon-border rounded-xl focus:outline-none focus:border-orange-400 transition"/>
+                <textarea name="mensagem" rows="5" placeholder="Descreva o que precisa..." required class="w-full p-5 bg-transparent border neon-border rounded-xl focus:outline-none focus:border-orange-400 transition"></textarea>
+                
+                <button type="submit" class="w-full bg-gradient-to-r from-cyan-600 to-orange-600 py-5 rounded-xl text-xl font-bold hover:brightness-125 transition transform hover:scale-102">
+                    ENVIAR MENSAGEM
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center glass mt-20">
+        <p class="text-cyan-300">© 2026 LDT NET TELECOM - Akiles Simião • Natal/RN</p>
+    </footer>
+
+    <!-- Particles.js CDN + Config -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#00ffff", "#ff6600"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00ffff", "opacity": 0.3, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } },
+                "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
