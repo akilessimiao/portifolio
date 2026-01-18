@@ -134,66 +134,40 @@
 </nav>
 
     <!-- Botão flutuante WhatsApp -->
-<div x-data="{ openModal: false, success: false }">
-    <a @click.prevent="openModal = true" 
-       href="#" 
-       class="fixed bottom-6 right-6 z-50 group cursor-pointer"
-       title="Fale comigo no WhatsApp agora!">
-        <div class="relative">
-            <div class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 to-orange-500 opacity-40 blur-xl animate-pulse-slow"></div>
-            <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full glass neon-border flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                <svg class="w-10 h-10 md:w-12 md:h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#00ffff"/>
-                    <path d="M12 2C6.477 2 2 6.477 2 12c0 2.142.563 4.151 1.542 5.887L2 22l4.113-1.542A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" fill="none" stroke="#ff6600" stroke-width="1.5"/>
-                </svg>
-                <span class="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full animate-ping"></span>
-            </div>
-        </div>
-    </a>
-
-    <!-- Modal Popup (balão de contato) -->
-    <div x-show="openModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm" @click.away="openModal = false">
-        <div class="glass rounded-2xl p-8 md:p-12 max-w-md w-full mx-4 relative overflow-hidden border neon-border orange-glow animate-fade-in"
-             @click.stop>
-            <!-- Botão fechar -->
-            <button @click="openModal = false" class="absolute top-4 right-4 text-cyan-300 hover:text-orange-400 transition text-2xl">×</button>
-
-            <h2 class="text-3xl font-bold neon-text mb-6 text-center">Fale Comigo Agora</h2>
-            <p class="text-center text-cyan-200 mb-8">Orçamento rápido • Resposta em até 24h</p>
-
-            <!-- Formulário -->
-            <template x-if="!success">
-                <form action="https://formspree.io/f/xaqqqvra" method="POST" 
-                      @submit.prevent="success = true; setTimeout(() => openModal = false, 4000)"
-                      class="space-y-6">
-                    <input type="text" name="nome" placeholder="Seu Nome" required 
-                           class="w-full p-4 bg-transparent border neon-border rounded-xl focus:outline-none focus:border-orange-400 transition"/>
-                    <input type="tel" name="whatsapp" placeholder="WhatsApp (com DDD)" required 
-                           class="w-full p-4 bg-transparent border neon-border rounded-xl focus:outline-none focus:border-orange-400 transition"/>
-                    <textarea name="mensagem" rows="4" placeholder="Descreva o que precisa..." required 
-                              class="w-full p-4 bg-transparent border neon-border rounded-xl focus:outline-none focus:border-orange-400 transition"></textarea>
-                    
-                    <button type="submit" 
-                            class="w-full bg-gradient-to-r from-cyan-600 to-orange-600 py-4 rounded-xl text-lg font-bold hover:brightness-125 transition transform hover:scale-102">
-                        ENVIAR MENSAGEM
-                    </button>
-                </form>
-            </template>
-
-            <!-- Mensagem de sucesso -->
-            <template x-if="success">
-                <div class="text-center py-12">
-                    <div class="text-5xl mb-6 neon-text">✓</div>
-                    <p class="text-2xl font-bold neon-text mb-4">Mensagem Enviada!</p>
-                    <p class="text-lg text-cyan-200">
-                        Entrarei em contato o mais breve possível.<br>Agradeço o contato!!!
-                    </p>
-                </div>
-            </template>
+<a 
+    href="https://wa.me/55SEUNUMEROCOMDDD?text=Ol%C3%A1%21%20Preciso%20de%20suporte%20t%C3%A9cnico%20LDT%20NET%20TELECOM" 
+    target="_blank" 
+    class="fixed bottom-6 right-6 z-50 group"
+    title="Fale comigo no WhatsApp agora!"
+>
+    <div class="relative">
+        <!-- Círculo externo com glow pulsante -->
+        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 to-orange-500 opacity-40 blur-xl animate-pulse-slow"></div>
+        
+        <!-- Ícone principal com neon -->
+        <div class="relative w-16 h-16 md:w-20 md:h-20 rounded-full glass neon-border flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+            <!-- Ícone WhatsApp neon (use SVG para melhor qualidade) -->
+            <svg class="w-10 h-10 md:w-12 md:h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#00ffff"/>
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 2.142.563 4.151 1.542 5.887L2 22l4.113-1.542A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" fill="none" stroke="#ff6600" stroke-width="1.5"/>
+            </svg>
+            
+            <!-- Pequeno ponto pulsante -->
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full animate-ping"></span>
         </div>
     </div>
-</div>
+</a>
 
+<!-- Animações custom para o botão flutuante -->
+<style>
+    @keyframes pulse-slow {
+        0%, 100% { opacity: 0.4; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.15); }
+    }
+    .animate-pulse-slow {
+        animation: pulse-slow 4s infinite ease-in-out;
+    }
+</style>
 <!-- Animações -->
 <style>
     @keyframes pulse-slow { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.15); } }
