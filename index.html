@@ -102,13 +102,28 @@
 </style>
 
     <!-- Hero -->
-    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
-        <div class="text-center max-w-5xl">
-            <img 
-                src="2405.mp4" 
-                alt="LDT NET Logo Futurista" 
-                class="mx-auto w-64 md:w-96 mb-8 floating neon-border rounded-2xl"
-            />
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <!-- Vídeo como fundo (loop, muted, autoplay) -->
+        <video 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            class="w-full h-full object-cover opacity-40"
+            src="2405.mp4"  <!-- ← seu arquivo MP4 aqui -->
+        >
+            Seu navegador não suporta vídeo.
+        </video>
+    </div>
+
+    <div class="relative z-10 text-center max-w-5xl">
+        <!-- Se quiser manter um "logo" centralizado sobre o vídeo (opcional) -->
+        <!-- <div class="mx-auto w-64 md:w-96 mb-8 floating neon-border rounded-2xl overflow-hidden">
+            <video autoplay loop muted playsinline class="w-full h-auto">
+                <source src="2405.mp4" type="video/mp4">
+            </video>
+        </div> -->
             
             <h1 class="text-5xl md:text-7xl font-bold neon-text mb-4">
                 LDT NET TELECOM
