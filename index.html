@@ -102,45 +102,46 @@
 </style>
 
     <!-- Hero -->
-    <section class="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
+    <!-- Hero Section com vídeo de fundo futurista -->
+<section class="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
+    <!-- Camada de vídeo de fundo -->
     <div class="absolute inset-0 z-0">
-        <!-- Vídeo como fundo (loop, muted, autoplay) -->
-        <video 
-            autoplay 
-            loop 
-            muted 
-            playsinline 
-            class="w-full h-full object-cover opacity-40"
-            src="2405.mp4"  <!-- ← seu arquivo MP4 aqui -->
+        <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class="w-full h-full object-cover opacity-35"  <!-- Opacidade baixa para não atrapalhar a leitura -->
+            src="2405.mp4"  <!-- Coloque aqui o caminho correto: raiz, /videos/2405.mp4, etc. -->
         >
-            Seu navegador não suporta vídeo.
+            Seu navegador não suporta vídeo HTML5.
         </video>
+        
+        <!-- Overlay opcional para melhorar contraste (muito recomendado) -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
     </div>
 
+    <!-- Conteúdo principal (texto + botão) -->
     <div class="relative z-10 text-center max-w-5xl">
-        <!-- Se quiser manter um "logo" centralizado sobre o vídeo (opcional) -->
-        <!-- <div class="mx-auto w-64 md:w-96 mb-8 floating neon-border rounded-2xl overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-auto">
-                <source src="2405.mp4" type="video/mp4">
-            </video>
-        </div> -->
-            
-            <h1 class="text-5xl md:text-7xl font-bold neon-text mb-4">
-                LDT NET TELECOM
-            </h1>
-            
-            <p class="text-xl md:text-3xl text-cyan-200 mb-10">
-                Infraestrutura de Rede • Automação Inteligente • Suporte Técnico Local
-                <br class="hidden md:block"/>
-                <span class="text-orange-400 font-bold">Natal/RN - 2026</span>
-            </p>
+        <h1 class="text-5xl md:text-7xl font-bold neon-text mb-4 tracking-tight">
+            LDT NET TELECOM
+        </h1>
+        
+        <p class="text-xl md:text-3xl text-cyan-200 mb-10 leading-relaxed">
+            Infraestrutura de Rede Avançada • Automação Inteligente • Suporte Técnico Local
+            <br class="hidden md:block"/>
+            <span class="text-orange-400 font-bold">Natal/RN • 2026</span>
+        </p>
 
-            <a href="#contato" 
-               class="inline-block bg-gradient-to-r from-cyan-500 to-orange-500 text-white px-10 py-5 rounded-full text-xl font-bold hover:scale-105 transition transform neon-border orange-glow">
-               FALE COM O TÉCNICO AGORA
-            </a>
-        </div>
-    </section>
+        <a href="#contato" 
+           class="inline-block bg-gradient-to-r from-cyan-600 via-cyan-500 to-orange-600 
+                  text-white px-10 py-5 rounded-full text-xl font-bold 
+                  hover:scale-105 hover:shadow-[0_0_30px_rgba(0,255,255,0.6)] 
+                  transition-all duration-300 neon-border orange-glow">
+           FALE COM O TÉCNICO AGORA
+        </a>
+    </div>
+</section>
 
     <!-- Sobre -->
     <section id="sobre" class="py-24 px-6">
