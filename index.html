@@ -201,25 +201,14 @@
     .animate-fade-in { animation: fadeIn 0.4s ease-out; }
     @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 </style>
-     <!-- Hero Section com vídeo de fundo futurista -->
-<section class="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
-    <!-- Camada de vídeo de fundo -->
-    <div class="absolute inset-0 z-0">
-        <video
-            autoplay
-            loop
-            muted
-            playsinline
-            class="w-full h-full object-cover opacity-35"  <!-- Opacidade baixa para não atrapalhar a leitura -->
-            src="/2405.mp4"  <!-- Coloque aqui o caminho correto: raiz, /videos/2405.mp4, etc. -->
-        >
-            Seu navegador não suporta vídeo HTML5.
-        </video>
-        
-        <!-- Overlay opcional para melhorar contraste (muito recomendado) -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
-    </div>
-
+     <!-- Hero -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="text-center max-w-5xl">
+            <img 
+                src="/futuristic.png" 
+                alt="LDT NET Logo Futurista" 
+                class="mx-auto w-64 md:w-96 mb-8 floating neon-border rounded-2xl"
+            />
     <!-- Conteúdo principal (texto + botão) -->
     <div class="relative z-10 text-center max-w-5xl">
         <h1 class="text-5xl md:text-7xl font-bold neon-text mb-4 tracking-tight">
