@@ -137,86 +137,79 @@
     }
 
     /* === ESTILO PARA IMPRESSÃO === */
-    @media print {
-      html, body {
-        background: white !important;
-        color: black !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
+<style>
+@media print {
+  /* Mantém o design original, mas remove o fundo da página */
+  body {
+    background: white !important; /* Remove o gradiente azul escuro da página */
+    color: #e0f7ff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 
-      * {
-        background: transparent !important;
-        color: black !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-        border: none !important;
-        filter: none !important;
-        backdrop-filter: none !important;
-      }
+  /* Preserva o container com estilo original */
+  .container {
+    box-shadow: none !important; /* Remove sombra para impressão */
+    border: 1px solid rgba(0, 255, 255, 0.25) !important;
+    background: rgba(20, 20, 60, 0.45) !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+  }
 
-      .container {
-        display: block !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border: none !important;
-        box-shadow: none !important;
-        page-break-inside: avoid;
-      }
+  /* Remove o botão de impressão */
+  .buttons {
+    display: none !important;
+  }
 
-      .sidebar, .content {
-        padding: 15px !important;
-        width: 100% !important;
-        float: none !important;
-        page-break-inside: avoid;
-      }
+  /* Força cores e fontes originais — NÃO converte para preto e branco */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color: inherit !important;
+    background: transparent !important;
+  }
 
-      .photo {
-        width: 120px !important;
-        height: 120px !important;
-        margin: 0 auto 15px !important;
-        border: 2px solid black !important;
-        box-shadow: none !important;
-      }
+  /* Ajusta tamanho da foto para caber melhor */
+  .photo {
+    width: 150px !important;
+    height: 150px !important;
+    margin: 0 auto 15px !important;
+    border: 3px solid #00ffff !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6) !important;
+  }
 
-      h1, h2, h3 {
-        color: black !important;
-        text-shadow: none !important;
-        font-weight: bold !important;
-      }
+  /* Títulos mantêm cor ciano */
+  h1, h2, h3 {
+    color: #00ffff !important;
+    text-shadow: 0 0 10px #00ffff !important;
+  }
 
-      li:before {
-        content: "" !important;
-      }
-      ul {
-        list-style-type: disc !important;
-        padding-left: 20px !important;
-      }
+  /* Links mantêm cor ciano */
+  a {
+    color: #00ffff !important;
+    text-decoration: underline !important;
+  }
 
-      .buttons {
-        display: none !important;
-      }
+  /* Configuração da página A4 */
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
 
-      @page {
-        size: A4;
-        margin: 10mm;
-      }
+  /* Evita quebras indesejadas */
+  .section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
 
-      body {
-        margin: 0;
-        padding: 0;
-        font-size: 11pt;
-      }
-
-      h1, h2, h3, p, ul, li {
-        page-break-inside: avoid;
-        break-inside: avoid;
-      }
-    }
-  </style>
-</head>
-<body>
+  /* Garante que tudo caiba em uma página */
+  body {
+    font-size: 10pt !important;
+    line-height: 1.4;
+  }
+}
+</style>
   <div class="container">
     <aside class="sidebar">
       <div class="photo">
