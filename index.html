@@ -66,6 +66,29 @@
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
         }
+        .btn-curriculo {
+            display: inline-block;
+            padding: 14px 32px;
+            margin: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+        .btn-view {
+            background: linear-gradient(90deg, #00ffff, #0099cc);
+            color: #0b0f14;
+        }
+        .btn-download {
+            background: linear-gradient(90deg, #ff6600, #cc5200);
+            color: white;
+        }
+        .btn-curriculo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 35px rgba(0, 255, 255, 0.8);
+        }
     </style>
 </head>
 <body class="relative min-h-screen">
@@ -73,7 +96,7 @@
     <!-- Partículas de fundo -->
     <div id="particles-js" class="fixed inset-0 pointer-events-none z-0"></div>
 
-    <!-- Navbar minimalista -->
+    <!-- Navbar -->
     <nav class="fixed top-0 w-full glass z-50 backdrop-blur-lg" x-data="{ open: false }">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold neon-text mx-auto md:mx-0">LDT NET TELECOM</div>
@@ -87,7 +110,7 @@
             </button>
         </div>
 
-        <!-- Menu escondido (abre ao clicar no hamburger) -->
+        <!-- Menu escondido -->
         <div x-show="open" @click.away="open = false"
              class="fixed inset-0 z-40 bg-black/80 backdrop-blur-md flex items-center justify-center"
              x-transition:enter="transition ease-out duration-400"
@@ -125,7 +148,7 @@
         </div>
     </nav>
 
-    <!-- Botão flutuante WhatsApp que abre o formulário modal -->
+    <!-- Botão flutuante WhatsApp com modal de formulário -->
     <div x-data="{ modalOpen: false, success: false }">
         <a @click.prevent="modalOpen = true" href="#" 
            class="fixed bottom-6 right-6 z-50 group cursor-pointer"
@@ -142,7 +165,7 @@
             </div>
         </a>
 
-        <!-- Modal com formulário idêntico ao da seção contato -->
+        <!-- Modal do formulário -->
         <div x-show="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm" @click="modalOpen = false">
             <div class="glass rounded-3xl p-8 md:p-12 max-w-md w-full mx-4 relative" @click.stop>
                 <button @click="modalOpen = false" class="absolute top-4 right-4 text-cyan-300 hover:text-orange-400 text-3xl transition">×</button>
@@ -181,7 +204,7 @@
     <section class="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
         <div class="text-center max-w-5xl relative z-10">
             <img
-                src="futuristic1.png"  <!-- arquivo na raiz -->
+                src="futuristic1.png"
                 alt="LDT NET Logo Futurista"
                 class="mx-auto w-64 md:w-96 mb-8 floating neon-border rounded-2xl"
             />
@@ -254,11 +277,13 @@
         </div>
     </section>
 
-    <!-- Contato (formulário principal na página) -->
+    <!-- Contato -->
     <section id="contato" class="py-24 px-6">
         <div class="max-w-4xl mx-auto glass rounded-3xl p-10 md:p-16">
             <h2 class="text-5xl font-bold neon-text text-center mb-10">Fale comigo agora</h2>
-            <p class="text-center text-xl mb-12 text-cyan-200">Orçamento rápido • Atendimento em até 24h • WhatsApp + Formulário</p>
+            <p class="text-center text-xl mb-12 text-cyan-200">
+                Orçamento rápido • Atendimento em até 24h • WhatsApp + Formulário
+            </p>
             <form action="https://formspree.io/f/xaqqqvra" method="POST" class="space-y-6 max-w-2xl mx-auto">
                 <input type="text" name="nome" placeholder="Seu Nome" required class="w-full p-5 bg-transparent border neon-border rounded-xl focus:outline-none focus:border-orange-400 transition"/>
                 <input type="tel" name="whatsapp" placeholder="WhatsApp (com DDD)" required class="w-full p-5 bg-transparent border neon-border rounded-xl focus:outline-none focus:border-orange-400 transition"/>
@@ -270,9 +295,22 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer com botões do currículo -->
     <footer class="py-12 text-center glass mt-20">
-        <p class="text-cyan-300">© 2026 LDT NET TELECOM - Akiles Simião • Natal/RN</p>
+        <p class="text-cyan-300 mb-6">© 2026 LDT NET TELECOM - Akiles Simião • Natal/RN</p>
+
+        <div class="flex flex-wrap justify-center gap-6">
+            <a href="https://github.com/akilessimiao/curriculum/blob/main/curriculum_2025.pdf" 
+               target="_blank" 
+               class="btn-curriculo btn-view">
+               Ver Currículo (PDF)
+            </a>
+            <a href="https://github.com/akilessimiao/curriculum/raw/main/curriculum_2025.pdf" 
+               download="curriculum_akiles_simiao_2025.pdf" 
+               class="btn-curriculo btn-download">
+               Baixar Currículo (PDF)
+            </a>
+        </div>
     </footer>
 
     <!-- Particles.js -->
