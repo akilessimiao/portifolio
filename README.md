@@ -1,49 +1,96 @@
-# Olá, eu sou Akiles Leopoldo Nunes Simião 👋
+# 🧑‍💻 Portfólio Profissional Minimalista
 
-Técnico em TI | Especialista em Infraestrutura Local | Automação Residencial  
-📍 Natal, RN — Brasil  
+Um modelo de site portfólio **leve, rápido e focado em conversão**, ideal para técnicos, desenvolvedores, engenheiros e freelancers que querem uma presença online profissional sem depender de WordPress ou agências caras.
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn--0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/akilessimiao)
+✅ Totalmente estático  
+✅ Menos de 500 KB  
+✅ 100% responsivo (mobile-first)  
+✅ Hospedagem gratuita via GitHub Pages  
+✅ Fácil de personalizar — sem programação avançada
 
----
-
-## 💼 Serviços Técnicos
-
-Ofereço soluções práticas, rápidas e confiáveis para quem precisa de suporte técnico próximo e eficiente:
-
-### 💻 Manutenção de Computadores
-- Diagnóstico de hardware e software  
-- Limpeza, troca de peças e otimização de desempenho  
-- Instalação e configuração de sistemas operacionais (Windows, Linux)
-
-### 📶 Configuração de Redes Wi-Fi
-- Análise de cobertura e interferência  
-- Configuração de roteadores e repetidores  
-- Segurança de rede e controle de dispositivos
-
-### 🏠 Automação Residencial Simples
-- Integração com dispositivos inteligentes (lâmpadas, tomadas, sensores)  
-- Controle via celular ou assistentes de voz  
-- Projetos leves, funcionais e de baixo custo
+🔗 **Veja ao vivo**: [https://akilessimiao.github.io/portifolio/]
 
 ---
 
-## 🖼️ Ilustrações dos Serviços
-
-<div align="center">
-  <img src="https://via.placeholder.com/300x180?text=Manutenção+PC" alt="Manutenção de Computador" width="300"/>
-  <img src="https://via.placeholder.com/300x180?text=Rede+Wi-Fi+Estável" alt="Configuração de Wi-Fi" width="300"/>
-  <img src="https://via.placeholder.com/300x180?text=Automação+Residencial" alt="Automação Slim" width="300"/>
-</div>
-
-> *Design limpo. Soluções reais. Sem complicações.*
+## 🎯 Para quem é?
+- Técnicos em redes (FTTH, Wi-Fi, cabeamento)
+- Profissionais de automação residencial/industrial
+- Desenvolvedores juniors/mid
+- Consultores de TI
+- Qualquer freelancer que precise parecer confiável e acessível
 
 ---
 
-## 📞 Como me encontrar?
-- **LinkedIn**: [linkedin.com/in/akilessimiao](https://www.linkedin.com/in/akilessimiao)  
-- **WhatsApp**: Disponível para atendimento técnico (solicite via LinkedIn)
+## 🛠️ Como personalizar (passo a passo)
+
+1. **Faça um fork** deste repositório ou baixe os arquivos (`index.html`, `style.css`, `script.js`)
+2. Edite o arquivo `index.html` com:
+   - Seu nome e cargo
+   - Foto (recomenda-se 300x300 px, fundo claro)
+   - Lista de serviços (máximo 5 itens)
+   - Número do WhatsApp (com DDD, formato: `5584999999999`)
+   - Links de redes sociais (opcional)
+3. Substitua `assets/img/profile.jpg` pela sua foto
+4. Ajuste cores no `style.css` (variáveis CSS no início do arquivo)
+5. Faça push para um novo repositório no seu GitHub com o nome: `seunome.github.io`
+6. Ative o **GitHub Pages** nas configurações do repositório → pronto!
+
+> 💡 Dica: Use o editor [VS Code](https://code.visualstudio.com/) ou até o Bloco de Notas (Windows) / TextEdit (Mac).
 
 ---
 
-✨ Agradeço por visitar meu perfil!  
+## 📦 O que está incluído?
+- Página única com seções: Sobre, Serviços, Contato
+- Botão flutuante do WhatsApp (com ícone animado)
+- Design limpo com tipografia legível
+- Animações suaves de entrada (fade-in)
+- Compatível com todos os navegadores modernos
+
+---
+
+## 📩 Quer que eu faça pra você?
+
+Sou **Akiles Simião**, desenvolvedor e especialista em infraestrutura de TI. 
+Incluo:
+
+---
+
+### 🟢 **Portfólio Básico — R$ 180**
+- Site estático com 4 seções: Sobre, Serviços, Contato, Rodapé  
+- Design minimalista e responsivo  
+- Botão do WhatsApp flutuante  
+- Hospedagem via GitHub Pages (gratuita)  
+- Entrega em **3 dias úteis**  
+- 1 rodada de ajustes inclusa  
+
+> Ideal para quem quer começar com o essencial.
+
+---
+
+### 🔵 **Portfólio Pro — R$ 280**
+- Tudo do Básico, mais:  
+  - Formulário de contato funcional (via Formspree ou Google Forms)  
+  - Ícones personalizados para cada serviço  
+  - Animações suaves de rolagem  
+  - SEO básico (título, descrição, meta tags)  
+  - Instruções em vídeo (5 min) de como atualizar  
+  - Suporte por 7 dias após entrega  
+
+> Ideal para quem quer captar leads diretamente pelo site.
+
+---
+
+### 🟣 **Portfólio Premium + Manutenção — R$ 380**
+- Tudo do Pro, mais:  
+  - Domínio personalizado (ex: `seudominio.com.br` — **cliente compra o domínio**)  
+  - Configuração completa de DNS + HTTPS  
+  - 3 atualizações gratuitas nos primeiros 30 dias  
+  - Backup mensal automático (via GitHub)  
+  - Relatório de desempenho (Google PageSpeed)  
+
+> Ideal para profissionais que querem imagem premium.
+
+👉 Me chame no **ldtnettelecom@gmail.com**   
+*(ou responda a projetos na 99freelas como “Desenvolvedor de Portfólios Profissionais”)*
+
+MIT License © 2024 — Akiles Leopoldo Nunes Simião
