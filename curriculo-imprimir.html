@@ -1,279 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Currículo 2026 | Akiles Simião - Developer Jr & Infraestrutura TI</title>
-   
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  
-  <!-- Google Fonts futuristas -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet"/>
-  
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto Mono', monospace;
-      background: linear-gradient(135deg, #0a001f, #1a0033, #000814);
-      color: #e0f7ff;
-      min-height: 100vh;
-      padding: 40px 20px;
-      box-sizing: border-box;
-    }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: rgba(20, 20, 60, 0.45);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(0, 255, 255, 0.25);
-      border-radius: 16px;
-      box-shadow: 0 0 40px rgba(0, 255, 255, 0.25);
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-    }
-    .sidebar {
-      background: linear-gradient(180deg, #0d1b2a, #1b263b);
-      padding: 50px 30px;
-      text-align: center;
-    }
-    .photo {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 0 auto 25px;
-      border: 5px solid #00ffff;
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
-    }
-    .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .sidebar h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 28px;
-      margin: 10px 0 8px;
-      color: #00ffff;
-      text-shadow: 0 0 10px #00ffff;
-    }
-    .sidebar h2 {
-      font-size: 16px;
-      color: #9bdcff;
-      margin-bottom: 25px;
-    }
-    .info {
-      font-size: 15px;
-      line-height: 1.8;
-    }
-    .info a {
-      color: #00ffff;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .info a:hover {
-      color: #ff6600;
-    }
-    .content {
-      padding: 50px;
-    }
-    .section {
-      margin-bottom: 35px;
-    }
-    .section h3 {
-      font-family: 'Orbitron', sans-serif;
-      color: #00ffff;
-      border-left: 5px solid #00ffff;
-      padding-left: 12px;
-      margin-bottom: 18px;
-      font-size: 22px;
-    }
-    ul {
-      padding-left: 25px;
-      list-style: none;
-    }
-    li {
-      margin-bottom: 12px;
-      position: relative;
-    }
-    li:before {
-      content: "→";
-      color: #ff6600;
-      position: absolute;
-      left: -20px;
-    }
-    .buttons {
-      margin-top: 50px;
-      text-align: center;
-    }
-    .btn {
-      display: inline-block;
-      padding: 16px 32px;
-      margin: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-      cursor: pointer;
-    }
-    .btn-print {
-      background: linear-gradient(90deg, #10b981, #059669);
-      color: white;
-    }
-    .btn:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 35px rgba(0, 255, 255, 0.8);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo | Akiles Simião - Desenvolvedor Fullstack</title>
+    <style>
+        @page { size: A4 portrait; margin: 12mm; }
+        body { 
+            font-family: Arial, sans-serif; 
+            font-size: 11pt; 
+            line-height: 1.45; 
+            color: #222; 
+            max-width: 190mm; 
+            margin: 0 auto; 
+            padding: 5mm; 
+        }
+        h1 { 
+            font-size: 22pt; 
+            text-align: center; 
+            color: #1e3a8a; 
+            margin: 0 0 8mm 0; 
+            border-bottom: 3px solid #1e3a8a; 
+            padding-bottom: 6mm; 
+        }
+        h2 { 
+            font-size: 13pt; 
+            color: #1e40af; 
+            margin: 7mm 0 3mm 0; 
+            border-left: 5px solid #1e40af; 
+            padding-left: 8px; 
+        }
+        p, li { margin: 1mm 0; }
+        ul { padding-left: 18px; margin: 2mm 0 6mm 0; }
+        .info { display: flex; justify-content: space-between; font-size: 10.5pt; margin-bottom: 8mm; }
+        .print-btn { 
+            display: block; 
+            margin: 15mm auto 0; 
+            padding: 12px 35px; 
+            background: #1e40af; 
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            font-size: 16px; 
+            cursor: pointer; 
+        }
+        @media print {
+            .print-btn { display: none; }
+            body { padding: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Akiles Leopoldo Nunes Simião<br><span style="font-size:14pt;">Desenvolvedor Fullstack</span></h1>
 
-    /* Responsividade */
-    @media (max-width: 900px) {
-      .container { grid-template-columns: 1fr; }
-      .sidebar { padding: 40px 20px; }
-      .content { padding: 40px 20px; }
-    }
-
-    /* === ESTILO PARA IMPRESSÃO === */
-<style>
-@media print {
-  /* Mantém o design original, mas remove o fundo da página */
-  body {
-    background: white !important; /* Remove o gradiente azul escuro da página */
-    color: #e0f7ff !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  /* Preserva o container com estilo original */
-  .container {
-    box-shadow: none !important; /* Remove sombra para impressão */
-    border: 1px solid rgba(0, 255, 255, 0.25) !important;
-    background: rgba(20, 20, 60, 0.45) !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    padding: 20px !important;
-  }
-
-  /* Remove o botão de impressão */
-  .buttons {
-    display: none !important;
-  }
-
-  /* Força cores e fontes originais — NÃO converte para preto e branco */
-  * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-    color: inherit !important;
-    background: transparent !important;
-  }
-
-  /* Ajusta tamanho da foto para caber melhor */
-  .photo {
-    width: 150px !important;
-    height: 150px !important;
-    margin: 0 auto 15px !important;
-    border: 3px solid #00ffff !important;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6) !important;
-  }
-
-  /* Títulos mantêm cor ciano */
-  h1, h2, h3 {
-    color: #00ffff !important;
-    text-shadow: 0 0 10px #00ffff !important;
-  }
-
-  /* Links mantêm cor ciano */
-  a {
-    color: #00ffff !important;
-    text-decoration: underline !important;
-  }
-
-  /* Configuração da página A4 */
-  @page {
-    size: A4;
-    margin: 10mm;
-  }
-
-  /* Evita quebras indesejadas */
-  .section {
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
-
-  /* Garante que tudo caiba em uma página */
-  body {
-    font-size: 10pt !important;
-    line-height: 1.4;
-  }
-}
-</style>
-  <div class="container">
-    <aside class="sidebar">
-      <div class="photo">
-        <img src="foto-akiles.jpg" alt="Akiles Simião" />
-      </div>
-      <h1>Akiles Simião</h1>
-      <h2>Developer Jr Python / Django<br/>Infraestrutura de TI & Automação</h2>
-      <div class="info">
-        📧 ldtnettelecom@gmail.com<br />
-        🔗 https://www.linkedin.com/in/akilessimiao<br />
-        🌐 https://akilessimiao.github.io/portifolio<br />
-        📍 Natal – RN, Brasil
-      </div>
-    </aside>
-
-    <main class="content">
-      <div class="section">
-        <h3>Resumo Profissional</h3>
-        <p>
-          Profissional com sólida experiência em administração de redes FTTH, gerenciamento de infraestrutura de TI com foco em segurança de dados, automação residencial/industrial e desenvolvimento de software (Python/Django). 
-          Fundador da LDT NET TELECOM, em 2020, cadastrada na ANATEL, especializado em soluções integradas, rápidas e confiáveis para clientes em Natal/RN.
-        </p>
-      </div>
-
-      <div class="section">
-        <h3>Principais Competências</h3>
-        <ul>
-          <li>Desenvolvimento de software (Python, Django, automação de processos)</li>
-          <li>Redes de computadores (FTTH, EPON/GPON, Wi-Fi, cabeamento estruturado)</li>
-          <li>Infraestrutura de tecnologia da informação (servidores Windows/Linux)</li>
-          <li>Automação residencial e industrial (segurança eletrônica, IoT)</li>
-          <li>Segurança de dados e gestão de projetos</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h3>Experiência Profissional</h3>
-        <p><strong>LDT NET TELECOM</strong> — Natal/RN<br />
-        <em>Administrador de TI, Gerenciamento FTTH e Segurança Eletrônica com Automação Residencial e Industrial | 01/2020 – Atual</em></p>
-        <ul>
-          <li>Administração completa de TI, incluindo planejamento e execução de projetos FTTH (Fibra Óptica até a Residência)</li>
-          <li>Gestão de infraestrutura de segurança eletrônica integrada com automação residencial e industrial</li>
-          <li>Definição de responsabilidades técnicas, otimização de processos e redução de custos operacionais</li>
-          <li>Implementação de soluções para alta disponibilidade e suporte técnico próximo e confiável</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h3>Certificações</h3>
-        <ul>
-          <li>Noções Introdutórias de Licitação e Contratos Administrativos</li>
-          <li>Introdução à Ciência de Dados: Modelos de Classificação</li>
-          <li>Aprendendo com Python</li>
-          <li>Análise de Dados em Linguagem R</li>
-        </ul>
-      </div>
-    </main>
-
-    <!-- Botão de impressão (aparece apenas na tela) -->
-    <div class="buttons">
-      <button onclick="window.print()" class="btn btn-print">
-        Imprimir Currículo
-      </button>
+    <div class="info">
+        <div>
+            <strong>R. Boiadeiros, 998 - Lagoa Azul</strong><br>
+            Natal - RN • CEP 59139-030
+        </div>
+        <div style="text-align:right;">
+            (84) 99107-0984<br>
+            ldtnettelecom@gmail.com<br>
+            linkedin.com/in/akilessimiao
+        </div>
     </div>
-  </div>
+
+    <h2>Resumo Profissional</h2>
+    <p>Desenvolvedor Fullstack com experiência completa em aplicações web (frontend + backend), infraestrutura de TI, redes FTTH e automação inteligente. Fundador da LDT NET TELECOM, entrego soluções modernas e de alta performance.</p>
+
+    <h2>Principais Competências</h2>
+    <ul>
+        <li><strong>Fullstack:</strong> Python, Django, JavaScript, HTML, CSS, automação</li>
+        <li>Redes FTTH (EPON/GPON), servidores e infraestrutura</li>
+        <li>Automação residencial/industrial e IoT</li>
+        <li>Segurança da informação e gestão de projetos</li>
+    </ul>
+
+    <h2>Experiência Profissional</h2>
+    <p><strong>LDT NET TELECOM</strong> — Natal/RN</p>
+    <p><strong>Desenvolvedor Fullstack & Administrador de TI</strong> | 2020 – Atual</p>
+    <ul>
+        <li>Desenvolvimento de sistemas web completos com Python/Django</li>
+        <li>Gerenciamento integral de redes de fibra óptica FTTH</li>
+        <li>Implementação de automações inteligentes e IoT</li>
+        <li>Otimização de processos e suporte técnico avançado</li>
+    </ul>
+
+    <h2>Certificações</h2>
+    <ul>
+        <li><strong>NR-18</strong> – Segurança e Saúde no Trabalho na Indústria da Construção</li>
+        <li>Noções Introdutórias de Licitação e Contratos Administrativos</li>
+        <li>Introdução à Ciência de Dados – Modelos de Classificação</li>
+        <li>Aprendendo com Python</li>
+        <li>Análise de Dados em Linguagem R</li>
+    </ul>
+
+    <button class="print-btn" onclick="window.print()">🖨️ SALVAR COMO PDF / IMPRIMIR</button>
 </body>
 </html>
