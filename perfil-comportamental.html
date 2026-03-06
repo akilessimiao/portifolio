@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Perfil Comportamental - Akiles Simião | LDT NET TELECOM</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts futuristas -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet"/>
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Estilos reutilizados do index.html -->
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background: linear-gradient(135deg, #0a001f, #1a0033, #000814);
+            color: #e0f7ff;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .glass {
+            background: rgba(20, 20, 60, 0.35);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+        .neon-text {
+            text-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff, 0 0 30px #ff6600;
+        }
+        .neon-border {
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 15px #00ffff80;
+        }
+        .orange-glow {
+            box-shadow: 0 0 20px #ff660080;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .floating { animation: float 6s ease-in-out infinite; }
+    </style>
+</head>
+<body class="relative min-h-screen">
+
+    <!-- Partículas de fundo -->
+    <div id="particles-js" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Navbar simples (pode copiar o full do index se quiser) -->
+    <nav class="fixed top-0 w-full glass z-50 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold neon-text">LDT NET TELECOM</a>
+            <a href="index.html#contato" class="text-cyan-400 hover:text-orange-400 transition text-lg">Voltar ao Início</a>
+        </div>
+    </nav>
+
+    <!-- Hero / Cabeçalho da página -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-24 relative">
+        <div class="text-center max-w-4xl relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold neon-text mb-6">Perfil Comportamental</h1>
+            <p class="text-2xl md:text-4xl text-orange-400 mb-4">Inspirador (DISC – RecruTest)</p>
+            <p class="text-xl text-cyan-200 mb-10">
+                Extrovertido • Orientado a Pessoas • Aberto a Riscos Calculados
+            </p>
+            <div class="inline-block glass px-8 py-4 rounded-full neon-border text-lg">
+                Teste realizado em 30/06/2025
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo principal -->
+    <section class="py-20 px-6">
+        <div class="max-w-5xl mx-auto glass rounded-3xl p-10 md:p-16">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Texto -->
+                <div>
+                    <h2 class="text-4xl font-bold neon-text mb-8">O que significa ser "Inspirador"?</h2>
+                    <p class="text-lg leading-relaxed text-gray-300 mb-6">
+                        Meu perfil predominante é <strong>Inspirador</strong>: uma combinação de extroversão, foco em pessoas e disposição para riscos calculados. 
+                        Atuo como um verdadeiro <strong>"motor de pessoas"</strong> — motivo, persuado, conquisto confiança e transformo ideias técnicas em soluções práticas que realmente atendem às suas necessidades.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-300 mb-8">
+                        Isso se reflete no meu trabalho diário: diagnóstico rápido, explicações claras e envolventes, negociação transparente e suporte próximo. 
+                        Meu objetivo é sempre entregar valor real, com empatia e foco no que importa para você.
+                    </p>
+
+                    <h3 class="text-3xl font-bold text-orange-400 mb-6">Pontos fortes que levo para os projetos:</h3>
+                    <ul class="space-y-4 text-gray-300 list-disc pl-6 text-lg">
+                        <li>Persuasão natural para explicar soluções técnicas de forma simples e convincente</li>
+                        <li>Identificação rápida do que motiva cada cliente (segurança, economia, praticidade...)</li>
+                        <li>Capacidade de conquistar confiança e alinhar expectativas desde o primeiro contato</li>
+                        <li>Orientação para resultados coletivos — ideal para projetos com equipes ou famílias</li>
+                        <li>Negociação justa e focada no ganho mútuo</li>
+                    </ul>
+
+                    <h3 class="text-3xl font-bold text-cyan-400 mt-10 mb-6">Áreas de atenção:</h3>
+                    <p class="text-lg text-gray-300">
+                        Priorizo transparência total para evitar qualquer sensação de pressão ou manipulação. 
+                        Meu foco é sempre no equilíbrio e no resultado sustentável.
+                    </p>
+                </div>
+
+                <!-- Imagem / Visual -->
+                <div class="text-center">
+                    <img src="https://thumbs.dreamstime.com/b/futuristic-hud-interface-glowing-blue-orange-elements-radar-screen-gaming-dashboard-ui-panel-crosshairs-target-lock-tech-366212546.jpg" 
+                         alt="Interface futurista representando motivação e liderança" 
+                         class="rounded-2xl neon-border shadow-2xl mx-auto w-full max-w-md floating"/>
+                    <p class="mt-6 text-sm text-cyan-300">Liderança inspiradora em ação – motivando resultados reais</p>
+
+                    <!-- Se tiver print do gráfico do teste, substitua aqui -->
+                    <!-- <img src="seu-print-do-grafico-disc.jpg" alt="Gráfico Perfil DISC" class="mt-8 rounded-2xl neon-border"/> -->
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://recrutest.recrutei.com.br/public/result/eyJpdiI6Im54TDVNK003ZVd2MzExamJteDNOXC93PT0iLCJ2YWx1ZSI6IlF1ZEdiM1dFYTl3Q1czeWdMbXJzK0E9PSIsIm1hYyI6IjZmNWQ4ZTBlODg3NzEzZTU4YjBkZWU3YmRkZGNkY2IxOWMxMDU3MzliOGZmYjgxZDdmNTdhMWU1OWVmNGE5NGIifQ==" 
+                   target="_blank" 
+                   class="inline-block bg-gradient-to-r from-cyan-600 to-orange-600 px-10 py-5 rounded-full text-xl font-bold hover:scale-105 transition neon-border">
+                   Ver Resultado Completo do Teste
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center glass mt-20">
+        <p class="text-cyan-300">© 2025 LDT NET TELECOM - Akiles Simião • Natal/RN</p>
+        <a href="index.html" class="text-cyan-400 hover:text-orange-400 mt-4 inline-block">Voltar para a página principal</a>
+    </footer>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#00ffff", "#ff6600"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00ffff", "opacity": 0.3, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } },
+                "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } }
+            },
+            "retina_detect": true
+        });
+    </script>
+
+</body>
+</html>
