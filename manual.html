@@ -1,0 +1,456 @@
+
+---
+
+## 📄 **index.html** (para raiz do site)
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanque Digital - Documentação do Sistema</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1a202c;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-left: 4px solid #764ba2;
+            padding-left: 1rem;
+        }
+
+        .card h3 {
+            color: #4a5568;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .grid-item {
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 3px solid #764ba2;
+        }
+
+        .grid-item h4 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Architecture Diagram */
+        .architecture {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 2rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+        }
+
+        .architecture pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        /* Tables */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .tech-table th, .tech-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tech-table th {
+            background: #764ba2;
+            color: white;
+            font-weight: 600;
+        }
+
+        .tech-table tr:hover {
+            background: #f7fafc;
+        }
+
+        /* Badge status */
+        .status {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: #48bb78;
+            color: white;
+        }
+
+        .status-demo {
+            background: #ed8936;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .card {
+                padding: 1rem;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Code */
+        code {
+            background: #edf2f7;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">⚡ Tanque Digital</div>
+            <div class="badge">Sistema Integrado de PDV + E-commerce</div>
+        </div>
+
+        <!-- Overview Card -->
+        <div class="card">
+            <h2>📋 Visão Geral</h2>
+            <p>O <strong>Tanque Digital</strong> é uma plataforma completa para gestão de vendas físicas e online, com emissão fiscal, pagamentos via PIX e relatórios automatizados.</p>
+            
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>🏪 PDV Local</h4>
+                    <p>Operações em loja física com múltiplos perfis (admin, operator, cashier)</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🛍️ E-commerce</h4>
+                    <p>Loja virtual integrada com estoque e fiscal</p>
+                </div>
+                <div class="grid-item">
+                    <h4>💰 PIX</h4>
+                    <p>Pagamentos instantâneos via Mercado Pago</p>
+                </div>
+                <div class="grid-item">
+                    <h4>📄 NFC-e</h4>
+                    <p>Emissão fiscal integrada com SEFAZ/RN</p>
+                </div>
+                <div class="grid-item">
+                    <h4>📱 WhatsApp</h4>
+                    <p>Relatórios e notificações automáticas</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🔒 Segurança</h4>
+                    <p>AES-256, CSRF, validação de licença</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Architecture Card -->
+        <div class="card">
+            <h2>🏗️ Arquitetura do Sistema</h2>
+            <div class="architecture">
+                <pre>
+┌─────────────────────────────────────────────────────────────┐
+│                    APLICAÇÃO LOCAL (PDV)                    │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐                 │
+│  │  Admin   │  │ Operator │  │ Cashier  │                 │
+│  └──────────┘  └──────────┘  └──────────┘                 │
+└───────────────────────────┬─────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   WEB-SERVER (Cloud)                        │
+│  ┌────────────┐  ┌──────────┐  ┌────────────┐             │
+│  │ API-Gateway│  │ DB-Proxy │  │Log-Collector│             │
+│  └────────────┘  └──────────┘  └────────────┘             │
+│                                                            │
+│  🔒 CSRF Protection  |  🔐 AES-256 Encryption             │
+│  📜 License Validation |  @tanquedigital.com.br           │
+└───────────────────────────┬─────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│              CENTRAL DATABASE (MySQL)                       │
+│              myshared0786/pdvtanque                         │
+└─────────────────────────────────────────────────────────────┘
+                            │
+        ┌───────────────────┼───────────────────┐
+        ▼                   ▼                   ▼
+┌──────────────┐  ┌─────────────────┐  ┌──────────────────┐
+│ Mercado Pago │  │ SEFAZ/RN        │  │ WhatsApp         │
+│ PIX API      │  │ Notas Fiscais   │  │ Business API     │
+│ (DEMO/PROD)  │  │ NFC-e           │  │ Relatórios       │
+└──────────────┘  └─────────────────┘  └──────────────────┘
+                </pre>
+            </div>
+        </div>
+
+        <!-- Tech Stack Card -->
+        <div class="card">
+            <h2>🚀 Tecnologias</h2>
+            <table class="tech-table">
+                <thead>
+                    <tr><th>Camada</th><th>Tecnologias</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Front-end (E-commerce)</td><td>HTML5, CSS3, JavaScript, Bootstrap</td></tr>
+                    <tr><td>Back-end</td><td>PHP 7.4+ (núcleo customizado)</td></tr>
+                    <tr><td>PDV Local</td><td>Electron / Node.js</td></tr>
+                    <tr><td>Banco de Dados</td><td>MySQL 5.7+</td></tr>
+                    <tr><td>API Gateway</td><td>Node.js / PHP-FPM</td></tr>
+                    <tr><td>Segurança</td><td>AES-256, CSRF Tokens</td></tr>
+                    <tr><td>Integrações</td><td>Mercado Pago, SEFAZ/RN, WhatsApp API</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Versions Card -->
+        <div class="card">
+            <h2>📦 Versões do Sistema</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>🎯 DEMO</h4>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>10 produtos</li>
+                        <li>50 vendas/dia</li>
+                        <li>Ambiente de testes</li>
+                        <li>PIX Demo</li>
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <h4>⚡ PRODUCTION</h4>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Produtos ilimitados</li>
+                        <li>Vendas ilimitadas</li>
+                        <li>NFC-e fiscal completo</li>
+                        <li>PIX integrado</li>
+                        <li>Relatórios WhatsApp</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Card -->
+        <div class="card">
+            <h2>🔒 Segurança</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>CSRF Protection</h4>
+                    <p>Tokens em todos os formulários</p>
+                </div>
+                <div class="grid-item">
+                    <h4>AES-256 Encryption</h4>
+                    <p>Dados sensíveis criptografados</p>
+                </div>
+                <div class="grid-item">
+                    <h4>License Validation</h4>
+                    <p>Verificação ativa de licença</p>
+                </div>
+                <div class="grid-item">
+                    <h4>HTTPS Obrigatório</h4>
+                    <p>Certificado SSL ativo</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Database Structure Card -->
+        <div class="card">
+            <h2>📁 Estrutura do Banco de Dados</h2>
+            <p>Principais tabelas do sistema:</p>
+            <pre>
+produtos        - Catálogo de produtos
+clientes        - Cadastro de clientes
+pedidos         - Vendas (online e PDV)
+itens_pedido    - Itens de cada venda
+nfe             - Notas fiscais emitidas
+usuarios        - Controle de acesso (admin, operator, cashier)
+logs            - Logs de sistema
+            </pre>
+        </div>
+
+        <!-- Users Card -->
+        <div class="card">
+            <h2>👥 Perfis de Usuário</h2>
+            <table class="tech-table">
+                <thead>
+                    <tr><th>Perfil</th><th>Permissões</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Admin</strong></td><td>Total: configurações, relatórios, gestão de usuários</td></tr>
+                    <tr><td><strong>Operator</strong></td><td>Operações diárias: vendas, controle de estoque</td></tr>
+                    <tr><td><strong>Cashier</strong></td><td>Apenas fechamento de caixa</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Integrations Card -->
+        <div class="card">
+            <h2>📱 Integrações</h2>
+            <table class="tech-table">
+                <thead>
+                    <tr><th>Integração</th><th>Finalidade</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Mercado Pago PIX</td><td>Pagamentos instantâneos</td><td><span class="status status-active">✅ Ativo</span></td></tr>
+                    <tr><td>SEFAZ/RN NFC-e</td><td>Emissão fiscal</td><td><span class="status status-active">✅ Ativo</span></td></tr>
+                    <tr><td>WhatsApp Business</td><td>Relatórios e notificações</td><td><span class="status status-active">✅ Ativo</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Quick Setup Card -->
+        <div class="card">
+            <h2>🔧 Configuração Rápida</h2>
+            <h3>Pré-requisitos</h3>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li>PHP 7.4+</li>
+                <li>MySQL 5.7+</li>
+                <li>Apache/Nginx</li>
+                <li>Node.js (para PDV local)</li>
+            </ul>
+            <h3>Comandos básicos</h3>
+            <pre>
+# Clone o repositório
+git clone https://github.com/seu-usuario/tanque-digital.git
+
+# Configure o banco
+mysql -u root -p -e "CREATE DATABASE pdvtanque;"
+
+# Instale dependências
+composer install
+npm install
+
+# Configure ambiente
+cp .env.example .env
+# Edite .env com suas credenciais
+            </pre>
+        </div>
+
+        <!-- Contact Card -->
+        <div class="card">
+            <h2>📞 Contato e Suporte</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>🌐 Website</h4>
+                    <p><a href="https://tanquedigital.com.br" target="_blank">tanquedigital.com.br</a></p>
+                </div>
+                <div class="grid-item">
+                    <h4>📧 E-mail</h4>
+                    <p>contato@tanquedigital.com.br</p>
+                </div>
+                <div class="grid-item">
+                    <h4>💬 WhatsApp</h4>
+                    <p>Disponível no site</p>
+                </div>
+                <div class="grid-item">
+                    <h4>📋 Licença</h4>
+                    <p>Sistema proprietário - uso mediante licença</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>⚡ Tanque Digital - Sistema Integrado de PDV e E-commerce</p>
+            <p style="font-size: 0.8rem; opacity: 0.8;">Versão 2.0 | Última atualização: Março 2026</p>
+        </div>
+    </div>
+</body>
+</html>
