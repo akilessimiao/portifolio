@@ -103,10 +103,51 @@
         .delay-200 { animation-delay: 0.2s; }
         .delay-300 { animation-delay: 0.3s; }
         
-        /* Botões */
+        /* ✨ ANIMAÇÃO DE PULSO PARA BOTÕES */
+        @keyframes pulse-neon {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3),
+                            0 0 40px rgba(0, 255, 255, 0.2);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(255, 255, 255, 0.6),
+                            0 0 70px rgba(0, 255, 255, 0.4),
+                            0 0 100px rgba(255, 102, 0, 0.2);
+                transform: scale(1.02);
+            }
+        }
+        
+        @keyframes pulse-whatsapp {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(37, 211, 102, 0.8),
+                            0 0 80px rgba(18, 140, 126, 0.4);
+                transform: scale(1.02);
+            }
+        }
+        
+        @keyframes pulse-gradient {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(8, 145, 178, 0.4),
+                            0 0 40px rgba(234, 88, 12, 0.3);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(8, 145, 178, 0.7),
+                            0 0 70px rgba(234, 88, 12, 0.6);
+                transform: scale(1.02);
+            }
+        }
+        
+        /* 🔘 BOTÕES NEON - ESTILO BASE */
         .btn-neon {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             padding: 16px 36px;
             font-size: 16px;
@@ -121,7 +162,15 @@
             -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
+            
+            /* ✅ TEXTO BRANCO SEMPRE LEGÍVEL */
+            color: #ffffff !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            
+            /* ✨ PULSO SUAVE CONTÍNUO */
+            animation: pulse-neon 3s ease-in-out infinite;
         }
+        
         .btn-neon::before {
             content: '';
             position: absolute;
@@ -136,20 +185,54 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .btn-neon:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.4);
-        }
-        .btn-neon:active { transform: translateY(-1px); }
         
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        .btn-neon:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.4);
+            animation-duration: 1.5s; /* Pulsa mais rápido no hover */
         }
-        .btn-whatsapp:hover {
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
-            transform: translateY(-3px);
+        .btn-neon:active { 
+            transform: translateY(-1px) scale(0.99); 
+            animation-play-state: paused;
+        }
+        
+        /* 🟢 BOTÃO WHATSAPP */
+        .btn-neon.btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
+            animation-name: pulse-whatsapp !important;
+        }
+        .btn-neon.btn-whatsapp:hover {
+            background: linear-gradient(135deg, #128C7E, #075E54) !important;
+            animation-duration: 1s;
+        }
+        
+        /* 🟠 BOTÃO GRADIENTE (Formulário) */
+        .btn-neon.btn-gradient {
+            background: linear-gradient(135deg, #0891b2, #ea580c) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
+            animation-name: pulse-gradient !important;
+        }
+        .btn-neon.btn-gradient:hover {
+            animation-duration: 1.2s;
+            filter: brightness(1.1);
+        }
+        
+        /* 🟣 BOTÃO ROXO (Perfil Comportamental) */
+        .btn-neon.btn-purple {
+            background: linear-gradient(135deg, var(--purple), #4f46e5) !important;
+        }
+        
+        /* Botão secundário (transparente) */
+        .btn-neon.btn-outline {
+            background: transparent !important;
+            border: 2px solid var(--cyan) !important;
+            color: var(--cyan) !important;
+            animation: none;
+        }
+        .btn-neon.btn-outline:hover {
+            background: rgba(0, 255, 255, 0.1) !important;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
         }
         
         /* Cards de serviço */
@@ -178,6 +261,10 @@
             background: rgba(15, 15, 45, 0.5);
             border: 1px solid rgba(0, 255, 255, 0.3);
             transition: all 0.3s ease;
+            color: #ffffff !important;
+        }
+        .input-neon::placeholder {
+            color: rgba(0, 255, 255, 0.5);
         }
         .input-neon:focus {
             outline: none;
@@ -217,6 +304,18 @@
             .hero h1 { font-size: 2.5rem !important; }
             .hero p { font-size: 1rem !important; }
             .btn-neon { padding: 14px 28px; font-size: 14px; }
+        }
+        
+        /* Acessibilidade - reduzir movimento */
+        @media (prefers-reduced-motion: reduce) {
+            .btn-neon {
+                animation: none !important;
+                transition: none !important;
+            }
+            .btn-neon:hover {
+                transform: none !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+            }
         }
     </style>
 </head>
@@ -306,7 +405,7 @@
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
                     FALE COMIGO AGORA
                 </a>
-                <a href="#servicos" class="btn-neon" style="background: transparent; color: var(--cyan);">
+                <a href="#servicos" class="btn-neon btn-outline">
                     Ver Serviços ↓
                 </a>
             </div>
@@ -350,9 +449,18 @@
                             resultados que geram valor real para você.
                         </p>
                         
+                        <!-- ✅ BOTÕES CORRIGIDOS: texto branco + pulso -->
                         <div class="flex flex-wrap gap-3 pt-4">
-                            <a href="https://akilessimiao.github.io/portifolio/curriculo-imprimir.html" class="btn-neon" target="_blank">📄 Ver Currículo</a>
-                            <a href="perfil-comportamental.html" class="btn-neon" style="background: linear-gradient(135deg, var(--purple), #4f46e5);" target="_blank">🧭 Perfil Comportamental</a>
+                            <a href="https://akilessimiao.github.io/portifolio/curriculo-imprimir.html" 
+                               class="btn-neon" 
+                               target="_blank">
+                                📄 Ver Currículo
+                            </a>
+                            <a href="perfil-comportamental.html" 
+                               class="btn-neon btn-purple" 
+                               target="_blank">
+                                🧭 Perfil Comportamental
+                            </a>
                         </div>
                     </div>
                     
@@ -511,11 +619,16 @@
                     Orçamento rápido • Resposta em até 24h • WhatsApp ou Formulário
                 </p>
                 
-                <!-- WhatsApp Button -->
+                <!-- ✅ WHATSAPP BUTTON COM PULSO E TEXTO BRANCO -->
                 <div class="text-center mb-10">
-                    <a href="https://wa.me/5584994554714" class="btn-neon btn-whatsapp inline-flex" target="_blank">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-                        Enviar mensagem no WhatsApp
+                    <a href="https://wa.me/5584994554714" 
+                       class="btn-neon btn-whatsapp inline-flex" 
+                       target="_blank"
+                       aria-label="Enviar mensagem no WhatsApp">
+                        <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                        </svg>
+                        <span>Enviar mensagem no WhatsApp</span>
                     </a>
                 </div>
                 
@@ -547,8 +660,9 @@
                                           class="input-neon w-full p-4 rounded-xl text-cyan-100 placeholder-cyan-400/50 resize-none"
                                           placeholder="Descreva o que você precisa..."></textarea>
                             </div>
+                            <!-- ✅ BOTÃO DE ENVIO COM PULSO E GRADIENTE -->
                             <button type="submit" @click="submitted = true" 
-                                    class="btn-neon w-full justify-center bg-gradient-to-r from-cyan-600 to-orange-600">
+                                    class="btn-neon btn-gradient w-full justify-center">
                                 📤 ENVIAR MENSAGEM
                             </button>
                         </div>
