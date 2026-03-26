@@ -1,100 +1,427 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currículo | Akiles Simião - Desenvolvedor Fullstack</title>
-    <style>
-        @page { size: A4 portrait; margin: 12mm; }
-        body { 
-            font-family: Arial, sans-serif; 
-            font-size: 11pt; 
-            line-height: 1.45; 
-            color: #222; 
-            max-width: 190mm; 
-            margin: 0 auto; 
-            padding: 5mm; 
-        }
-        h1 { 
-            font-size: 22pt; 
-            text-align: center; 
-            color: #1e3a8a; 
-            margin: 0 0 8mm 0; 
-            border-bottom: 3px solid #1e3a8a; 
-            padding-bottom: 6mm; 
-        }
-        h2 { 
-            font-size: 13pt; 
-            color: #1e40af; 
-            margin: 7mm 0 3mm 0; 
-            border-left: 5px solid #1e40af; 
-            padding-left: 8px; 
-        }
-        p, li { margin: 1mm 0; }
-        ul { padding-left: 18px; margin: 2mm 0 6mm 0; }
-        .info { display: flex; justify-content: space-between; font-size: 10.5pt; margin-bottom: 8mm; }
-        .print-btn { 
-            display: block; 
-            margin: 15mm auto 0; 
-            padding: 12px 35px; 
-            background: #1e40af; 
-            color: white; 
-            border: none; 
-            border-radius: 6px; 
-            font-size: 16px; 
-            cursor: pointer; 
-        }
-        @media print {
-            .print-btn { display: none; }
-            body { padding: 0; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículo | Akiles Simião - Desenvolvedor Backend</title>
+  <meta name="description" content="Currículo profissional de Akiles Simião - Desenvolvedor Fullstack, Infraestrutura FTTH e Automação em Natal/RN">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #7c3aed;
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --bg: #f9fafb;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --success: #059669;
+      --warning: #d97706;
+    }
+    
+    @media print {
+      body { 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        line-height: 1.4; 
+        color: var(--text); 
+        max-width: 800px; 
+        margin: 0 auto; 
+        padding: 15px; 
+        font-size: 11pt;
+        background: var(--white);
+      }
+      .no-print { display: none !important; }
+      h1 { font-size: 18pt; border-bottom: 2pt solid var(--primary); padding-bottom: 8pt; margin-bottom: 4pt; }
+      h2 { font-size: 14pt; color: var(--primary); margin: 18pt 0 10pt; border-bottom: 1pt solid var(--border); padding-bottom: 4pt; }
+      h3 { font-size: 12pt; margin: 12pt 0 6pt; color: var(--text); }
+      p, li { font-size: 10pt; margin: 4pt 0; }
+      .contact { font-size: 9pt; color: var(--text-light); margin-bottom: 12pt; }
+      .contact a { color: var(--primary); text-decoration: none; }
+      .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8pt; }
+      .skill-tag { background: #eff6ff; padding: 3pt 8pt; border-radius: 3pt; font-size: 9pt; display: inline-block; margin: 2pt 0; }
+      .project { margin: 12pt 0; padding-left: 10pt; border-left: 2pt solid var(--primary); }
+      .badge { display: inline-block; background: var(--secondary); color: white; padding: 3pt 10pt; border-radius: 10pt; font-weight: 600; font-size: 9pt; margin: 2pt; }
+      .badge-secondary { background: #e0e7ff; color: #4338ca; }
+      .disc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6pt; margin: 10pt 0; }
+      .disc-card { background: #f3f4f6; padding: 8pt; border-radius: 6pt; text-align: center; border-left: 3pt solid var(--secondary); }
+      .disc-card h4 { margin: 0 0 3pt; font-size: 10pt; color: var(--text); }
+      .disc-card .value { font-size: 16pt; font-weight: bold; color: var(--secondary); }
+      .strengths-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8pt; margin: 10pt 0; }
+      .strength-card { background: #f0fdf4; border: 1pt solid #bbf7d0; padding: 8pt; border-radius: 6pt; }
+      .strength-card h4 { margin: 0 0 4pt; font-size: 10pt; color: #166534; }
+      .application-box { background: #eff6ff; border-left: 3pt solid var(--primary); padding: 10pt; border-radius: 0 4pt 4pt 0; margin: 12pt 0; }
+      .application-box h4 { margin: 0 0 6pt; color: #1e40af; font-size: 11pt; }
+      .footer-note { margin-top: 20pt; padding-top: 10pt; border-top: 1pt solid var(--border); font-size: 9pt; color: var(--text-light); }
+      a { color: var(--primary); text-decoration: none; }
+      .page-break { page-break-before: always; }
+    }
+    
+    @media screen {
+      body { 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text); 
+        max-width: 950px; 
+        margin: 0 auto; 
+        padding: 20px; 
+        background: var(--bg);
+      }
+      .cv-container { 
+        background: var(--white); 
+        padding: 40px; 
+        border-radius: 16px; 
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); 
+      }
+      h1 { font-size: 32px; border-bottom: 4px solid var(--primary); padding-bottom: 15px; margin-bottom: 10px; }
+      h2 { font-size: 22px; color: var(--primary); margin: 35px 0 20px; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+      h3 { font-size: 18px; margin: 20px 0 10px; color: var(--text); }
+      p, li { font-size: 16px; margin: 10px 0; }
+      .contact { 
+        font-size: 15px; 
+        color: var(--text-light); 
+        margin-bottom: 25px; 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 20px; 
+        align-items: center;
+      }
+      .contact a { color: var(--primary); text-decoration: none; font-weight: 500; }
+      .contact a:hover { text-decoration: underline; }
+      .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 20px 0; }
+      .skill-category { background: #f3f4f6; padding: 15px; border-radius: 10px; }
+      .skill-category h4 { font-size: 14px; color: var(--text); margin: 0 0 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+      .skill-tag { background: #dbeafe; color: #1e40af; padding: 5px 14px; border-radius: 20px; font-size: 14px; display: inline-block; margin: 4px 3px; font-weight: 500; }
+      .project { margin: 25px 0; padding: 20px; background: #f8fafc; border-left: 5px solid var(--primary); border-radius: 0 10px 10px 0; }
+      .project h4 { margin: 0 0 10px; color: var(--text); font-size: 18px; }
+      .project-meta { font-size: 14px; color: var(--text-light); margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 15px; }
+      .project-meta span { display: flex; align-items: center; gap: 5px; }
+      .project-meta a { color: var(--primary); font-weight: 500; }
+      .btn-print { 
+        display: inline-flex; align-items: center; gap: 8px;
+        background: var(--primary); color: white; padding: 14px 28px; 
+        border-radius: 10px; text-decoration: none; font-weight: 600; 
+        margin: 25px 0; cursor: pointer; border: none; font-size: 16px;
+        transition: background 0.2s;
+      }
+      .btn-print:hover { background: var(--primary-dark); }
+      .btn-whatsapp { 
+        display: inline-flex; align-items: center; gap: 8px;
+        background: #25D366; color: white; padding: 14px 28px; 
+        border-radius: 10px; text-decoration: none; font-weight: 600; 
+        margin: 10px 0 25px; font-size: 16px;
+        transition: background 0.2s;
+      }
+      .btn-whatsapp:hover { background: #128C7E; }
+      .badge { display: inline-block; background: var(--secondary); color: white; padding: 6px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; margin: 5px 3px; }
+      .badge-secondary { background: #e0e7ff; color: #4338ca; }
+      .profile-header { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin-bottom: 30px; padding-bottom: 25px; border-bottom: 1px solid var(--border); }
+      .profile-photo { 
+        width: 90px; height: 90px; border-radius: 50%; 
+        background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+        display: flex; align-items: center; justify-content: center; 
+        color: white; font-size: 36px; font-weight: bold; 
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+      }
+      .profile-info h3 { margin: 0; font-size: 22px; }
+      .profile-info p { margin: 5px 0 0; color: var(--text-light); }
+      .disc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin: 25px 0; }
+      .disc-card { background: #f3f4f6; padding: 20px; border-radius: 12px; text-align: center; border-left: 5px solid var(--secondary); transition: transform 0.2s; }
+      .disc-card:hover { transform: translateY(-3px); }
+      .disc-card h4 { margin: 0 0 8px; font-size: 15px; color: var(--text); font-weight: 600; }
+      .disc-card .value { font-size: 28px; font-weight: 800; color: var(--secondary); }
+      .disc-card p { font-size: 13px; color: var(--text-light); margin: 8px 0 0; }
+      .strengths-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin: 25px 0; }
+      .strength-card { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 18px; border-radius: 10px; }
+      .strength-card h4 { margin: 0 0 10px; color: #166534; display: flex; align-items: center; gap: 8px; font-size: 16px; }
+      .strength-card h4::before { content: "✅"; }
+      .strength-card p { margin: 0; color: var(--text); font-size: 15px; }
+      .application-box { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid var(--primary); padding: 25px; border-radius: 0 12px 12px 0; margin: 30px 0; }
+      .application-box h4 { margin: 0 0 12px; color: #1e40af; font-size: 18px; }
+      .application-box ul { margin: 0; padding-left: 20px; }
+      .application-box li { margin: 8px 0; }
+      .quote-box { 
+        margin: 35px 0; padding: 25px; 
+        background: linear-gradient(135deg, var(--secondary) 0%, #4f46e5 100%); 
+        border-radius: 12px; color: white; text-align: center; 
+        box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+      }
+      .quote-box p { font-size: 19px; font-weight: 500; margin: 0; line-height: 1.5; }
+      .footer-note { 
+        margin-top: 45px; padding-top: 25px; 
+        border-top: 2px solid var(--border); 
+        font-size: 14px; color: var(--text-light); 
+        display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px;
+      }
+      .footer-note a { color: var(--primary); font-weight: 500; }
+      .tanque-badge { 
+        display: inline-flex; align-items: center; gap: 8px; 
+        background: #1e293b; color: white; padding: 10px 20px; 
+        border-radius: 30px; text-decoration: none; font-size: 15px; 
+        font-weight: 600; margin: 15px 0 25px; 
+        box-shadow: 0 4px 12px rgba(30, 41, 59, 0.3);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .tanque-badge:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(30, 41, 59, 0.4); }
+      .tanque-badge::before { content: "🏢"; }
+      .section-divider { height: 1px; background: var(--border); margin: 40px 0; }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    }
+    
+    .no-print { display: block; }
+    @media print { .no-print { display: none; } }
+  </style>
 </head>
 <body>
-    <h1>Akiles Leopoldo Nunes Simião<br><span style="font-size:14pt;">Desenvolvedor Fullstack</span></h1>
-
-    <div class="info">
-        <div>
-            <strong>R. Boiadeiros, 998 - Lagoa Azul</strong><br>
-            Natal - RN • CEP 59139-030
-        </div>
-        <div style="text-align:right;">
-            (84) 99107-0984<br>
-            ldtnettelecom@gmail.com<br>
-            linkedin.com/in/akilessimiao
-        </div>
+  <div class="cv-container">
+    
+    <!-- Cabeçalho Principal -->
+    <h1>Akiles Leopoldo Nunes Simião</h1>
+    <p style="font-size: 20px; color: var(--text-light); margin: 5px 0 15px;">
+      <strong>Desenvolvedor Fullstack | Infraestrutura de TI & IoT</strong>
+    </p>
+    
+    <a href="https://tanquedigital.com.br" target="_blank" class="tanque-badge">Tanque Digital — Agência Parceira</a>
+    
+    <div class="contact">
+      <span>📍 Natal, RN</span>
+      <span>📱 <a href="https://wa.me/5584994554714" target="_blank">(84) 99455-4714</a></span>
+      <span>✉️ <a href="mailto:ldtnettelecom@gmail.com">ldtnettelecom@gmail.com</a></span>
+      <span>🔗 <a href="https://linkedin.com/in/akilessimiao" target="_blank">LinkedIn</a></span>
+      <span>🏢 <a href="https://tanquedigital.com.br" target="_blank">Tanque Digital</a></span>
+      <span>💻 <a href="https://akilessimiao.github.io/portifolio" target="_blank">Portfólio</a></span>
+      <span>🐙 <a href="https://github.com/akilessimiao" target="_blank">GitHub</a></span>
     </div>
 
-    <h2>Resumo Profissional</h2>
-    <p>Desenvolvedor Fullstack com experiência completa em aplicações web (frontend + backend), infraestrutura de TI, redes FTTH e automação inteligente. Fundador da LDT NET TELECOM, entrego soluções modernas e de alta performance.</p>
+    <div class="no-print">
+      <a href="https://wa.me/5584994554714" class="btn-whatsapp" target="_blank">💬 Falar no WhatsApp</a>
+      <button class="btn-print" onclick="window.print()">🖨️ Salvar como PDF / Imprimir</button>
+    </div>
 
-    <h2>Principais Competências</h2>
+    <!-- Resumo Profissional -->
+    <h2>🎯 Resumo Profissional</h2>
+    <p>Desenvolvedor Fullstack e Administrador de TI com trajetória sólida desde 2020, unindo <strong>desenvolvimento de software</strong> com <strong>gestão de infraestrutura de redes (FTTH)</strong> e <strong>automação inteligente</strong>. Founder da LDT NET TELECOM, possuo visão estratégica de negócios aliada à técnica. Especialista em <strong>Python/Django</strong>, em expansão ativa para ecossistema <strong>Node.js (NestJS/TypeScript)</strong>. Experiência prática em arquitetura de software, APIs, bancos de dados e deploy em nuvem, com foco em soluções escaláveis, seguras e orientadas a resultados.</p>
+
+    <!-- Perfil Comportamental Integrado -->
+    <h2>🧭 Perfil Comportamental (DISC)</h2>
+    
+    <div class="profile-header">
+      <div class="profile-photo">AS</div>
+      <div class="profile-info">
+        <h3>Tipo: <span class="badge">Inspirador</span></h3>
+        <p><span class="badge badge-secondary">Extrovertido</span> <span class="badge badge-secondary">Orientado a Pessoas</span> <span class="badge badge-secondary">Aberto a Riscos</span></p>
+        <p style="margin-top: 10px; font-size: 14px;">📊 RecruTest • Realizado em 30/06/2025</p>
+      </div>
+    </div>
+
+    <p><strong>O que significa ser "Inspirador"?</strong> Meu perfil combina extroversão, foco em pessoas e disposição para riscos calculados. Atuo como um "motor de pessoas": motivo, persuado, conquisto confiança e transformo ideias técnicas em soluções práticas que atendem necessidades reais.</p>
+    
+    <div class="disc-grid">
+      <div class="disc-card">
+        <h4>Dominância</h4>
+        <div class="value">Alta</div>
+        <p>Foco em resultados</p>
+      </div>
+      <div class="disc-card">
+        <h4>Influência</h4>
+        <div class="value">Muito Alta</div>
+        <p>Comunicação & conexão</p>
+      </div>
+      <div class="disc-card">
+        <h4>Estabilidade</h4>
+        <div class="value">Média</div>
+        <p>Equilíbrio & adaptação</p>
+      </div>
+      <div class="disc-card">
+        <h4>Conformidade</h4>
+        <div class="value">Média-Alta</div>
+        <p>Processos com flexibilidade</p>
+      </div>
+    </div>
+
+    <div class="strengths-grid">
+      <div class="strength-card">
+        <h4>Comunicação Técnica Acessível</h4>
+        <p>Transformo conceitos complexos de TI em explicações claras para clientes e equipes não-técnicas.</p>
+      </div>
+      <div class="strength-card">
+        <h4>Diagnóstico Rápido</h4>
+        <p>Identifico rapidamente o que motiva cada stakeholder: segurança, economia, praticidade ou inovação.</p>
+      </div>
+      <div class="strength-card">
+        <h4>Construção de Confiança</h4>
+        <p>Estabeleço rapport genuíno desde o primeiro contato, alinhando expectativas e criando parcerias.</p>
+      </div>
+      <div class="strength-card">
+        <h4>Liderança Colaborativa</h4>
+        <p>Oriento equipes com foco em resultados coletivos, equilibrando demanda técnica com bem-estar.</p>
+      </div>
+    </div>
+
+    <div class="application-box">
+      <h4>🎯 Como este perfil agrega valor aos projetos?</h4>
+      <ul>
+        <li><strong>Venda de soluções:</strong> Conecto necessidade técnica com impacto emocional (tranquilidade, economia, crescimento).</li>
+        <li><strong>Liderança:</strong> Motivo a equipe com clareza de propósito, reconhecendo contribuições.</li>
+        <li><strong>Resolução de conflitos:</strong> Uso persuasão ética para realinhar expectativas e preservar relacionamentos.</li>
+        <li><strong>Evolução técnica:</strong> Busco aprendizado contínuo para aumentar minha capacidade de influenciar positivamente.</li>
+      </ul>
+    </div>
+
+    <div class="quote-box">
+      <p>"Minha missão é inspirar confiança através da competência técnica e da conexão humana — transformando desafios de TI em oportunidades de crescimento."</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Competências Técnicas -->
+    <h2>💻 Competências Técnicas</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4>Backend</h4>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Django</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">NestJS</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">JavaScript</span>
+      </div>
+      <div class="skill-category">
+        <h4>Frontend & APIs</h4>
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">REST API</span>
+        <span class="skill-tag">GraphQL</span>
+        <span class="skill-tag">React (básico)</span>
+      </div>
+      <div class="skill-category">
+        <h4>Banco de Dados</h4>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">Modelagem Relacional</span>
+        <span class="skill-tag">NoSQL (noções)</span>
+      </div>
+      <div class="skill-category">
+        <h4>DevOps & Cloud</h4>
+        <span class="skill-tag">Git / GitHub</span>
+        <span class="skill-tag">Docker (básico)</span>
+        <span class="skill-tag">CI/CD (noções)</span>
+        <span class="skill-tag">AWS/Azure/GCP</span>
+        <span class="skill-tag">Linux</span>
+      </div>
+      <div class="skill-category">
+        <h4>Infraestrutura & IoT</h4>
+        <span class="skill-tag">Redes FTTH (EPON/GPON)</span>
+        <span class="skill-tag">Automação Residencial</span>
+        <span class="skill-tag">IoT & Sensores</span>
+        <span class="skill-tag">Segurança da Informação</span>
+      </div>
+      <div class="skill-category">
+        <h4>Soft Skills</h4>
+        <span class="skill-tag">Liderança Técnica</span>
+        <span class="skill-tag">Comunicação Eficaz</span>
+        <span class="skill-tag">Resolução de Problemas</span>
+        <span class="skill-tag">Aprendizado Rápido</span>
+        <span class="skill-tag">Trabalho em Equipe</span>
+      </div>
+    </div>
+
+    <!-- Experiência -->
+    <h2>💼 Experiência Profissional</h2>
+    
+    <div>
+      <h3>LDT NET TELECOM — Natal/RN</h3>
+      <p><strong>Desenvolvedor Fullstack & Administrador de TI</strong> | <em>2020 – Atual</em></p>
+      <ul>
+        <li><strong>Desenvolvimento Fullstack:</strong> Criação e manutenção de aplicações web completas utilizando <strong>Python/Django</strong>, com migração e integração gradual de microsserviços em <strong>Node.js/NestJS</strong>.</li>
+        <li><strong>Arquitetura de Software:</strong> Implementação de arquitetura modular, separação de responsabilidades e padrões de projeto, garantindo código limpo, testável e escalável.</li>
+        <li><strong>APIs & Integrações:</strong> Desenvolvimento e documentação de APIs <strong>REST e GraphQL</strong> para integração de sistemas internos, gateways de pagamento e serviços externos.</li>
+        <li><strong>Banco de Dados:</strong> Modelagem e otimização de bancos MySQL, com queries eficientes e estratégias de backup/recuperação.</li>
+        <li><strong>DevOps & Deploy:</strong> Utilização de <strong>Git</strong> para versionamento, noções de <strong>Docker</strong> para containerização e <strong>CI/CD</strong> para automação de deploy em ambientes de nuvem.</li>
+        <li><strong>Infraestrutura FTTH:</strong> Gerenciamento integral de redes de fibra óptica, incluindo planejamento, configuração de OLT/ONU e monitoramento proativo.</li>
+        <li><strong>IoT & Automação:</strong> Implementação de soluções de automação inteligente conectando hardware e software para gestão remota de dispositivos.</li>
+        <li><strong>Gestão & Suporte:</strong> Liderança técnica, otimização de processos de TI, suporte avançado e garantia de segurança da informação e continuidade do negócio.</li>
+      </ul>
+    </div>
+
+    <!-- Projetos em Destaque -->
+    <h2>🚀 Projetos em Destaque</h2>
+    
+    <div class="project">
+      <h4>Comanda Fácil — PDV Moderno</h4>
+      <div class="project-meta">
+        <span>🔧 JavaScript + Camera API</span>
+        <span>📦 <a href="https://github.com/akilessimiao/comanda-facil" target="_blank">GitHub</a></span>
+      </div>
+      <p>Sistema de frente de caixa com leitor de código de barras via câmera do dispositivo, desenvolvido para pequenos comércios. Interface intuitiva, cadastro rápido de produtos e integração com métodos de pagamento.</p>
+    </div>
+
+    <div class="project">
+      <h4>Dashboard FTTH Monitor</h4>
+      <div class="project-meta">
+        <span>🔧 Python + Ping + Charts</span>
+        <span>📦 <a href="https://github.com/akilessimiao/dashboard-ftth-monitor" target="_blank">GitHub</a></span>
+      </div>
+      <p>Dashboard em Python para monitoramento em tempo real de rede FTTH via ping, com alertas de indisponibilidade e relatórios de uptime. Une expertise em redes com desenvolvimento de software.</p>
+    </div>
+
+    <div class="project">
+      <h4>LinkUp Reports — Monitoramento de Preços</h4>
+      <div class="project-meta">
+        <span>🔧 TypeScript + Node.js</span>
+        <span>📦 <a href="https://github.com/akilessimiao/LinkUpReports" target="_blank">GitHub</a></span>
+      </div>
+      <p>Sistema de acompanhamento diário de preços e ocupação para o LinkUp Sistemas, com scraping, análise de dados e geração de relatórios automatizados.</p>
+    </div>
+
+    <div class="project">
+      <h4>PDV Tanque Digital</h4>
+      <div class="project-meta">
+        <span>🔧 PHP/JS + WhatsApp API + NFC-e</span>
+        <span>📦 <a href="https://github.com/akilessimiao/pdv-tanque-digital" target="_blank">GitHub</a></span>
+      </div>
+      <p>Sistema completo de ponto de venda com emissão de cupom via WhatsApp, cadastro de CPF/CNPJ, suporte a NFC-e e PIX. Desenvolvido para o negócio local Surpresinhas da Maria.</p>
+    </div>
+
+    <!-- Formação & Certificações -->
+    <h2>🎓 Formação & Certificações</h2>
+    
+    <h3>Certificações Técnicas</h3>
     <ul>
-        <li><strong>Fullstack:</strong> Python, Django, JavaScript, HTML, CSS, automação</li>
-        <li>Redes FTTH (EPON/GPON), servidores e infraestrutura</li>
-        <li>Automação residencial/industrial e IoT</li>
-        <li>Segurança da informação e gestão de projetos</li>
+      <li><strong>Aprendendo com Python</strong> — Fundamentos e aplicações práticas</li>
+      <li><strong>Introdução à Ciência de Dados</strong> — Modelos de Classificação</li>
+      <li><strong>Análise de Dados em Linguagem R</strong> — Estatística e visualização</li>
+      <li><strong>Noções de Licitação e Contratos Administrativos</strong> — Gestão pública</li>
+      <li><strong>NR-18</strong> — Segurança e Saúde no Trabalho na Construção</li>
     </ul>
 
-    <h2>Experiência Profissional</h2>
-    <p><strong>LDT NET TELECOM</strong> — Natal/RN</p>
-    <p><strong>Desenvolvedor Fullstack & Administrador de TI</strong> | 2020 – Atual</p>
+    <h3>Idiomas</h3>
     <ul>
-        <li>Desenvolvimento de sistemas web completos com Python/Django</li>
-        <li>Gerenciamento integral de redes de fibra óptica FTTH</li>
-        <li>Implementação de automações inteligentes e IoT</li>
-        <li>Otimização de processos e suporte técnico avançado</li>
+      <li><strong>Português:</strong> Nativo</li>
+      <li><strong>Inglês:</strong> Técnico (leitura de documentação)</li>
     </ul>
 
-    <h2>Certificações</h2>
-    <ul>
-        <li><strong>NR-18</strong> – Segurança e Saúde no Trabalho na Indústria da Construção</li>
-        <li>Noções Introdutórias de Licitação e Contratos Administrativos</li>
-        <li>Introdução à Ciência de Dados – Modelos de Classificação</li>
-        <li>Aprendendo com Python</li>
-        <li>Análise de Dados em Linguagem R</li>
-    </ul>
+    <!-- Rodapé -->
+    <div class="footer-note">
+      <span>📄 Gerado em: <span id="data-geracao"></span></span>
+      <span>🔗 <a href="https://akilessimiao.github.io/portifolio/curriculo-imprimir.html" target="_blank">Versão online</a></span>
+      <span>🔄 Atualizado: Março/2026</span>
+    </div>
 
-    <button class="print-btn" onclick="window.print()">🖨️ SALVAR COMO PDF / IMPRIMIR</button>
+  </div>
+
+  <script>
+    // Data de geração automática
+    document.getElementById('data-geracao').textContent = new Date().toLocaleDateString('pt-BR', { 
+      day: '2-digit', month: 'long', year: 'numeric' 
+    });
+    
+    // Efeito de fade-in para elementos
+    document.addEventListener('DOMContentLoaded', function() {
+      const elements = document.querySelectorAll('.fade-in');
+      elements.forEach((el, index) => {
+        el.style.animationDelay = `${index * 0.1}s`;
+      });
+    });
+  </script>
 </body>
 </html>
