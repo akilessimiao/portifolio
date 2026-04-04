@@ -5,15 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currículo | Akiles Simião - Desenvolvedor Fullstack & Infraestrutura</title>
     <meta name="description" content="Currículo profissional de Akiles Simião - Desenvolvedor Fullstack Python/Django, Node.js, Especialista em FTTH e IoT com 6 anos de experiência">
-    <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -32,6 +28,7 @@
             border-radius: 8px;
         }
         
+        /* ===== HEADER ===== */
         .header {
             text-align: center;
             border-bottom: 3px solid #2563eb;
@@ -66,9 +63,7 @@
             font-size: 0.95em;
         }
         
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
+        .contact-info a:hover { text-decoration: underline; }
         
         .btn-whatsapp {
             display: inline-block;
@@ -80,11 +75,7 @@
             font-weight: bold;
             margin-top: 10px;
         }
-        
-        .btn-whatsapp:hover {
-            background: #128C7E;
-            text-decoration: none;
-        }
+        .btn-whatsapp:hover { background: #128C7E; text-decoration: none; }
         
         .action-buttons {
             display: flex;
@@ -101,20 +92,11 @@
             font-size: 0.9em;
             text-decoration: none;
         }
+        .btn-print { background: #2563eb; color: white; }
+        .btn-pdf { background: #dc2626; color: white; }
         
-        .btn-print {
-            background: #2563eb;
-            color: white;
-        }
-        
-        .btn-pdf {
-            background: #dc2626;
-            color: white;
-        }
-        
-        .section {
-            margin-bottom: 30px;
-        }
+        /* ===== SEÇÕES ===== */
+        .section { margin-bottom: 30px; }
         
         .section-title {
             color: #1e40af;
@@ -131,6 +113,7 @@
             border-left: 4px solid #3b82f6;
         }
         
+        /* ===== MÉTRICAS ===== */
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -146,17 +129,10 @@
             text-align: center;
         }
         
-        .metric-number {
-            font-size: 2em;
-            font-weight: bold;
-            display: block;
-        }
+        .metric-number { font-size: 2em; font-weight: bold; display: block; }
+        .metric-label { font-size: 0.85em; opacity: 0.9; }
         
-        .metric-label {
-            font-size: 0.85em;
-            opacity: 0.9;
-        }
-        
+        /* ===== EXPERIÊNCIA ===== */
         .experience-item {
             margin-bottom: 25px;
             padding: 20px;
@@ -172,34 +148,22 @@
             margin-bottom: 10px;
         }
         
-        .company {
-            font-weight: bold;
-            color: #1e40af;
-            font-size: 1.1em;
-        }
+        .company { font-weight: bold; color: #1e40af; font-size: 1.1em; }
+        .period { color: #64748b; font-size: 0.95em; }
         
-        .period {
-            color: #64748b;
-            font-size: 0.95em;
-        }
-        
-        .achievements {
-            list-style: none;
-            margin-top: 10px;
-        }
-        
+        .achievements { list-style: none; margin-top: 10px; }
         .achievements li {
             padding: 5px 0;
             padding-left: 25px;
             position: relative;
         }
-        
         .achievements li:before {
             content: "✅";
             position: absolute;
             left: 0;
         }
         
+        /* ===== SKILLS ===== */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -232,6 +196,7 @@
             font-size: 0.85em;
         }
         
+        /* ===== PROJETOS ===== */
         .project-card {
             background: #f8fafc;
             padding: 20px;
@@ -240,24 +205,11 @@
             border: 1px solid #e2e8f0;
         }
         
-        .project-title {
-            color: #1e40af;
-            font-size: 1.1em;
-            margin-bottom: 5px;
-        }
+        .project-title { color: #1e40af; font-size: 1.1em; margin-bottom: 5px; }
+        .project-tech { color: #64748b; font-size: 0.9em; margin-bottom: 10px; }
+        .project-link { color: #2563eb; text-decoration: none; font-weight: bold; }
         
-        .project-tech {
-            color: #64748b;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-        
-        .project-link {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
+        /* ===== DISC ===== */
         .disc-section {
             background: linear-gradient(135deg, #eff6ff, #dbeafe);
             padding: 20px;
@@ -279,30 +231,118 @@
             text-align: center;
         }
         
-        .disc-value {
-            font-weight: bold;
-            color: #2563eb;
-            display: block;
+        .disc-value { font-weight: bold; color: #2563eb; display: block; }
+        .disc-label { font-size: 0.85em; color: #64748b; }
+        
+        /* ===== CERTIFICAÇÕES ===== */
+        .cert-subtitle {
+            color: #1e40af;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 20px 0 10px 0;
+            border-left: 3px solid #2563eb;
+            padding-left: 10px;
         }
         
-        .disc-label {
-            font-size: 0.85em;
-            color: #64748b;
-        }
-        
-        .certifications-list {
-            list-style: none;
-        }
+        .certifications-list { list-style: none; }
         
         .certifications-list li {
             padding: 8px 0;
             border-bottom: 1px solid #e2e8f0;
         }
         
-        .certifications-list li:before {
-            content: "📜 ";
+        .certifications-list li:before { content: "📜 "; }
+        
+        /* ENAP Certifications - Custom Styles */
+        .enap-certs {
+            list-style: none !important;
+            padding-left: 0;
         }
         
+        .enap-certs li {
+            padding: 12px 0 !important;
+            border-bottom: 1px dashed #e2e8f0;
+            position: relative;
+        }
+        
+        .enap-certs li:before { content: "" !important; }
+        .enap-certs li:last-child { border-bottom: none; }
+        
+        .cert-title { color: #1e40af; font-size: 1em; }
+        .cert-org { font-style: italic; color: #475569; }
+        .cert-details { color: #64748b; display: block; margin-top: 4px; line-height: 1.4; }
+        .cert-code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .cert-validate {
+            color: #2563eb !important;
+            text-decoration: none !important;
+            font-weight: 500;
+        }
+        .cert-validate:hover { text-decoration: underline !important; }
+        
+        /* 📊 GRADE CHART STYLES */
+        .grade-chart {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #2563eb;
+        }
+        
+        .grade-chart-title {
+            font-size: 0.95em;
+            color: #1e40af;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .grade-bar-container {
+            margin-bottom: 12px;
+        }
+        
+        .grade-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85em;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+        
+        .grade-bar-bg {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .grade-bar-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.4s ease;
+        }
+        
+        .grade-excellent { background: linear-gradient(90deg, #22c55e, #16a34a); }
+        .grade-good { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+        .grade-average { background: linear-gradient(90deg, #f59e0b, #d97706); }
+        
+        .grade-legend {
+            display: flex;
+            gap: 15px;
+            font-size: 0.75em;
+            color: #64748b;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item { display: flex; align-items: center; gap: 4px; }
+        .legend-color { width: 12px; height: 12px; border-radius: 3px; }
+        
+        /* ===== BADGE & FOOTER ===== */
         .anniversary-badge {
             background: linear-gradient(135deg, #f59e0b, #fbbf24);
             color: white;
@@ -322,49 +362,24 @@
             font-size: 0.9em;
         }
         
-        .footer a {
-            color: #2563eb;
-            text-decoration: none;
-        }
+        .footer a { color: #2563eb; text-decoration: none; }
         
+        /* ===== PRINT OPTIMIZATIONS ===== */
         @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            
-            .container {
-                box-shadow: none;
-                padding: 20px;
-            }
-            
-            .action-buttons, .btn-whatsapp {
-                display: none;
-            }
-            
-            a {
-                text-decoration: none;
-                color: #333;
-            }
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; padding: 20px; }
+            .action-buttons, .btn-whatsapp { display: none !important; }
+            a { text-decoration: none !important; color: #333 !important; }
+            .cert-validate { color: #1a1a1a !important; }
+            .cert-code { background: #f8fafc !important; border: 1px solid #e2e8f0; }
+            .grade-bar-fill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
         
         @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-            
-            .header h1 {
-                font-size: 1.8em;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .metrics-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .container { padding: 20px; }
+            .header h1 { font-size: 1.8em; }
+            .contact-info { flex-direction: column; align-items: center; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -385,9 +400,7 @@
                 <a href="https://tanquedigital.com.br" target="_blank">🏢 Tanque Digital</a>
             </div>
             
-            <a href="https://wa.me/5584994554714" class="btn-whatsapp" target="_blank">
-                💬 Falar no WhatsApp
-            </a>
+            <a href="https://wa.me/5584994554714" class="btn-whatsapp" target="_blank">💬 Falar no WhatsApp</a>
             
             <div class="action-buttons">
                 <button onclick="window.print()" class="btn btn-print">🖨️ Imprimir</button>
@@ -409,37 +422,18 @@
         <div class="section">
             <h3 class="section-title">📊 Números que Comprovam Resultados</h3>
             <div class="metrics-grid">
-                <div class="metric-card">
-                    <span class="metric-number">60+</span>
-                    <span class="metric-label">Projetos Entregues</span>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-number">6</span>
-                    <span class="metric-label">Anos de Experiência</span>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-number">99.9%</span>
-                    <span class="metric-label">Uptime em Redes FTTH</span>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-number">40%</span>
-                    <span class="metric-label">Redução no Tempo de Atendimento</span>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-number">30%</span>
-                    <span class="metric-label">Redução em Incidentes</span>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-number">&lt; 2h</span>
-                    <span class="metric-label">Tempo Médio de Resposta</span>
-                </div>
+                <div class="metric-card"><span class="metric-number">60+</span><span class="metric-label">Projetos Entregues</span></div>
+                <div class="metric-card"><span class="metric-number">6</span><span class="metric-label">Anos de Experiência</span></div>
+                <div class="metric-card"><span class="metric-number">99.9%</span><span class="metric-label">Uptime em Redes FTTH</span></div>
+                <div class="metric-card"><span class="metric-number">40%</span><span class="metric-label">Redução no Tempo de Atendimento</span></div>
+                <div class="metric-card"><span class="metric-number">30%</span><span class="metric-label">Redução em Incidentes</span></div>
+                <div class="metric-card"><span class="metric-number">&lt; 2h</span><span class="metric-label">Tempo Médio de Resposta</span></div>
             </div>
         </div>
 
         <!-- Marco de 6 Anos -->
         <div class="anniversary-badge">
-            🏆 6 ANOS DE EXCELÊNCIA TÉCNICA - LDT NET TELECOM (2020-2026)
-            <br>
+            🏆 6 ANOS DE EXCELÊNCIA TÉCNICA - LDT NET TELECOM (2020-2026)<br>
             <small>Reconhecimento de longevidade, confiança e entrega de valor contínuo</small>
         </div>
 
@@ -453,7 +447,6 @@
                     <span class="period">Jan 2020 – Presente (6 anos)</span>
                 </div>
                 <p><strong>Desenvolvedor Fullstack & Administrador de TI | Founder</strong></p>
-                
                 <ul class="achievements">
                     <li><strong>Desenvolvimento de Software:</strong> Criação e manutenção de <strong>60+ soluções tecnológicas</strong> para clientes residenciais e empresariais com Python/Django e migração para microsserviços em Node.js/NestJS</li>
                     <li><strong>Arquitetura de Software:</strong> Implementação de arquitetura modular e padrões de projeto, garantindo código limpo, testável e escalável</li>
@@ -465,7 +458,6 @@
                     <li><strong>Gestão de TI:</strong> Otimização de processos com redução de <strong>25% nos custos operacionais</strong></li>
                     <li><strong>Suporte Técnico:</strong> Tempo médio de resposta inferior a <strong>2 horas</strong></li>
                 </ul>
-                
                 <p style="margin-top: 10px;"><strong>Tecnologias:</strong> Python, Django, Node.js, NestJS, TypeScript, JavaScript, MySQL, Docker, Git, Linux, FTTH/EPON, IoT, APIs REST/GraphQL</p>
             </div>
             
@@ -475,14 +467,12 @@
                     <span class="period">Parceiro | 2023 – Presente</span>
                 </div>
                 <p><strong>Desenvolvedor Fullstack | Parceiro</strong></p>
-                
                 <ul class="achievements">
                     <li>Desenvolvimento do <strong>PDV Tanque Digital</strong> com emissão de NFC-e, integração PIX e WhatsApp API</li>
                     <li>Criação de sistemas web personalizados para <strong>15+ clientes</strong> da agência</li>
                     <li>Implementação de soluções de automação de processos e integração de sistemas legados</li>
                     <li>Redução de <strong>50% no tempo de emissão de cupons</strong> através de automação via WhatsApp</li>
                 </ul>
-                
                 <p style="margin-top: 10px;"><strong>Tecnologias:</strong> PHP, JavaScript, MySQL, WhatsApp API, NFC-e, APIs de Pagamento</p>
             </div>
         </div>
@@ -530,26 +520,12 @@
             <div class="disc-section">
                 <p><strong>Tipo: Inspirador</strong> | Extrovertido • Orientado a Pessoas • Aberto a Riscos Calculados</p>
                 <p style="margin-top: 10px;">📊 RecruTest • Realizado em 30/06/2025</p>
-                
                 <div class="disc-grid">
-                    <div class="disc-item">
-                        <span class="disc-value">Alta</span>
-                        <span class="disc-label">Dominância</span>
-                    </div>
-                    <div class="disc-item">
-                        <span class="disc-value">Muito Alta</span>
-                        <span class="disc-label">Influência</span>
-                    </div>
-                    <div class="disc-item">
-                        <span class="disc-value">Média</span>
-                        <span class="disc-label">Estabilidade</span>
-                    </div>
-                    <div class="disc-item">
-                        <span class="disc-value">Média-Alta</span>
-                        <span class="disc-label">Conformidade</span>
-                    </div>
+                    <div class="disc-item"><span class="disc-value">Alta</span><span class="disc-label">Dominância</span></div>
+                    <div class="disc-item"><span class="disc-value">Muito Alta</span><span class="disc-label">Influência</span></div>
+                    <div class="disc-item"><span class="disc-value">Média</span><span class="disc-label">Estabilidade</span></div>
+                    <div class="disc-item"><span class="disc-value">Média-Alta</span><span class="disc-label">Conformidade</span></div>
                 </div>
-                
                 <p style="margin-top: 15px;"><strong>Como este perfil agrega valor:</strong></p>
                 <ul class="achievements">
                     <li><strong>Comunicação Técnica Acessível:</strong> Transformo conceitos complexos de TI em explicações claras</li>
@@ -557,7 +533,6 @@
                     <li><strong>Construção de Confiança:</strong> Estabeleço rapport genuíno desde o primeiro contato</li>
                     <li><strong>Liderança Colaborativa:</strong> Oriento equipes com foco em resultados coletivos</li>
                 </ul>
-                
                 <p style="margin-top: 15px;">
                     <a href="https://recrutest.recrutei.com.br/public/result/eyJpdiI6Im54TDVNK003ZVd2MzExamJteDNOXC93PT0iLCJ2YWx1ZSI6IlF1ZEdiM1dFYTl3Q1czeWdMbXJzK0E9PSIsIm1hYyI6IjZmNWQ4ZTBlODg3NzEzZTU4YjBkZWU3YmRkZGNkY2IxOWMxMDU3MzliOGZmYjgxZDdmNTdhMWU1OWVmNGE5NGIifQ==" class="project-link" target="_blank">🔗 Ver Resultado Completo do Teste →</a>
                 </p>
@@ -571,127 +546,184 @@
                 <div class="skill-category">
                     <h4>🔙 Backend</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Django</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">NestJS</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span><span class="skill-tag">Django</span>
+                        <span class="skill-tag">Node.js</span><span class="skill-tag">NestJS</span>
+                        <span class="skill-tag">TypeScript</span><span class="skill-tag">JavaScript</span>
                     </div>
                 </div>
-                
                 <div class="skill-category">
                     <h4>🎨 Frontend & APIs</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">REST API</span>
-                        <span class="skill-tag">GraphQL</span>
+                        <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">REST API</span><span class="skill-tag">GraphQL</span>
                         <span class="skill-tag">React (básico)</span>
                     </div>
                 </div>
-                
                 <div class="skill-category">
                     <h4>🗄️ Banco de Dados</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">Modelagem Relacional</span>
+                        <span class="skill-tag">MySQL</span><span class="skill-tag">Modelagem Relacional</span>
                         <span class="skill-tag">NoSQL (noções)</span>
                     </div>
                 </div>
-                
                 <div class="skill-category">
                     <h4>☁️ DevOps & Cloud</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">Git/GitHub</span>
-                        <span class="skill-tag">Docker (básico)</span>
-                        <span class="skill-tag">CI/CD (noções)</span>
-                        <span class="skill-tag">AWS/Azure/GCP</span>
+                        <span class="skill-tag">Git/GitHub</span><span class="skill-tag">Docker (básico)</span>
+                        <span class="skill-tag">CI/CD (noções)</span><span class="skill-tag">AWS/Azure/GCP</span>
                         <span class="skill-tag">Linux</span>
                     </div>
                 </div>
-                
                 <div class="skill-category">
                     <h4>🌐 Infraestrutura & IoT</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">FTTH (EPON/GPON)</span>
-                        <span class="skill-tag">Automação Residencial</span>
-                        <span class="skill-tag">IoT & Sensores</span>
-                        <span class="skill-tag">Segurança da Informação</span>
+                        <span class="skill-tag">FTTH (EPON/GPON)</span><span class="skill-tag">Automação Residencial</span>
+                        <span class="skill-tag">IoT & Sensores</span><span class="skill-tag">Segurança da Informação</span>
                     </div>
                 </div>
-                
                 <div class="skill-category">
                     <h4>🤝 Soft Skills</h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">Liderança Técnica</span>
-                        <span class="skill-tag">Comunicação Eficaz</span>
-                        <span class="skill-tag">Resolução de Problemas</span>
-                        <span class="skill-tag">Aprendizado Rápido</span>
+                        <span class="skill-tag">Liderança Técnica</span><span class="skill-tag">Comunicação Eficaz</span>
+                        <span class="skill-tag">Resolução de Problemas</span><span class="skill-tag">Aprendizado Rápido</span>
                         <span class="skill-tag">Trabalho em Equipe</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- FORMAÇÃO & CERTIFICAÇÕES - ATUALIZADO ABR/2026 -->
-<div class="section" id="certificacoes">
-    <h3 class="section-title">🎓 Formação & Certificações</h3>
-    
-    <!-- Certificações ENAP 2026 com validação -->
-    <h4 style="color: #1e40af; margin: 20px 0 10px 0; border-left: 3px solid #2563eb; padding-left: 10px;">
-        🏛️ Certificações ENAP - Escola Virtual.Gov (2026)
-    </h4>
-    <ul class="certifications-list" style="list-style: none; padding-left: 0;">
-        <li style="padding: 12px 0; border-bottom: 1px dashed #e2e8f0;">
-            <strong style="color: #1e40af;">🛡️ Segurança Cibernética: Controles 1 a 6 do CIS Controls</strong><br>
-            <em>ENAP - Escola Nacional de Administração Pública</em> | 25h | Abr/2026 | Nota: 91.25<br>
-            <small style="color: #64748b;">
-                📋 Conteúdo: Inventário de ativos • Proteção de dados • Configuração segura • Gestão de acesso<br>
-                🔐 ID: <code style="background:#f1f5f9; padding:2px 6px; border-radius:3px;">HqRk21608222VnbH</code> • 
-                <a href="https://www.escolavirtual.gov.br/documentos/validacao" target="_blank" style="color:#2563eb; text-decoration:none;">✅ Validar certificado</a>
-            </small>
-        </li>
-        <li style="padding: 12px 0; border-bottom: 1px dashed #e2e8f0;">
-            <strong style="color: #1e40af;">🤖 Inteligência Artificial Generativa</strong><br>
-            <em>ENAP - Escola Nacional de Administração Pública</em> | 2h | Abr/2026 | Nota: 100<br>
-            <small style="color: #64748b;">
-                📋 Conteúdo: IA Generativa • NLP • Text-to-Image • Impacto no mercado de trabalho<br>
-                🔐 ID: <code style="background:#f1f5f9; padding:2px 6px; border-radius:3px;">SkQt21608080J1q7</code> • 
-                <a href="https://www.escolavirtual.gov.br/documentos/validacao" target="_blank" style="color:#2563eb; text-decoration:none;">✅ Validar certificado</a>
-            </small>
-        </li>
-        <li style="padding: 12px 0; border-bottom: 1px dashed #e2e8f0;">
-            <strong style="color: #1e40af;">⚖️ Monitoração Eletrônica de Pessoas no Brasil</strong><br>
-            <em>ENAP - Escola Nacional de Administração Pública</em> | 40h | Abr/2026 | Nota: 86<br>
-            <small style="color: #64748b;">
-                📋 Conteúdo: Aspectos técnicos • Marcos legais • Metodologia de acompanhamento • LGPD<br>
-                🔐 ID: <code style="background:#f1f5f9; padding:2px 6px; border-radius:3px;">uD1S21608338Bbvh</code> • 
-                <a href="https://www.escolavirtual.gov.br/documentos/validacao" target="_blank" style="color:#2563eb; text-decoration:none;">✅ Validar certificado</a>
-            </small>
-        </li>
-    </ul>
-    
-    <!-- Outras certificações -->
-    <h4 style="color: #1e40af; margin: 25px 0 10px 0; border-left: 3px solid #2563eb; padding-left: 10px;">
-        📚 Outras Certificações Técnicas
-    </h4>
-    <ul class="certifications-list" style="list-style: none; padding-left: 0;">
-        <li style="padding: 8px 0;">🐍 <strong>Aprendendo com Python</strong> — Fundamentos e aplicações práticas</li>
-        <li style="padding: 8px 0;">📊 <strong>Introdução à Ciência de Dados</strong> — Modelos de Classificação</li>
-        <li style="padding: 8px 0;">📈 <strong>Análise de Dados em Linguagem R</strong> — Estatística e visualização</li>
-        <li style="padding: 8px 0;">🏛️ <strong>Noções de Licitação e Contratos Administrativos</strong> — Gestão pública</li>
-        <li style="padding: 8px 0;">⚠️ <strong>NR-18</strong> — Segurança e Saúde no Trabalho na Construção</li>
-        <li style="padding: 8px 0;">📡 <strong>Certificações ANATEL</strong> — Telecomunicações e Infraestrutura de Redes</li>
-        <li style="padding: 8px 0;">🔐 <strong>CyberSegurança</strong> — Proteção de Dados e Segurança da Informação</li>
-    </ul>
-    
-    <!-- Idiomas -->
-    <h4 style="color: #1e40af; margin: 25px 0 10px 0; border-left: 3px solid #2563eb; padding-left: 10px;">
-        🌐 Idiomas
-    </h4>
-    <ul class="certifications-list" style="list-style: none; padding-left: 0;">
-        <li style="padding: 8px 0;"><strong>Português:</strong> Nativo</li>
-        <li style="padding: 8px 0;"><strong>Inglês:</strong> Técnico (leitura de documentação técnica)</li>
-    </ul>
-</div>
+        <!-- ✅ FORMAÇÃO & CERTIFICAÇÕES - COMPLETO E CORRIGIDO -->
+        <div class="section" id="certificacoes">
+            <h3 class="section-title">🎓 Formação & Certificações</h3>
+            
+            <!-- Certificações ENAP 2026 com gráfico de notas -->
+            <h4 class="cert-subtitle">🏛️ Certificações ENAP - Escola Virtual.Gov (2026)</h4>
+            
+            <!-- 📊 Gráfico de Notas -->
+            <div class="grade-chart">
+                <div class="grade-chart-title">📈 Desempenho nas Certificações ENAP</div>
+                
+                <div class="grade-bar-container">
+                    <div class="grade-label">
+                        <span>🤖 IA Generativa</span>
+                        <strong>100</strong>
+                    </div>
+                    <div class="grade-bar-bg">
+                        <div class="grade-bar-fill grade-excellent" style="width: 100%"></div>
+                    </div>
+                </div>
+                
+                <div class="grade-bar-container">
+                    <div class="grade-label">
+                        <span>🛡️ CIS Controls (Cybersecurity)</span>
+                        <strong>91.25</strong>
+                    </div>
+                    <div class="grade-bar-bg">
+                        <div class="grade-bar-fill grade-good" style="width: 91.25%"></div>
+                    </div>
+                </div>
+                
+                <div class="grade-bar-container">
+                    <div class="grade-label">
+                        <span>⚖️ Monitoração Eletrônica + LGPD</span>
+                        <strong>86</strong>
+                    </div>
+                    <div class="grade-bar-bg">
+                        <div class="grade-bar-fill grade-average" style="width: 86%"></div>
+                    </div>
+                </div>
+                
+                <div class="grade-legend">
+                    <div class="legend-item"><div class="legend-color grade-excellent"></div> Excelente (95-100)</div>
+                    <div class="legend-item"><div class="legend-color grade-good"></div> Muito Bom (85-94)</div>
+                    <div class="legend-item"><div class="legend-color grade-average"></div> Bom (70-84)</div>
+                </div>
+            </div>
+            
+            <!-- Lista de Certificações -->
+            <ul class="certifications-list enap-certs">
+                <li class="cert-item">
+                    <strong class="cert-title">🛡️ Segurança Cibernética: Controles 1 a 6 do CIS Controls</strong><br>
+                    <em class="cert-org">ENAP - Escola Nacional de Administração Pública</em> | 25h | Abr/2026 | Nota: 91.25<br>
+                    <small class="cert-details">
+                        📋 Conteúdo: Inventário de ativos • Proteção de dados • Configuração segura • Gestão de acesso<br>
+                        🔐 ID: <code class="cert-code">HqRk21608222VnbH</code> • 
+                        <a href="https://www.escolavirtual.gov.br/documentos/validacao" target="_blank" class="cert-validate">✅ Validar certificado</a>
+                    </small>
+                </li>
+                <li class="cert-item">
+                    <strong class="cert-title">🤖 Inteligência Artificial Generativa</strong><br>
+                    <em class="cert-org">ENAP - Escola Nacional de Administração Pública</em> | 2h | Abr/2026 | Nota: 100<br>
+                    <small class="cert-details">
+                        📋 Conteúdo: IA Generativa • NLP • Text-to-Image • Impacto no mercado de trabalho<br>
+                        🔐 ID: <code class="cert-code">SkQt21608080J1q7</code> • 
+                        <a href="https://www.escolavirtual.gov.br/documentos/validacao" target="_blank" class="cert-validate">✅ Validar certificado</a>
+                    </small>
+                </li>
+                <li class="cert-item">
+                    <strong class="cert-title">⚖️ Monitoração Eletrônica de Pessoas no Brasil</strong><br>
+                    <em class="cert-org">ENAP - Escola Nacional de Administração Pública</em> | 40h | Abr/2026 | Nota: 86<br>
+                    <small class="cert-details">
+                        📋 Conteúdo: Aspectos técnicos • Marcos legais • Metodologia de acompanhamento • LGPD<br>
+                        🔐 ID: <code class="cert-code">uD1S21608338Bbvh</code> • 
+                        <a href="https://www.escolavirtual.gov.br/documentos/validacao" target="_blank" class="cert-validate">✅ Validar certificado</a>
+                    </small>
+                </li>
+            </ul>
+            
+            <!-- Outras certificações -->
+            <h4 class="cert-subtitle">📚 Outras Certificações Técnicas</h4>
+            <ul class="certifications-list">
+                <li>🐍 <strong>Aprendendo com Python</strong> — Fundamentos e aplicações práticas</li>
+                <li>📊 <strong>Introdução à Ciência de Dados</strong> — Modelos de Classificação</li>
+                <li>📈 <strong>Análise de Dados em Linguagem R</strong> — Estatística e visualização</li>
+                <li>🏛️ <strong>Noções de Licitação e Contratos Administrativos</strong> — Gestão pública</li>
+                <li>⚠️ <strong>NR-18</strong> — Segurança e Saúde no Trabalho na Construção</li>
+                <li>📡 <strong>Certificações ANATEL</strong> — Telecomunicações e Infraestrutura de Redes</li>
+                <li>🔐 <strong>CyberSegurança</strong> — Proteção de Dados e Segurança da Informação</li>
+            </ul>
+            
+            <!-- Idiomas -->
+            <h4 class="cert-subtitle">🌐 Idiomas</h4>
+            <ul class="certifications-list">
+                <li><strong>Português:</strong> Nativo</li>
+                <li><strong>Inglês:</strong> Técnico (leitura de documentação técnica)</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>📄 Gerado em: <strong>Abril/2026</strong> | 🔄 Última atualização: Abril/2026</p>
+            <p>🔗 <a href="https://akilessimiao.github.io/portifolio/curriculo-imprimir.html" target="_blank">Versão online</a></p>
+            <p style="margin-top: 15px;">
+                © 2020-2026 <strong>LDT NET TELECOM</strong> & 
+                <a href="https://tanquedigital.com.br" target="_blank">Tanque Digital</a> 
+                • Akiles Simião
+            </p>
+            <p>📍 Natal/RN • 📱 (84) 99455-4714 • ✉️ ldtnettelecom@gmail.com</p>
+        </div>
+    </div>
+
+    <script>
+        // Auto-hide action buttons after 3 seconds on mobile
+        setTimeout(() => {
+            const buttons = document.querySelector('.action-buttons');
+            if (window.innerWidth < 600 && buttons) {
+                buttons.style.opacity = '0.5';
+            }
+        }, 3000);
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
