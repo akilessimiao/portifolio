@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title x-data="{ t: { pt: 'LDT NET TELECOM - Soluções em TI & Automação | Akiles Simião', en: 'LDT NET TELECOM - IT Solutions & Automation | Akiles Simião' } }" x-text="$data.lang === 'pt' ? t.pt : t.en">LDT NET TELECOM - Soluções em TI & Automação | Akiles Simião</title>
+    <meta name="description" content="Infraestrutura de rede, automação residencial e desenvolvimento fullstack em Natal/RN. Soluções modernas e confiáveis.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto+Mono:wght@300;400;500;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"/>
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        :root {
+            /* Cores Cyberpunk */
+            --cyan: #00ffff; --orange: #ff6600; --purple: #7c3aed; --blue: #2563eb;
+            /* Cores do FormStyle */
+            --color-background: rgba(20, 20, 60, 0.45); --color-background-alt: rgba(124, 58, 237, 0.2);
+            --color-border-active: var(--cyan); --color-border-default: rgba(148, 163, 184, 0.4);
+            --color-highlight: rgba(0, 255, 255, 0.3); --color-primary: linear-gradient(135deg, #0891b2, #ea580c);
+            --color-primary-active: linear-gradient(135deg, #0e7490, #c2410c);
+            --color-text-default: #e0f7ff; --color-text-muted: rgba(224, 247, 255, 0.7);
+            /* Fonts */
+            --font-family-body: 'Roboto Mono', monospace; --font-family-display: 'Orbitron', sans-serif;
+            --font-family-input: 'Open Sans', sans-serif;
+        }
+        * { scroll-behavior: smooth; box-sizing: border-box; }
+        body {
+            -webkit-font-smoothing: antialiased; font-family: var(--font-family-body);
+            background: linear-gradient(135deg, #0a001f 0%, #1a0033 30%, #000814 70%, #0a001f 100%);
+            color: var(--color-text-default); overflow-x: hidden; line-height: 1.7; margin: 0;
+        }
+        h1, h2, h3, h4, legend { font-family: var(--font-family-display); letter-spacing: 0.5px; }
+        
+        /* Glassmorphism */
+        .glass { background: rgba(20, 20, 60, 0.45); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(0, 255, 255, 0.2); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
+        .glass-strong { background: rgba(15, 15, 45, 0.65); backdrop-filter: blur(20px); border: 1px solid rgba(124, 58, 237, 0.3); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); }
+        
+        /* Efeitos Neon */
+        .neon-text { text-shadow: 0 0 5px var(--cyan), 0 0 15px var(--cyan), 0 0 30px var(--orange); animation: neonPulse 3s ease-in-out infinite alternate; }
+        .neon-text-orange { text-shadow: 0 0 5px var(--orange), 0 0 15px var(--orange), 0 0 25px var(--orange); }
+        @keyframes neonPulse { from { text-shadow: 0 0 5px var(--cyan), 0 0 15px var(--cyan), 0 0 30px var(--orange); } to { text-shadow: 0 0 10px var(--cyan), 0 0 25px var(--cyan), 0 0 50px var(--orange), 0 0 70px var(--purple); } }
+        
+        /* Animações */
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .floating { animation: float 7s ease-in-out infinite; }
+        @keyframes pulse-slow { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.1); } }
+        .animate-pulse-slow { animation: pulse-slow 4s infinite ease-in-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; } .delay-200 { animation-delay: 0.2s; } .delay-300 { animation-delay: 0.3s; }
+        
+        /* ✨ BOTÕES NEON */
+        @keyframes pulse-neon { 0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.3), 0 0 40px rgba(0,255,255,0.2); transform: scale(1); } 50% { box-shadow: 0 0 35px rgba(255,255,255,0.6), 0 0 70px rgba(0,255,255,0.4), 0 0 100px rgba(255,102,0,0.2); transform: scale(1.02); } }
+        @keyframes pulse-gradient { 0%, 100% { box-shadow: 0 0 20px rgba(8,145,178,0.4), 0 0 40px rgba(234,88,12,0.3); transform: scale(1); } 50% { box-shadow: 0 0 35px rgba(8,145,178,0.7), 0 0 70px rgba(234,88,12,0.6); transform: scale(1.02); } }
+        .btn-neon { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 36px; font-size: 16px; font-weight: 600; border-radius: 50px; text-decoration: none; transition: all 0.3s ease; position: relative; overflow: hidden; border: 2px solid transparent; cursor: pointer; background: linear-gradient(90deg, var(--blue), var(--purple)) border-box; -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; color: #ffffff !important; text-shadow: 0 2px 4px rgba(0,0,0,0.4); animation: pulse-neon 3s ease-in-out infinite; font-family: var(--font-family-display); }
+        .btn-neon::before { content: ''; position: absolute; inset: -2px; background: linear-gradient(90deg, var(--cyan), var(--orange), var(--purple), var(--cyan)); border-radius: 52px; z-index: -1; animation: gradientRotate 3s linear infinite; opacity: 0.8; }
+        @keyframes gradientRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .btn-neon:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 10px 40px rgba(0,255,255,0.4); animation-duration: 1.5s; }
+        .btn-neon:active { transform: translateY(-1px) scale(0.99); animation-play-state: paused; }
+        .btn-neon.btn-gradient { background: linear-gradient(135deg, #0891b2, #ea580c) !important; animation-name: pulse-gradient !important; }
+        .btn-neon.btn-gradient:hover { animation-duration: 1.2s; filter: brightness(1.1); }
+
+        /* 🎨 FS-FORM ESTILIZADO */
+        .fs-form { display: grid; row-gap: 1.25rem; }
+        .fs-form:where(.fs-layout__2-column) { column-gap: 1.25rem; grid-template-columns: 1fr 1fr; }
+        fieldset { display: grid; margin: 1rem 0; row-gap: 1.25rem; padding: 1.5rem; border-radius: 1rem; background: rgba(15, 15, 45, 0.3); border: 1px solid rgba(0, 255, 255, 0.15); }
+        .fs-form:where(.fs-layout__2-column) fieldset { column-gap: 1.25rem; grid-template-columns: 1fr 1fr; grid-column: 1 / -1; }
+        .fs-fieldset-title { color: var(--cyan); font-family: var(--font-family-display); font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; grid-column: 1 / -1; text-shadow: 0 0 10px rgba(0,255,255,0.3); border-bottom: 1px solid rgba(0,255,255,0.2); padding-bottom: 0.5rem; }
+        .fs-field { display: flex; flex-direction: column; row-gap: 0.375rem; }
+        .fs-label { color: var(--color-text-default); display: block; font-family: var(--font-family-display); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.3px; }
+        .fs-description { color: var(--color-text-muted); display: block; font-size: 0.8rem; line-height: 1.3; }
+        .fs-button-group { display: flex; flex-direction: row-reverse; column-gap: 1rem; margin-top: 0.5rem; }
+        .fs-form:where(.fs-layout__2-column) .fs-button-group { grid-column: 1 / -1; }
+        .fs-input, .fs-select, .fs-textarea { appearance: none; border-radius: 0.5rem; background: rgba(15, 15, 45, 0.5); border: 1px solid rgba(0, 255, 255, 0.3); box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.2); color: var(--color-text-default); font-family: var(--font-family-input); font-size: 0.95rem; line-height: 1.5; padding: 0.75rem 1rem; transition: all 0.25s ease; width: 100%; }
+        .fs-input::placeholder, .fs-textarea::placeholder { color: rgba(0, 255, 255, 0.4); }
+        .fs-input:focus-visible, .fs-select:focus-visible, .fs-textarea:focus-visible { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.15), 0 0 20px rgba(0, 255, 255, 0.1); background: rgba(15, 15, 45, 0.7); }
+        .fs-select { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2300ffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e"); background-position: right 0.75rem center; background-repeat: no-repeat; background-size: 1.25em 1.25em; padding-right: 2.25rem; }
+        .fs-textarea { min-height: 100px; resize: vertical; }
+        .fs-checkbox-group, .fs-radio-group { display: flex; flex-direction: column; row-gap: 0.5rem; }
+        .fs-checkbox-field, .fs-radio-field { column-gap: 0.5rem; display: flex; align-items: flex-start; }
+        .fs-checkbox-wrapper, .fs-radio-wrapper { align-items: center; display: flex; height: 1.25rem; }
+        .fs-checkbox, .fs-radio { appearance: none; background: rgba(15, 15, 45, 0.6); border: 1px solid rgba(0, 255, 255, 0.4); border-radius: 0.25rem; height: 1.1rem; width: 1.1rem; cursor: pointer; transition: all 0.2s ease; display: grid; place-items: center; flex-shrink: 0; }
+        .fs-radio { border-radius: 50%; }
+        .fs-checkbox:checked, .fs-radio:checked { background: linear-gradient(135deg, var(--cyan), var(--blue)); border-color: var(--cyan); box-shadow: 0 0 10px rgba(0,255,255,0.4); }
+        .fs-checkbox:checked::after { content: ''; width: 0.5rem; height: 0.5rem; border: 2px solid #0a001f; border-top: none; border-left: none; transform: rotate(45deg); }
+        .fs-radio:checked::after { content: ''; width: 0.5rem; height: 0.5rem; background: #0a001f; border-radius: 50%; }
+        .fs-checkbox:focus-visible, .fs-radio:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+        .fs-slider { appearance: none; background: transparent; cursor: pointer; width: 100%; height: 1.5rem; }
+        .fs-slider::-webkit-slider-runnable-track { background: rgba(0, 255, 255, 0.15); border-radius: 0.5rem; height: 0.4rem; }
+        .fs-slider::-webkit-slider-thumb { appearance: none; background: linear-gradient(135deg, var(--cyan), var(--purple)); border-radius: 50%; height: 1.2rem; width: 1.2rem; margin-top: -0.4rem; border: 2px solid #0a001f; box-shadow: 0 0 10px rgba(0,255,255,0.5); transition: transform 0.2s ease; }
+        .fs-slider::-webkit-slider-thumb:hover { transform: scale(1.1); }
+        .fs-switch { appearance: none; background: rgba(124, 58, 237, 0.3); border-radius: 1.5rem; cursor: pointer; height: 1.6rem; width: 3rem; position: relative; transition: background 0.25s ease; border: 1px solid rgba(124,58,237,0.4); }
+        .fs-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 1.2rem; height: 1.2rem; background: #fff; border-radius: 50%; transition: transform 0.25s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .fs-switch:checked { background: linear-gradient(135deg, var(--cyan), var(--blue)); border-color: var(--cyan); }
+        .fs-switch:checked::after { transform: translateX(1.4rem); }
+        .fs-switch:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+        .col-span-full { grid-column: 1 / -1; }
+        
+        /* Badges */
+        .badge-neon { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; font-family: var(--font-family-input); background: rgba(0, 255, 255, 0.15); border: 1px solid var(--cyan); color: var(--cyan); }
+        .badge-purple { background: rgba(124, 58, 237, 0.2); border-color: var(--purple); color: #c4b5fd; }
+        
+        /* Cards */
+        .service-card, .portal-card { transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .service-card::before, .portal-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cyan), var(--orange), var(--purple)); opacity: 0; transition: opacity 0.3s ease; }
+        .service-card:hover, .portal-card:hover { transform: translateY(-8px); border-color: var(--cyan); box-shadow: 0 20px 50px rgba(0, 255, 255, 0.2); }
+        .service-card:hover::before, .portal-card:hover::before { opacity: 1; }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a001f; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(var(--cyan), var(--purple)); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+        
+        /* Timeline */
+        .timeline { position: relative; padding-left: 28px; margin: 1rem 0; }
+        .timeline::before { content: ''; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--cyan), var(--purple)); border-radius: 2px; }
+        .timeline-item { position: relative; padding-bottom: 1rem; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before { content: ''; position: absolute; left: -22px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--cyan); border: 2px solid #0a001f; box-shadow: 0 0 8px rgba(0,255,255,0.5); z-index: 1; }
+
+        /* Modal Animation */
+        @keyframes modalEnter { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .animate-enter { animation: modalEnter 0.3s ease-out forwards; }
+
+        /* Grade Chart Animation */
+        @keyframes fillBar { from { width: 0; } to { width: var(--target-width); } }
+        .grade-bar-fill { animation: fillBar 1.2s ease-out forwards; }
+        
+        /* Acessibilidade */
+        @media (prefers-reduced-motion: reduce) {
+            .btn-neon, .portal-card, .service-card { animation: none !important; transition: none !important; }
+            .btn-neon:hover, .portal-card:hover, .service-card:hover { transform: none !important; }
+            .grade-bar-fill { animation: none !important; }
+            * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem !important; }
+            .hero p { font-size: 0.95rem !important; }
+            .btn-neon { padding: 14px 28px; font-size: 14px; }
+            .fs-form:where(.fs-layout__2-column), .fs-form:where(.fs-layout__2-column) fieldset { grid-template-columns: 1fr; }
+            fieldset { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body x-data="{ lang: 'pt', open: false, langMenu: false }" class="relative min-h-screen">
+
+    <!-- Partículas de fundo -->
+    <div id="particles-js" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Navbar Glass -->
+    <nav class="fixed top-0 w-full glass z-50 backdrop-blur-xl border-b border-cyan-500/20">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl md:text-2xl font-bold neon-text tracking-tight">LDT NET <span class="text-orange-400">TELECOM</span></a>
+            
+            <div class="hidden md:flex items-center gap-1 md:gap-2">
+                <a href="#sobre" class="px-4 py-2 rounded-lg hover:bg-cyan-500/10 transition text-sm font-medium" x-text="lang === 'pt' ? 'Sobre' : 'About'">Sobre</a>
+                <a href="#portal" class="px-4 py-2 rounded-lg hover:bg-cyan-500/10 transition text-sm font-medium" x-text="lang === 'pt' ? 'Portal' : 'Portal'">Portal</a>
+                <a href="#servicos" class="px-4 py-2 rounded-lg hover:bg-cyan-500/10 transition text-sm font-medium" x-text="lang === 'pt' ? 'Serviços' : 'Services'">Serviços</a>
+                <a href="#certificacoes" class="px-4 py-2 rounded-lg hover:bg-cyan-500/10 transition text-sm font-medium">🎓 Certificações</a>
+                <a href="https://akilessimiao.github.io/portifolio/curriculo-imprimir.html" target="_blank" class="px-4 py-2 rounded-lg hover:bg-cyan-500/10 transition text-sm font-medium flex items-center gap-1">📄 <span x-text="lang === 'pt' ? 'Currículo' : 'Resume'">Currículo</span></a>
+                <a href="perfil-comportamental.html" class="px-4 py-2 rounded-lg hover:bg-cyan-500/10 transition text-sm font-medium flex items-center gap-1">🧭 <span x-text="lang === 'pt' ? 'Perfil' : 'Profile'">Perfil</span></a>
+                <a href="https://tanquedigital.com.br" target="_blank" class="px-4 py-2 rounded-lg hover:bg-cyan-500/10 transition text-sm font-medium flex items-center gap-1">🏢 Tanque Digital</a>
+                
+                <div class="relative ml-2 mr-1" @click.away="langMenu = false">
+                    <button @click="langMenu = !langMenu" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 hover:border-cyan-400 hover:bg-cyan-500/20 transition text-sm font-medium">
+                        <span x-show="lang === 'pt'">🇧🇷 <span class="hidden lg:inline">PT</span></span>
+                        <span x-show="lang === 'en'">🇺🇸 <span class="hidden lg:inline">EN</span></span>
+                        <svg class="w-4 h-4 transition-transform" :class="langMenu ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="langMenu" x-transition.opacity class="absolute right-0 mt-2 w-32 glass rounded-xl py-1 border border-cyan-500/30 shadow-xl z-50">
+                        <button @click="lang = 'pt'; langMenu = false" class="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-cyan-500/20 transition text-left">🇧🇷 Português</button>
+                        <button @click="lang = 'en'; langMenu = false" class="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-cyan-500/20 transition text-left">🇺🇸 English</button>
+                    </div>
+                </div>
+
+                <a href="https://github.com/akilessimiao" target="_blank" class="px-3 py-2 rounded-lg hover:bg-cyan-500/10 transition neon-icon" title="GitHub">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+                </a>
+                <a href="https://linkedin.com/in/akilessimiao" target="_blank" class="px-3 py-2 rounded-lg hover:bg-cyan-500/10 transition neon-icon" title="LinkedIn">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+            </div>
+            
+            <button @click="open = !open" class="md:hidden text-cyan-400 hover:text-orange-400 transition p-2">
+                <svg x-show="!open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg x-show="open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="open" @click.away="open = false" x-transition.opacity class="fixed inset-0 z-40 bg-black/85 backdrop-blur-md flex items-center justify-center md:hidden">
+            <div class="glass-strong rounded-3xl p-8 max-w-sm w-full mx-6 text-center space-y-2 relative">
+                <button @click="open = false" class="absolute top-4 right-4 text-cyan-300 hover:text-orange-400 text-3xl transition">×</button>
+                <h2 class="text-3xl font-bold neon-text mb-6 mt-4" x-text="lang === 'pt' ? 'Menu' : 'Menu'">Menu</h2>
+                
+                <div class="flex justify-center gap-4 mb-4 border-b border-cyan-500/20 pb-4">
+                    <button @click="lang = 'pt'; open = false" class="flex items-center gap-2 px-4 py-2 rounded-xl glass transition text-sm font-medium border" :class="lang === 'pt' ? 'border-cyan-400 bg-cyan-500/20' : 'border-transparent'">🇧🇷 PT</button>
+                    <button @click="lang = 'en'; open = false" class="flex items-center gap-2 px-4 py-2 rounded-xl glass transition text-sm font-medium border" :class="lang === 'en' ? 'border-cyan-400 bg-cyan-500/20' : 'border-transparent'">🇺🇸 EN</button>
+                </div>
+
+                <a href="#sobre" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20" x-text="lang === 'pt' ? 'Sobre' : 'About'">Sobre</a>
+                <a href="#portal" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20">Portal</a>
+                <a href="#servicos" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20" x-text="lang === 'pt' ? 'Serviços' : 'Services'">Serviços</a>
+                <a href="#certificacoes" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20">🎓 Certificações</a>
+                <a href="https://akilessimiao.github.io/portifolio/curriculo-imprimir.html" target="_blank" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20">📄 <span x-text="lang === 'pt' ? 'Currículo' : 'Resume'">Currículo</span></a>
+                <a href="perfil-comportamental.html" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20">🧭 <span x-text="lang === 'pt' ? 'Perfil' : 'Profile'">Perfil</span></a>
+                <a href="https://tanquedigital.com.br" target="_blank" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20">🏢 Tanque Digital</a>
+                
+                <div class="flex justify-center gap-6 pt-6">
+                    <a href="https://github.com/akilessimiao" target="_blank" class="text-cyan-400 hover:text-orange-400 transition">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/akilessimiao" target="_blank" class="text-cyan-400 hover:text-orange-400 transition">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero min-h-screen flex items-center justify-center px-4 pt-24 pb-12 relative overflow-hidden">
+        <div class="text-center max-w-5xl relative z-10 animate-fade-in-up">
+            <div class="inline-block mb-6 px-5 py-2 rounded-full glass border border-cyan-500/30">
+                <span class="text-cyan-300 text-sm font-medium" x-text="lang === 'pt' ? '🚀 Soluções em TI & Automação Inteligente' : '🚀 Smart IT & Automation Solutions'">🚀 Soluções em TI & Automação Inteligente</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold neon-text mb-6 tracking-tight leading-tight">
+                <template x-if="lang === 'pt'">
+                    <span>Infraestrutura Avançada<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-orange-400">+ Desenvolvimento Fullstack</span></span>
+                </template>
+                <template x-if="lang === 'en'">
+                    <span>Advanced Infrastructure<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-orange-400">+ Fullstack Development</span></span>
+                </template>
+            </h1>
+            <p class="text-lg md:text-xl text-cyan-100/90 mb-10 max-w-3xl mx-auto leading-relaxed">
+                <template x-if="lang === 'pt'">Diagnóstico preciso, configuração profissional e suporte próximo em <strong class="text-orange-400">Natal/RN</strong>. Do cabo de rede ao código, entrego soluções completas que funcionam.</template>
+                <template x-if="lang === 'en'">Precise diagnostics, professional setup and close support in <strong class="text-orange-400">Natal/RN</strong>. From network cables to code, I deliver complete solutions that work.</template>
+            </p>
+            <div class="flex flex-wrap justify-center gap-3 mt-12">
+                <span class="badge-neon">Python/Django</span><span class="badge-neon">Node.js/NestJS</span>
+                <span class="badge-neon badge-purple">FTTH/EPON</span><span class="badge-neon">IoT & Automação</span>
+                <span class="badge-neon badge-purple">APIs REST/GraphQL</span>
+            </div>
+        </div>
+        <div class="absolute top-1/4 left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-10 w-40 h-40 bg-orange-500/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: -2s;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+    </section>
+
+    <!-- ✨ NOVO: Portal Section (Fusão do Script 2) -->
+    <section id="portal" class="py-20 px-4 bg-black/20">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 animate-fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold neon-text mb-3" x-text="lang === 'pt' ? '🚪 Portal de Recursos' : '🚪 Resources Portal'">🚪 Portal de Recursos</h2>
+                <p class="text-lg text-cyan-200/90" x-text="lang === 'pt' ? 'Acesso rápido à documentação e materiais profissionais' : 'Quick access to documentation and professional materials'">Acesso rápido à documentação e materiais profissionais</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card: Arquitetura -->
+                <a :href="lang === 'pt' ? 'arquitetura.html' : 'arquitetura-en.html'" class="portal-card glass p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300 border border-cyan-500/20">
+                    <div>
+                        <div class="text-orange-500 text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">⚙️</div>
+                        <h3 class="text-xl font-bold text-cyan-300 mb-2" x-text="lang === 'pt' ? 'Arquitetura do Sistema' : 'System Architecture'">Arquitetura do Sistema</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4" x-text="lang === 'pt' ? 'Visão completa da infraestrutura de backend, APIs e microsserviços integrados.' : 'Complete technical overview of core backend, APIs, and microservices architecture.'">Visão completa da infraestrutura de backend, APIs e microsserviços integrados.</p>
+                    </div>
+                    <span class="text-sm font-bold text-orange-400 group-hover:translate-x-2 transition-transform duration-300" x-text="lang === 'pt' ? 'Explorar Estrutura →' : 'Explore Structure →'">Explorar Estrutura →</span>
+                </a>
+
+                <!-- Card: Currículo -->
+                <a :href="lang === 'pt' ? 'curriculo-imprimir.html' : 'curriculo-imprimir-en.html'" class="portal-card glass p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300 border border-cyan-500/20">
+                    <div>
+                        <div class="text-orange-500 text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">📄</div>
+                        <h3 class="text-xl font-bold text-cyan-300 mb-2" x-text="lang === 'pt' ? 'Currículo Profissional' : 'Professional Resume'">Currículo Profissional</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4" x-text="lang === 'pt' ? 'Histórico de carreira, competências técnicas e experiências em desenvolvimento.' : 'Career summary, core technical skills, and software engineering experience.'">Histórico de carreira, competências técnicas e experiências em desenvolvimento.</p>
+                    </div>
+                    <span class="text-sm font-bold text-orange-400 group-hover:translate-x-2 transition-transform duration-300" x-text="lang === 'pt' ? 'Visualizar e Imprimir →' : 'View and Print →'">Visualizar e Imprimir →</span>
+                </a>
+
+                <!-- Card: Manual -->
+                <a :href="lang === 'pt' ? 'manual.html' : 'manual-en.html'" class="portal-card glass p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300 border border-cyan-500/20">
+                    <div>
+                        <div class="text-orange-500 text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">📚</div>
+                        <h3 class="text-xl font-bold text-cyan-300 mb-2" x-text="lang === 'pt' ? 'Manual do Sistema' : 'System Manual'">Manual do Sistema</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4" x-text="lang === 'pt' ? 'Guias de instalação, comandos técnicos e documentação completa.' : 'Installation guides, terminal commands, and developer documentation.'">Guias de instalação, comandos técnicos e documentação completa.</p>
+                    </div>
+                    <span class="text-sm font-bold text-orange-400 group-hover:translate-x-2 transition-transform duration-300" x-text="lang === 'pt' ? 'Ler Documentação →' : 'Read Documentation →'">Ler Documentação →</span>
+                </a>
+
+                <!-- Card: Perfil -->
+                <a :href="lang === 'pt' ? 'perfil-comportamental.html' : 'perfil-comportamental-en.html'" class="portal-card glass p-6 rounded-2xl flex flex-col justify-between group transition-all duration-300 border border-cyan-500/20">
+                    <div>
+                        <div class="text-orange-500 text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">🎯</div>
+                        <h3 class="text-xl font-bold text-cyan-300 mb-2" x-text="lang === 'pt' ? 'Perfil Comportamental' : 'Behavioral Profile'">Perfil Comportamental</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4" x-text="lang === 'pt' ? 'Análise comportamental, cultura de trabalho e dinâmica de liderança.' : 'Dynamic behavioral analysis, core work values, and leadership traits.'">Análise comportamental, cultura de trabalho e dinâmica de liderança.</p>
+                    </div>
+                    <span class="text-sm font-bold text-orange-400 group-hover:translate-x-2 transition-transform duration-300" x-text="lang === 'pt' ? 'Aceder ao Perfil →' : 'Access Profile →'">Aceder ao Perfil →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section id="sobre" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="glass-strong rounded-3xl p-8 md:p-12 lg:p-16">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6 animate-fade-in-up">
+                        <h2 class="text-3xl md:text-4xl font-bold neon-text" x-text="lang === 'pt' ? 'Quem sou eu?' : 'Who am I?'">Quem sou eu?</h2>
+                        <p class="text-lg text-cyan-100/90 leading-relaxed">
+                            <template x-if="lang === 'pt'">Atuo em <strong class="text-orange-400">Natal/RN</strong> com foco em soluções reais, rápidas e confiáveis. Minha trajetória une <strong>infraestrutura de redes FTTH</strong>, <strong>automação inteligente</strong> e <strong>desenvolvimento de software fullstack</strong>.</template>
+                            <template x-if="lang === 'en'">I work in <strong class="text-orange-400">Natal/RN</strong> focused on real, fast and reliable solutions. My journey combines <strong>FTTH network infrastructure</strong>, <strong>smart automation</strong> and <strong>fullstack software development</strong>.</template>
+                        </p>
+                        <p class="text-lg text-cyan-100/90 leading-relaxed">
+                            <template x-if="lang === 'pt'">Como fundador da <strong class="text-cyan-400">LDT NET TELECOM</strong> e parceiro da <strong class="text-purple-400">Tanque Digital</strong>, entrego desde a configuração de um roteador até sistemas web completos com Python, Node.js e APIs modernas.</template>
+                            <template x-if="lang === 'en'">As founder of <strong class="text-cyan-400">LDT NET TELECOM</strong> and partner at <strong class="text-purple-400">Tanque Digital</strong>, I deliver everything from router configuration to complete web systems with Python, Node.js and modern APIs.</template>
+                        </p>
+                        <p class="text-lg text-cyan-100/90 leading-relaxed">
+                            <template x-if="lang === 'pt'"><strong class="text-orange-400">Meu diferencial:</strong> perfil comportamental <span class="badge-neon">Inspirador (DISC)</span> — comunicação clara, persuasão ética e foco em resultados que geram valor real para você.</template>
+                            <template x-if="lang === 'en'"><strong class="text-orange-400">My edge:</strong> behavioral profile <span class="badge-neon">Inspirer (DISC)</span> — clear communication, ethical persuasion and focus on results that deliver real value to you.</template>
+                        </p>
+                    </div>
+                    <div class="text-center animate-fade-in-up delay-200">
+                        <div class="relative inline-block">
+                            <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-3xl blur-xl opacity-40 animate-pulse-slow"></div>
+                            <div class="relative glass rounded-3xl p-2 neon-border">
+                                <img src="https://thumbs.dreamstime.com/b/futuristic-hud-interface-glowing-blue-orange-elements-radar-screen-gaming-dashboard-ui-panel-crosshairs-target-lock-tech-366212546.jpg" alt="Centro de Operações LDT NET" class="rounded-2xl w-full max-w-md aspect-video object-cover" loading="lazy"/>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-sm text-cyan-300/80">🎛️ Centro de Operações LDT NET</p>
+                        <div class="grid grid-cols-3 gap-4 mt-8">
+                            <div class="glass rounded-xl p-4"><div class="text-2xl font-bold neon-text-orange">60+</div><div class="text-xs text-cyan-300/80" x-text="lang === 'pt' ? 'Projetos' : 'Projects'">Projetos</div></div>
+                            <div class="glass rounded-xl p-4"><div class="text-2xl font-bold neon-text">2020</div><div class="text-xs text-cyan-300/80" x-text="lang === 'pt' ? 'Início' : 'Started'">Início</div></div>
+                            <div class="glass rounded-xl p-4"><div class="text-2xl font-bold neon-text-orange">100%</div><div class="text-xs text-cyan-300/80" x-text="lang === 'pt' ? 'Foco' : 'Focus'">Foco</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Section -->
+    <section id="servicos" class="py-20 px-4 bg-black/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold neon-text mb-4" x-text="lang === 'pt' ? 'Serviços Principais' : 'Main Services'">Serviços Principais</h2>
+                <p class="text-xl text-cyan-200/90 max-w-2xl mx-auto" x-text="lang === 'pt' ? 'Soluções completas para residências e empresas em Natal/RN' : 'Complete solutions for homes and businesses in Natal/RN'">Soluções completas para residências e empresas em Natal/RN</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="service-card glass rounded-2xl p-6 border border-cyan-500/20 animate-fade-in-up">
+                    <div class="flex items-center gap-3 mb-4"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center neon-border"><span class="text-2xl">📡</span></div><h3 class="text-xl font-bold text-cyan-300" x-text="lang === 'pt' ? 'Redes Wi-Fi & Cabeamento' : 'Wi-Fi Networks & Cabling'">Redes Wi-Fi & Cabeamento</h3></div>
+                    <p class="text-cyan-100/80" x-text="lang === 'pt' ? 'Projetos completos, análise de cobertura, otimização de sinal e segurança avançada para sua rede funcionar com estabilidade total.' : 'Complete projects, coverage analysis, signal optimization and advanced security for your network to run with total stability.'">Projetos completos, análise de cobertura, otimização de sinal e segurança avançada para sua rede funcionar com estabilidade total.</p>
+                </div>
+                <div class="service-card glass rounded-2xl p-6 border border-cyan-500/20 animate-fade-in-up delay-100">
+                    <div class="flex items-center gap-3 mb-4"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center neon-border"><span class="text-2xl">🏠</span></div><h3 class="text-xl font-bold text-cyan-300" x-text="lang === 'pt' ? 'Automação Residencial' : 'Home Automation'">Automação Residencial</h3></div>
+                    <p class="text-cyan-100/80" x-text="lang === 'pt' ? 'Luzes, tomadas, câmeras, assistentes e cenários inteligentes – tudo integrado, simples de usar e funcional no seu dia a dia.' : 'Lights, outlets, cameras, assistants and smart scenarios – all integrated, easy to use and functional in your daily life.'">Luzes, tomadas, câmeras, assistentes e cenários inteligentes – tudo integrado, simples de usar e funcional no seu dia a dia.</p>
+                </div>
+                <div class="service-card glass rounded-2xl p-6 border border-cyan-500/20 animate-fade-in-up delay-200">
+                    <div class="flex items-center gap-3 mb-4"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center neon-border"><span class="text-2xl">💻</span></div><h3 class="text-xl font-bold text-cyan-300" x-text="lang === 'pt' ? 'Desenvolvimento Fullstack' : 'Fullstack Development'">Desenvolvimento Fullstack</h3></div>
+                    <p class="text-cyan-100/80" x-text="lang === 'pt' ? 'Sistemas web completos com Python/Django, Node.js, APIs REST/GraphQL, MySQL e deploy em nuvem. Do conceito à produção.' : 'Complete web systems with Python/Django, Node.js, REST/GraphQL APIs, MySQL and cloud deployment. From concept to production.'">Sistemas web completos com Python/Django, Node.js, APIs REST/GraphQL, MySQL e deploy em nuvem. Do conceito à produção.</p>
+                </div>
+                <div class="service-card glass rounded-2xl p-6 border border-cyan-500/20 animate-fade-in-up">
+                    <div class="flex items-center gap-3 mb-4"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center neon-border"><span class="text-2xl">🔧</span></div><h3 class="text-xl font-bold text-cyan-300" x-text="lang === 'pt' ? 'Manutenção & Suporte TI' : 'IT Maintenance & Support'">Manutenção & Suporte TI</h3></div>
+                    <p class="text-cyan-100/80" x-text="lang === 'pt' ? 'Computadores, servidores, backups, recuperação de dados, segurança da informação e suporte técnico especializado.' : 'Computers, servers, backups, data recovery, information security and specialized technical support.'">Computadores, servidores, backups, recuperação de dados, segurança da informação e suporte técnico especializado.</p>
+                </div>
+                <div class="service-card glass rounded-2xl p-6 border border-cyan-500/20 animate-fade-in-up delay-100">
+                    <div class="flex items-center gap-3 mb-4"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center neon-border"><span class="text-2xl">🌐</span></div><h3 class="text-xl font-bold text-cyan-300" x-text="lang === 'pt' ? 'Infraestrutura FTTH' : 'FTTH Infrastructure'">Infraestrutura FTTH</h3></div>
+                    <p class="text-cyan-100/80" x-text="lang === 'pt' ? 'Planejamento, instalação e gerenciamento de redes de fibra óptica com monitoramento proativo e alta disponibilidade.' : 'Planning, installation and management of fiber optic networks with proactive monitoring and high availability.'">Planejamento, instalação e gerenciamento de redes de fibra óptica com monitoramento proativo e alta disponibilidade.</p>
+                </div>
+                <div class="service-card glass rounded-2xl p-6 border border-cyan-500/20 animate-fade-in-up delay-200">
+                    <div class="flex items-center gap-3 mb-4"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center neon-border"><span class="text-2xl">🤖</span></div><h3 class="text-xl font-bold text-cyan-300" x-text="lang === 'pt' ? 'IoT & Automação Industrial' : 'IoT & Industrial Automation'">IoT & Automação Industrial</h3></div>
+                    <p class="text-cyan-100/80" x-text="lang === 'pt' ? 'Soluções de Internet das Coisas para automação de processos, monitoramento remoto e integração hardware-software.' : 'Internet of Things solutions for process automation, remote monitoring and hardware-software integration.'">Soluções de Internet das Coisas para automação de processos, monitoramento remoto e integração hardware-software.</p>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 mt-16">
+                <a href="https://akilessimiao.github.io/portifolio/curriculo-imprimir.html" target="_blank" class="glass rounded-2xl p-6 border border-cyan-500/20 hover:border-orange-400 transition group animate-fade-in-up">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition">📄</div>
+                    <h3 class="text-xl font-bold text-cyan-300 mb-2" x-text="lang === 'pt' ? 'Currículo Profissional' : 'Professional Resume'">Currículo Profissional</h3>
+                    <p class="text-cyan-100/80 text-sm mb-4" x-text="lang === 'pt' ? 'Conheça minha trajetória, competências técnicas e projetos em destaque.' : 'Learn about my career path, technical skills and featured projects.'">Conheça minha trajetória, competências técnicas e projetos em destaque.</p>
+                    <span class="text-orange-400 font-medium text-sm group-hover:translate-x-1 transition inline-flex items-center gap-1" x-text="lang === 'pt' ? 'Ver currículo →' : 'View resume →'">Ver currículo →</span>
+                </a>
+                <a href="#certificacoes" class="glass rounded-2xl p-6 border border-cyan-500/20 hover:border-purple-400 transition group animate-fade-in-up delay-100">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition">🎓</div>
+                    <h3 class="text-xl font-bold text-cyan-300 mb-2" x-text="lang === 'pt' ? 'Certificações Recentes' : 'Recent Certifications'">Certificações Recentes</h3>
+                    <p class="text-cyan-100/80 text-sm mb-4" x-text="lang === 'pt' ? 'Confira minhas formações estratégicas pela ENAP em Cybersecurity, IA e LGPD.' : 'Check out my strategic certifications from ENAP in Cybersecurity, AI and LGPD.'">Confira minhas formações estratégicas pela ENAP em Cybersecurity, IA e LGPD.</p>
+                    <span class="text-purple-400 font-medium text-sm group-hover:translate-x-1 transition inline-flex items-center gap-1" x-text="lang === 'pt' ? 'Ver certificações →' : 'View certifications →'">Ver certificações →</span>
+                </a>
+                <a href="https://github.com/akilessimiao" target="_blank" class="glass rounded-2xl p-6 border border-cyan-500/20 hover:border-cyan-400 transition group animate-fade-in-up delay-200">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition">🐙</div>
+                    <h3 class="text-xl font-bold text-cyan-300 mb-2" x-text="lang === 'pt' ? 'Projetos no GitHub' : 'GitHub Projects'">Projetos no GitHub</h3>
+                    <p class="text-cyan-100/80 text-sm mb-4" x-text="lang === 'pt' ? 'Explore 60+ repositórios com soluções reais em Python, Node.js, IoT e mais.' : 'Explore 60+ repositories with real solutions in Python, Node.js, IoT and more.'">Explore 60+ repositórios com soluções reais em Python, Node.js, IoT e mais.</p>
+                    <span class="text-cyan-400 font-medium text-sm group-hover:translate-x-1 transition inline-flex items-center gap-1" x-text="lang === 'pt' ? 'Ver repositórios →' : 'View repos →'">Ver repositórios →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✨ CERTIFICAÇÕES CYBERPUNK SECTION -->
+    <section id="certificacoes" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold neon-text mb-4">🎓 <span x-text="lang === 'pt' ? 'Certificações Recentes' : 'Recent Certifications'">Certificações Recentes</span></h2>
+                <p class="text-xl text-cyan-200/90 max-w-2xl mx-auto" x-text="lang === 'pt' ? 'Formações estratégicas pela ENAP - Escola Virtual.Gov' : 'Strategic certifications from ENAP - Escola Virtual.Gov'">Formações estratégicas pela ENAP - Escola Virtual.Gov</p>
+            </div>
+
+            <!-- 📊 Grade Chart Cyberpunk -->
+            <div class="glass-strong rounded-3xl p-6 md:p-8 mb-12 animate-fade-in-up">
+                <h3 class="text-xl font-bold neon-text mb-6 text-center" x-text="lang === 'pt' ? '📈 Desempenho nas Certificações' : '📈 Certification Performance'">📈 Desempenho nas Certificações</h3>
+                <div class="space-y-5 max-w-2xl mx-auto">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-cyan-300 font-medium" x-text="lang === 'pt' ? '🤖 Inteligência Artificial Generativa' : '🤖 Generative AI'">🤖 Inteligência Artificial Generativa</span>
+                            <span class="text-green-400 font-bold neon-text-orange">100</span>
+                        </div>
+                        <div class="h-3 bg-cyan-900/30 rounded-full overflow-hidden border border-cyan-500/30">
+                            <div class="grade-bar-fill h-full bg-gradient-to-r from-green-400 to-emerald-500 rounded-full" style="--target-width: 100%; width: 0"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-cyan-300 font-medium" x-text="lang === 'pt' ? '🛡️ CIS Controls (Cybersecurity)' : '🛡️ CIS Controls (Cybersecurity)'">🛡️ CIS Controls (Cybersecurity)</span>
+                            <span class="text-cyan-400 font-bold">91.25</span>
+                        </div>
+                        <div class="h-3 bg-cyan-900/30 rounded-full overflow-hidden border border-cyan-500/30">
+                            <div class="grade-bar-fill h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" style="--target-width: 91.25%; width: 0"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-cyan-300 font-medium" x-text="lang === 'pt' ? '⚖️ Monitoração Eletrônica + LGPD' : '⚖️ Electronic Monitoring + LGPD'">⚖️ Monitoração Eletrônica + LGPD</span>
+                            <span class="text-yellow-400 font-bold">86</span>
+                        </div>
+                        <div class="h-3 bg-cyan-900/30 rounded-full overflow-hidden border border-cyan-500/30">
+                            <div class="grade-bar-fill h-full bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full" style="--target-width: 86%; width: 0"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-4 mt-6 text-xs text-cyan-300/70 flex-wrap">
+                    <span class="flex items-center gap-2"><div class="w-3 h-3 rounded bg-gradient-to-r from-green-400 to-emerald-500"></div><span x-text="lang === 'pt' ? 'Excelente (95-100)' : 'Excellent (95-100)'">Excelente (95-100)</span></span>
+                    <span class="flex items-center gap-2"><div class="w-3 h-3 rounded bg-gradient-to-r from-cyan-400 to-blue-500"></div><span x-text="lang === 'pt' ? 'Muito Bom (85-94)' : 'Very Good (85-94)'">Muito Bom (85-94)</span></span>
+                    <span class="flex items-center gap-2"><div class="w-3 h-3 rounded bg-gradient-to-r from-yellow-400 to-orange-500"></div><span x-text="lang === 'pt' ? 'Bom (70-84)' : 'Good (70-84)'">Bom (70-84)</span></span>
+                </div>
+            </div>
+
+            <!-- Cards das Certificações -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Card 1: CIS Controls -->
+                <div class="service-card glass rounded-2xl p-6 border border-cyan-500/20 animate-fade-in-up">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center neon-border"><span class="text-2xl">🛡️</span></div>
+                        <h3 class="text-lg font-bold text-cyan-300">CIS Controls 1-6</h3>
+                    </div>
+                    <p class="text-cyan-100/80 text-sm mb-4" x-text="lang === 'pt' ? 'Segurança Cibernética: Inventário de ativos, proteção de dados, configuração segura e gestão de acesso.' : 'Cybersecurity: Asset inventory, data protection, secure configuration and access management.'">Segurança Cibernética: Inventário de ativos, proteção de dados, configuração segura e gestão de acesso.</p>
+                    <div class="space-y-2 text-xs text-cyan-300/70">
+                        <div class="flex justify-between"><span x-text="lang === 'pt' ? '🕐 Carga:' : '🕐 Hours:'">🕐 Carga:</span><span class="text-cyan-200">25h</span></div>
+                        <div class="flex justify-between"><span x-text="lang === 'pt' ? '📅 Conclusão:' : '📅 Completed:'">📅 Conclusão:</span><span class="text-cyan-200">03/Abr/2026</span></div>
+                        <div class="flex justify-between"><span x-text="lang === 'pt' ? '🏆 Nota:' : '🏆 Grade:'">🏆 Nota:</span><span class="text-cyan-400 font-bold">91.25</span></div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-cyan-500/20">
+                        <code class="text-xs bg-cyan-900/30 px-2 py-1 rounded text-cyan-300 block mb-2">ID: HqRk21608222VnbH</code>
+                        <a href="https://www.escolavirtual.gov.br/documentos/validacao?codigo=HqRk21608222VnbH" target="_blank" class="text-xs text-orange-400 hover:text-orange-300 transition flex items-center gap-1">🔗 <span x-text="lang === 'pt' ? 'Validar certificado' : 'Validate certificate'">Validar certificado</span> <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Card 2: IA Generativa -->
+                <div class="service-card glass rounded-2xl p-6 border border-cyan-500/20 animate-fade-in-up delay-100">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center neon-border"><span class="text-2xl">🤖</span></div>
+                        <h3 class="text-lg font-bold text-cyan-300" x-text="lang === 'pt' ? 'IA Generativa' : 'Generative AI'">IA Generativa</h3>
+                    </div>
+                    <p class="text-cyan-100/80 text-sm mb-4" x-text="lang === 'pt' ? 'Fundamentos de IA Generativa, NLP, text-to-image e impacto no mercado de trabalho.' : 'Generative AI fundamentals, NLP, text-to-image and impact on the job market.'">Fundamentos de IA Generativa, NLP, text-to-image e impacto no mercado de trabalho.</p>
+                    <div class="space-y-2 text-xs text-cyan-300/70">
+                        <div class="flex justify-between"><span x-text="lang === 'pt' ? '🕐 Carga:' : '🕐 Hours:'">🕐 Carga:</span><span class="text-cyan-200">2h</span></div>
+                        <div class="flex justify-between"><span x-text="lang === 'pt' ? '📅 Conclusão:' : '📅 Completed:'">📅 Conclusão:</span><span class="text-cyan-200">03/Abr/2026</span></div>
+                        <div class="flex justify-between"><span x-text="lang === 'pt' ? '🏆 Nota:' : '🏆 Grade:'">🏆 Nota:</span><span class="text-green-400 font-bold neon-text-orange">100</span></div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-cyan-500/20">
+                        <code class="text-xs bg-cyan-900/30 px-2 py-1 rounded text-cyan-300 block mb-2">ID: SkQt21608080J1q7</code>
+                        <a href="https://www.escolavirtual.gov.br/documentos/validacao?codigo=SkQt21608080J1q7" target="_blank" class="text-xs text-orange-400 hover:text-orange-300 transition flex items-center gap-1">🔗 <span x-text="lang === 'pt' ? 'Validar certificado' : 'Validate certificate'">Validar certificado</span> <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Monitoração Eletrônica -->
+                <div class="service-card glass rounded-2xl p-6 border border-cyan-500/20 animate-fade-in-up delay-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center neon-border"><span class="text-2xl">⚖️</span></div>
+                        <h3 class="text-lg font-bold text-cyan-300" x-text="lang === 'pt' ? 'Monitoração Eletrônica' : 'Electronic Monitoring'">Monitoração Eletrônica</h3>
+                    </div>
+                    <p class="text-cyan-100/80 text-sm mb-4" x-text="lang === 'pt' ? 'Aspectos técnicos, marcos legais, metodologia de acompanhamento e proteção de dados (LGPD).' : 'Technical aspects, legal frameworks, monitoring methodology and data protection (LGPD).'">Aspectos técnicos, marcos legais, metodologia de acompanhamento e proteção de dados (LGPD).</p>
+                    <div class="space-y-2 text-xs text-cyan-300/70">
+                        <div class="flex justify-between"><span x-text="lang === 'pt' ? '🕐 Carga:' : '🕐 Hours:'">🕐 Carga:</span><span class="text-cyan-200">40h</span></div>
+                        <div class="flex justify-between"><span x-text="lang === 'pt' ? '📅 Conclusão:' : '📅 Completed:'">📅 Conclusão:</span><span class="text-cyan-200">03/Abr/2026</span></div>
+                        <div class="flex justify-between"><span x-text="lang === 'pt' ? '🏆 Nota:' : '🏆 Grade:'">🏆 Nota:</span><span class="text-yellow-400 font-bold">86</span></div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-cyan-500/20">
+                        <code class="text-xs bg-cyan-900/30 px-2 py-1 rounded text-cyan-300 block mb-2">ID: uD1S21608338Bbvh</code>
+                        <a href="https://www.escolavirtual.gov.br/documentos/validacao?codigo=uD1S21608338Bbvh" target="_blank" class="text-xs text-orange-400 hover:text-orange-300 transition flex items-center gap-1">🔗 <span x-text="lang === 'pt' ? 'Validar certificado' : 'Validate certificate'">Validar certificado</span> <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 animate-fade-in-up delay-300">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-orange-500/30">
+                    <span class="text-orange-400 neon-text-orange font-bold" x-text="lang === 'pt' ? '✨ 3 Certificações ENAP em Abril/2026' : '✨ 3 ENAP Certifications in Apr/2026'">✨ 3 Certificações ENAP em Abril/2026</span>
+                </div>
+                <p class="text-cyan-300/70 text-sm mt-3">
+                    <span x-text="lang === 'pt' ? 'Emitidas pela' : 'Issued by'">Emitidas pela</span> <a href="https://www.escolavirtual.gov.br" target="_blank" class="text-cyan-400 hover:text-cyan-300 transition">Escola Virtual.Gov</a> • 
+                    <a href="https://www.gov.br/enap" target="_blank" class="text-purple-400 hover:text-purple-300 transition">ENAP</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✨ CONTATO SECTION -->
+    <section id="contato" class="py-20 px-4" x-data="formHandler">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-strong rounded-3xl p-8 md:p-12 lg:p-16 animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold neon-text text-center mb-4" x-text="lang === 'pt' ? '💬 Fale Comigo Agora' : '💬 Contact Me Now'">💬 Fale Comigo Agora</h2>
+                <p class="text-center text-xl text-cyan-200/90 mb-10" x-text="lang === 'pt' ? 'Orçamento rápido • Resposta em até 24h • WhatsApp ou Formulário' : 'Quick quote • Response within 24h • WhatsApp or Form'">Orçamento rápido • Resposta em até 24h • WhatsApp ou Formulário</p>
+                
+                <form action="https://formspree.io/f/xaqqqvra" method="POST" class="fs-form fs-layout__2-column" @submit.prevent="handleSubmit" x-ref="contactForm">
+                    <fieldset>
+                        <legend class="fs-fieldset-title" x-text="lang === 'pt' ? '📋 Informações de Contato' : '📋 Contact Information'">📋 Informações de Contato</legend>
+                        <div class="fs-field"><label class="fs-label" for="full-name" x-text="lang === 'pt' ? 'Nome Completo *' : 'Full Name *'">Nome Completo *</label><input class="fs-input" id="full-name" name="nome" x-placeholder="lang === 'pt' ? 'Seu nome completo' : 'Your full name'" placeholder="Seu nome completo" required /></div>
+                        <div class="fs-field"><label class="fs-label" for="email-address">E-mail *</label><input class="fs-input" id="email-address" name="email" type="email" placeholder="seu@email.com" required /></div>
+                        <div class="fs-field col-span-full"><label class="fs-label" for="whatsapp" x-text="lang === 'pt' ? 'WhatsApp (opcional)' : 'WhatsApp (optional)'">WhatsApp (opcional)</label><input class="fs-input" id="whatsapp" name="whatsapp" type="tel" placeholder="(84) 99999-9999" /><span class="fs-description" x-text="lang === 'pt' ? 'Para contato mais rápido via mensagem' : 'For faster contact via message'">Para contato mais rápido via mensagem</span></div>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend class="fs-fieldset-title" x-text="lang === 'pt' ? '🎯 Detalhes do Projeto' : '🎯 Project Details'">🎯 Detalhes do Projeto</legend>
+                        <div class="fs-field"><label class="fs-label" for="support-type" x-text="lang === 'pt' ? 'Tipo de Serviço *' : 'Service Type *'">Tipo de Serviço *</label><select class="fs-select" id="support-type" name="servico" required><option value="" disabled selected x-text="lang === 'pt' ? 'Selecione uma opção...' : 'Select an option...'">Selecione uma opção...</option><option value="automacao" x-text="lang === 'pt' ? '🏠 Automação Residencial' : '🏠 Home Automation'">🏠 Automação Residencial</option><option value="web-dev" x-text="lang === 'pt' ? '💻 Desenvolvimento Web' : '💻 Web Development'">💻 Desenvolvimento Web</option><option value="iot" x-text="lang === 'pt' ? '🤖 IoT & Automação Industrial' : '🤖 IoT & Industrial Automation'">🤖 IoT & Automação Industrial</option><option value="software" x-text="lang === 'pt' ? '⚙️ Desenvolvimento de Software' : '⚙️ Software Development'">⚙️ Desenvolvimento de Software</option><option value="ftth" x-text="lang === 'pt' ? '🌐 Projetos FTTH/Redes' : '🌐 FTTH/Network Projects'">🌐 Projetos FTTH/Redes</option><option value="suporte" x-text="lang === 'pt' ? '🔧 Suporte Técnico TI' : '🔧 IT Technical Support'">🔧 Suporte Técnico TI</option><option value="outro" x-text="lang === 'pt' ? '✨ Outro (descreva abaixo)' : '✨ Other (describe below)'">✨ Outro (descreva abaixo)</option></select></div>
+                        <div class="fs-field"><label class="fs-label" for="subject-of-request" x-text="lang === 'pt' ? 'Assunto *' : 'Subject *'">Assunto *</label><input class="fs-input" id="subject-of-request" name="assunto" x-placeholder="lang === 'pt' ? 'Ex: Orçamento para automação de iluminação' : 'Ex: Quote for lighting automation'" placeholder="Ex: Orçamento para automação de iluminação" required /></div>
+                        <div class="fs-field col-span-full"><label class="fs-label" for="detailed-description" x-text="lang === 'pt' ? 'Descrição Detalhada *' : 'Detailed Description *'">Descrição Detalhada *</label><textarea class="fs-textarea" id="detailed-description" name="mensagem" x-placeholder="lang === 'pt' ? 'Descreva seu projeto, necessidades, prazos e expectativas...' : 'Describe your project, needs, deadlines and expectations...'" placeholder="Descreva seu projeto, necessidades, prazos e expectativas..." required></textarea></div>
+                        <div class="fs-field"><label class="fs-label" for="product-or-service" x-text="lang === 'pt' ? 'Produto/Serviço Relacionado' : 'Related Product/Service'">Produto/Serviço Relacionado</label><input class="fs-input" id="product-or-service" name="produto" x-placeholder="lang === 'pt' ? 'Ex: Sistema de câmeras, Site institucional...' : 'Ex: Camera system, Institutional website...'" placeholder="Ex: Sistema de câmeras, Site institucional..." /></div>
+                        <div class="fs-field"><label class="fs-label" for="attachment" x-text="lang === 'pt' ? 'Link de Anexos (opcional)' : 'Attachment Link (optional)'">Link de Anexos (opcional)</label><input class="fs-input" id="attachment" name="anexos" placeholder="Google Drive, Dropbox, WeTransfer..." /><span class="fs-description" x-text="lang === 'pt' ? '📎 Para arquivos: faça upload no Google Drive/Dropbox e cole o link público aqui' : '📎 For files: upload to Google Drive/Dropbox and paste the public link here'">📎 Para arquivos: faça upload no Google Drive/Dropbox e cole o link público aqui</span></div>
+                        <div class="fs-field"><label class="fs-label" for="best-time" x-text="lang === 'pt' ? 'Melhor Horário para Contato' : 'Best Time to Contact'">Melhor Horário para Contato</label><input class="fs-input" id="best-time" name="horario" x-placeholder="lang === 'pt' ? 'Ex: Seg-Sex, 14h-18h' : 'Ex: Mon-Fri, 2pm-6pm'" placeholder="Ex: Seg-Sex, 14h-18h" /></div>
+                    </fieldset>
+                    
+                    <div class="col-span-full mt-6 flex justify-center">
+                        <button type="submit" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-lg font-bold text-white bg-gradient-to-r from-cyan-600 to-orange-500 rounded-full border-2 border-cyan-400 shadow-lg shadow-cyan-500/40 hover:scale-105 transition-transform cursor-pointer" style="min-width: 280px; min-height: 56px; z-index: 999;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                            <span x-text="lang === 'pt' ? 'ENVIAR SOLICITAÇÃO' : 'SEND REQUEST'">ENVIAR SOLICITAÇÃO</span>
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Modal de Agradecimento -->
+                <template x-if="showThanks">
+                    <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" @click.self="showThanks = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+                        <div class="glass-strong rounded-3xl p-8 max-w-lg w-full text-center relative border border-cyan-500/30 animate-enter" @click.stop x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95 translate-y-4" x-transition:enter-end="opacity-100 scale-100 translate-y-0">
+                            <button @click="showThanks = false" class="absolute top-4 right-4 text-cyan-400 hover:text-orange-400 transition text-2xl font-bold">×</button>
+                            <div class="relative inline-block mb-6 floating">
+                                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-xl opacity-40"></div>
+                                <div class="relative w-20 h-20 rounded-full glass neon-border flex items-center justify-center">
+                                    <svg class="w-10 h-10 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke="var(--cyan)" fill="none"/><path d="M8 12l2.5 2.5L16 9" stroke="white" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold neon-text mb-3" x-text="lang === 'pt' ? 'Mensagem Enviada! ✓' : 'Message Sent! ✓'">Mensagem Enviada! ✓</h3>
+                            <p class="text-cyan-200/90 mb-6 text-sm"><template x-if="lang === 'pt'">Recebemos sua solicitação e entraremos em contato em até <strong class="text-orange-400">24 horas</strong>.</template><template x-if="lang === 'en'">We received your request and will contact you within <strong class="text-orange-400">24 hours</strong>.</template></p>
+                            <div class="inline-flex items-center gap-2 badge-neon mb-8"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span x-text="lang === 'pt' ? 'Protocolo:' : 'Protocol:'">Protocolo:</span> <span x-text="protocolo" class="font-mono"></span></div>
+                            <div class="text-left mb-8">
+                                <p class="text-sm text-cyan-300/80 mb-3 font-medium" x-text="lang === 'pt' ? '📋 Próximos passos:' : '📋 Next steps:'">📋 Próximos passos:</p>
+                                <div class="timeline">
+                                    <div class="timeline-item"><p class="text-sm text-cyan-100/90"><strong class="text-cyan-400" x-text="lang === 'pt' ? 'Confirmação:' : 'Confirmation:'">Confirmação:</strong> <span x-text="lang === 'pt' ? 'E-mail de recebimento enviado' : 'Confirmation email sent'">E-mail de recebimento enviado</span></p></div>
+                                    <div class="timeline-item"><p class="text-sm text-cyan-100/90"><strong class="text-cyan-400" x-text="lang === 'pt' ? 'Análise:' : 'Analysis:'">Análise:</strong> <span x-text="lang === 'pt' ? 'Avaliamos sua solicitação' : 'We evaluate your request'">Avaliamos sua solicitação</span></p></div>
+                                    <div class="timeline-item"><p class="text-sm text-cyan-100/90"><strong class="text-cyan-400" x-text="lang === 'pt' ? 'Retorno:' : 'Response:'">Retorno:</strong> <span x-text="lang === 'pt' ? 'Contato via WhatsApp ou e-mail' : 'Contact via WhatsApp or email'">Contato via WhatsApp ou e-mail</span></p></div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                                <a href="/" class="btn-neon"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg><span x-text="lang === 'pt' ? 'Voltar ao Início' : 'Back to Home'">Voltar ao Início</span></a>
+                                <button @click="showThanks = false; $refs.contactForm?.scrollIntoView({behavior:'smooth'})" class="btn-neon btn-outline"><span x-text="lang === 'pt' ? 'Enviar outra mensagem' : 'Send another message'">Enviar outra mensagem</span></button>
+                            </div>
+                            <p class="mt-6 text-xs text-cyan-400/60"><span x-text="lang === 'pt' ? 'Redirecionando em' : 'Redirecting in'">Redirecionando em</span> <span x-text="countdown" class="text-orange-400 font-bold"></span>s...</p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-cyan-500/20">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-cyan-300/90 mb-4">
+                © 2020-2026 <strong class="neon-text">LDT NET TELECOM</strong> & 
+                <a href="https://tanquedigital.com.br" target="_blank" class="text-purple-400 hover:text-purple-300 transition">Tanque Digital</a> 
+                • Akiles Simião
+            </p>
+            <p class="text-cyan-400/70 mb-6">
+                📍 Natal/RN • 📱 <a href="https://wa.me/5584994554714" class="hover:text-orange-400 transition">(84) 99455-4714</a>
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-8">
+                <a href="#certificacoes" class="text-cyan-300 hover:text-cyan-100 transition text-sm">🎓 Certificações</a>
+                <a href="https://akilessimiao.github.io/portifolio/curriculo-imprimir.html" target="_blank" class="text-cyan-300 hover:text-cyan-100 transition text-sm">📄 Currículo</a>
+                <a href="perfil-comportamental.html" class="text-cyan-300 hover:text-cyan-100 transition text-sm">🧭 Perfil Comportamental</a>
+                <a href="https://tanquedigital.com.br" target="_blank" class="text-purple-400 hover:text-purple-300 transition text-sm">🏢 Tanque Digital</a>
+                <a href="https://github.com/akilessimiao" target="_blank" class="text-cyan-300 hover:text-cyan-100 transition text-sm">🐙 GitHub</a>
+                <a href="https://linkedin.com/in/akilessimiao" target="_blank" class="text-cyan-300 hover:text-cyan-100 transition text-sm">💼 LinkedIn</a>
+            </div>
+            <p class="text-cyan-400/50 text-sm">
+                Desenvolvido com <span class="text-orange-400">❤️</span> por Akiles Simião • 
+                <span class="text-cyan-300/70">Python • Node.js • FTTH • IoT</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Botão flutuante WhatsApp -->
+    <a href="https://wa.me/5584994554714" target="_blank" class="fixed bottom-6 right-6 z-50 group" title="Fale comigo no WhatsApp agora!">
+        <div class="relative">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 to-orange-500 opacity-50 blur-xl animate-pulse-slow"></div>
+            <div class="relative w-14 h-14 md:w-16 md:h-16 rounded-full glass neon-border flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 cursor-pointer">
+                <svg class="w-7 h-7 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+            </div>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full animate-ping"></span>
+        </div>
+    </a>
+
+    <!-- Particles.js + Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS("particles-js", {
+                particles: {
+                    number: { value: 50, density: { enable: true, value_area: 700 } },
+                    color: { value: ["#00ffff", "#ff6600", "#7c3aed"] },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.4, random: true },
+                    size: { value: 2, random: true },
+                    line_linked: { enable: true, distance: 140, color: "#00ffff", opacity: 0.25, width: 1 },
+                    move: { enable: true, speed: 1.5, direction: "none", random: true, straight: false, out_mode: "out" }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
+                    modes: { repulse: { distance: 90, duration: 0.4 }, push: { particles_nb: 3 } }
+                },
+                retina_detect: true
+            });
+        }
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        
+        document.querySelectorAll('.service-card, .portal-card, .highlight-card').forEach(el => {
+            el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Grade bar animation on scroll
+        const chartObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bars = entry.target.querySelectorAll('.grade-bar-fill');
+                    bars.forEach(bar => {
+                        const target = bar.style.getPropertyValue('--target-width');
+                        bar.style.width = target;
+                    });
+                    chartObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        const chartSection = document.querySelector('#certificacoes .glass-strong');
+        if (chartSection) chartObserver.observe(chartSection);
+    </script>
+    
+    <script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('formHandler', () => ({
+            showThanks: false, sending: false, countdown: 10, protocolo: '', redirectTimer: null,
+            generateProtocolo() {
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                let result = 'LDT-';
+                for (let i = 0; i < 6; i++) result += chars.charAt(Math.floor(Math.random() * chars.length));
+                return result;
+            },
+            startCountdown() {
+                this.countdown = 10;
+                this.redirectTimer = setInterval(() => {
+                    if (this.countdown > 0) { this.countdown--; } 
+                    else { clearInterval(this.redirectTimer); window.location.href = '/'; }
+                }, 1000);
+            },
+            async handleSubmit() {
+                const form = this.$el;
+                const formData = new FormData(form);
+                this.sending = true;
+                try {
+                    const response = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+                    if (response.ok) {
+                        this.protocolo = this.generateProtocolo();
+                        this.showThanks = true;
+                        form.reset();
+                        this.startCountdown();
+                    } else {
+                        const errorData = await response.json().catch(() => ({}));
+                        alert('Erro: ' + (errorData.errors ? Object.values(errorData.errors)[0] : 'Tente novamente ou use o WhatsApp.'));
+                    }
+                } catch (error) {
+                    console.error('Erro de rede:', error);
+                    alert('Erro de conexão. Verifique sua internet ou use: wa.me/5584994554714');
+                } finally { this.sending = false; }
+            }
+        }));
+    });
+    </script>
+</body>
+</html>
