@@ -434,9 +434,16 @@
             <div class="inline-block mb-6 px-5 py-2 rounded-full glass border border-cyan-500/30">
                 <span class="text-cyan-300 text-sm font-medium">🚀 Soluções em TI & Automação Inteligente</span>
             </div>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold neon-text mb-6 tracking-tight leading-tight">
-                Infraestrutura Avançada<br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-orange-400">+ Desenvolvimento Fullstack</span>
+           <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold neon-text mb-6 tracking-tight leading-tight">
+                <span x-show="lang === 'pt'">
+                    Infraestrutura Avançada<br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-orange-400">+ Desenvolvimento Fullstack</span>
+                </span>
+                
+                <span x-show="lang === 'en'">
+                    Advanced Infrastructure<br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-orange-400">+ Fullstack Development</span>
+                </span>
             </h1>
             <p class="text-lg md:text-xl text-cyan-100/90 mb-10 max-w-3xl mx-auto leading-relaxed">
                 Diagnóstico preciso, configuração profissional e suporte próximo em <strong class="text-orange-400">Natal/RN</strong>. 
