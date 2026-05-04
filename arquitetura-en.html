@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanque Digital - System Architecture</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Courier New', monospace;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            padding: 2rem;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #667eea;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .component-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .component {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .component-title {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .component-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .status-active {
+            background: rgba(72, 187, 120, 0.2);
+            color: #48bb78;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">Tanque Digital</h1>
+            <p class="subtitle">Enterprise Architecture & Integration Map</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2 class="card-title">⚙️ Core & Backend</h2>
+                <div class="component-list">
+                    <div class="component">
+                        <div class="component-title">PHP & Laravel / Python</div>
+                        <div class="component-desc">RESTful APIs, MVC architecture, and business logic processing.</div>
+                        <span class="status status-active">Online</span>
+                    </div>
+                    <div class="component">
+                        <div class="component-title">Node.js & NestJS</div>
+                        <div class="component-desc">Microservices, real-time events, and asynchronous workers.</div>
+                        <span class="status status-active">Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">🖥️ Frontend & UX</h2>
+                <div class="component-list">
+                    <div class="component">
+                        <div class="component-title">React & Alpine.js</div>
+                        <div class="component-desc">Dynamic admin dashboard, SPA views, and interactive components.</div>
+                        <span class="status status-active">Online</span>
+                    </div>
+                    <div class="component">
+                        <div class="component-title">Tailwind CSS</div>
+                        <div class="component-desc">Highly optimized CSS, responsive layouts, and modern UI.</div>
+                        <span class="status status-active">Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">🔌 Integrations</h2>
+                <div class="component-list" style="text-align: center;">
+                    <div class="component">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💳</div>
+                        <div class="component-title">Asaas API</div>
+                        <div class="component-desc">Financial processing & PIX API</div>
+                        <span class="status status-active">Online</span>
+                    </div>
+                    <div class="component">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📄</div>
+                        <div class="component-title">SEFAZ WebService</div>
+                        <div class="component-desc">Invoice issuing (NFC-e / NF-e)</div>
+                        <span class="status status-active">Online</span>
+                    </div>
+                    <div class="component">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💬</div>
+                        <div class="component-title">WhatsApp API</div>
+                        <div class="component-desc">Automated notifications & support</div>
+                        <span class="status status-active">Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>⚡ Tanque Digital - Integrated POS & E-commerce System</p>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Version 4.0 | Last updated: 2026 | Active License ✅</p>
+        </div>
+    </div>
+</body>
+</html>
