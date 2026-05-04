@@ -351,13 +351,12 @@
     <div id="particles-js" class="fixed inset-0 pointer-events-none z-0"></div>
 
     <!-- Navbar Glass -->
-    <nav class="fixed top-0 w-full glass z-50 backdrop-blur-xl border-b border-cyan-500/20" x-data="{ open: false }">
+    <nav class="fixed top-0 w-full glass z-50 backdrop-blur-xl border-b border-cyan-500/20" x-data="{ open: false, lang: 'pt', langMenu: false }">
         <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-xl md:text-2xl font-bold neon-text tracking-tight">
                 LDT NET <span class="text-orange-400">TELECOM</span>
             </a>
             
-            <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-1 md:gap-2">
                 <a href="#sobre" class="px-4 py-2 rounded-lg hover:bg-cyan-500/10 transition text-sm font-medium">Sobre</a>
                 <a href="#servicos" class="px-4 py-2 rounded-lg hover:bg-cyan-500/10 transition text-sm font-medium">Serviços</a>
@@ -365,6 +364,23 @@
                 <a href="https://akilessimiao.github.io/portifolio/curriculo-imprimir.html" target="_blank" class="px-4 py-2 rounded-lg hover:bg-cyan-500/10 transition text-sm font-medium flex items-center gap-1">📄 Currículo</a>
                 <a href="perfil-comportamental.html" class="px-4 py-2 rounded-lg hover:bg-cyan-500/10 transition text-sm font-medium flex items-center gap-1">🧭 Perfil</a>
                 <a href="https://tanquedigital.com.br" target="_blank" class="px-4 py-2 rounded-lg hover:bg-cyan-500/10 transition text-sm font-medium flex items-center gap-1">🏢 Tanque Digital</a>
+                
+                <div class="relative ml-2 mr-1" @click.away="langMenu = false">
+                    <button @click="langMenu = !langMenu" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 hover:border-cyan-400 hover:bg-cyan-500/20 transition text-sm font-medium">
+                        <span x-show="lang === 'pt'">🇧🇷 <span class="hidden lg:inline">PT</span></span>
+                        <span x-show="lang === 'en'">🇺🇸 <span class="hidden lg:inline">EN</span></span>
+                        <svg class="w-4 h-4 transition-transform" :class="langMenu ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="langMenu" x-transition.opacity class="absolute right-0 mt-2 w-32 glass rounded-xl py-1 border border-cyan-500/30 shadow-xl z-50">
+                        <button @click="lang = 'pt'; langMenu = false" class="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-cyan-500/20 transition text-left">
+                            <span>🇧🇷</span> Português
+                        </button>
+                        <button @click="lang = 'en'; langMenu = false" class="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-cyan-500/20 transition text-left">
+                            <span>🇺🇸</span> English
+                        </button>
+                    </div>
+                </div>
+
                 <a href="https://github.com/akilessimiao" target="_blank" class="px-3 py-2 rounded-lg hover:bg-cyan-500/10 transition neon-icon" title="GitHub">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
                 </a>
@@ -373,25 +389,34 @@
                 </a>
             </div>
             
-            <!-- Mobile Menu Button -->
             <button @click="open = !open" class="md:hidden text-cyan-400 hover:text-orange-400 transition p-2">
                 <svg x-show="!open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 <svg x-show="open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
         </div>
 
-        <!-- Mobile Menu Overlay -->
         <div x-show="open" @click.away="open = false" x-transition.opacity
              class="fixed inset-0 z-40 bg-black/85 backdrop-blur-md flex items-center justify-center md:hidden">
             <div class="glass-strong rounded-3xl p-8 max-w-sm w-full mx-6 text-center space-y-2 relative">
                 <button @click="open = false" class="absolute top-4 right-4 text-cyan-300 hover:text-orange-400 text-3xl transition">×</button>
-                <h2 class="text-3xl font-bold neon-text mb-8 mt-4">Menu</h2>
+                <h2 class="text-3xl font-bold neon-text mb-6 mt-4">Menu</h2>
+                
+                <div class="flex justify-center gap-4 mb-4 border-b border-cyan-500/20 pb-4">
+                    <button @click="lang = 'pt'; open = false" class="flex items-center gap-2 px-4 py-2 rounded-xl glass transition text-sm font-medium border" :class="lang === 'pt' ? 'border-cyan-400 bg-cyan-500/20' : 'border-transparent'">
+                        <span>🇧🇷</span> Português
+                    </button>
+                    <button @click="lang = 'en'; open = false" class="flex items-center gap-2 px-4 py-2 rounded-xl glass transition text-sm font-medium border" :class="lang === 'en' ? 'border-cyan-400 bg-cyan-500/20' : 'border-transparent'">
+                        <span>🇺🇸</span> English
+                    </button>
+                </div>
+
                 <a href="#sobre" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20">Sobre</a>
                 <a href="#servicos" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20">Serviços</a>
                 <a href="#certificacoes" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20">🎓 Certificações</a>
                 <a href="https://akilessimiao.github.io/portifolio/curriculo-imprimir.html" target="_blank" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20">📄 Currículo</a>
                 <a href="perfil-comportamental.html" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20">🧭 Perfil Comportamental</a>
                 <a href="https://tanquedigital.com.br" target="_blank" @click="open = false" class="block py-4 text-xl hover:text-cyan-300 transition border-b border-cyan-500/20">🏢 Tanque Digital</a>
+                
                 <div class="flex justify-center gap-6 pt-6">
                     <a href="https://github.com/akilessimiao" target="_blank" class="text-cyan-400 hover:text-orange-400 transition">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
@@ -403,8 +428,7 @@
             </div>
         </div>
     </nav>
-
-    <!-- Hero Section -->
+      <!-- Hero Section -->
     <section class="hero min-h-screen flex items-center justify-center px-4 pt-24 pb-12 relative overflow-hidden">
         <div class="text-center max-w-5xl relative z-10 animate-fade-in-up">
             <div class="inline-block mb-6 px-5 py-2 rounded-full glass border border-cyan-500/30">
