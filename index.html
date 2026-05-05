@@ -3,101 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akiles Simião | Senior Python Engineer</title>
+    <title>LDT NET | Akiles Simião - Senior Python Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root {
             --neon-blue: #00f3ff;
             --neon-purple: #bc13fe;
-            --dark-bg: #0a0b10;
-            --card-bg: #161b22;
+            --dark-bg: #030005; /* Fundo quase preto para contraste */
+            --card-bg: rgba(22, 27, 34, 0.6); /* Transparente para ver o fundo */
+            --text-glow: 0 0 10px rgba(0, 243, 255, 0.7);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Rajdhani', sans-serif;
             background-color: var(--dark-bg);
             color: white;
             overflow-x: hidden;
         }
 
-        /* ===== NAVBAR ===== */
-        nav {
-            background: rgba(10, 11, 16, 0.95);
-            height: 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
+        /* ===== FUNDO DE PARTÍCULAS CYBERNETIC (CSS puro para não pesar) ===== */
+        body::before {
+            content: "";
             position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            z-index: -1;
+            opacity: 0.15;
+            animation: backgroundMove 60s linear infinite;
         }
 
-        .logo { font-weight: bold; font-size: 1.5rem; color: var(--neon-blue); letter-spacing: 2px; }
+        @keyframes backgroundMove {
+            from { background-position: 0 0, 40px 60px, 130px 270px; }
+            to { background-position: 550px 550px, 40px 60px, 130px 270px; }
+        }
+
+        /* ===== NAVBAR ESTILO TECH ===== */
+        nav {
+            background: rgba(3, 0, 5, 0.9);
+            height: 80px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%;
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            border-bottom: 2px solid var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        .logo { 
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold; font-size: 1.6rem; 
+            color: var(--neon-blue); text-shadow: var(--text-glow);
+            letter-spacing: 2px;
+        }
 
         .nav-links { display: flex; list-style: none; align-items: center; }
         .nav-links li { padding: 0 15px; }
-        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; transition: 0.3s; text-transform: uppercase; }
-        .nav-links a:hover { color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
+        .nav-links a { 
+            color: white; text-decoration: none; font-size: 1rem; font-weight: 500;
+            transition: 0.3s; text-transform: uppercase; 
+        }
+        .nav-links a:hover { color: var(--neon-blue); text-shadow: var(--text-glow); }
 
         /* Lang Switcher */
-        .lang-switch { display: flex; gap: 12px; margin-left: 20px; border-left: 1px solid #333; padding-left: 20px; }
-        .flag-btn { background: none; border: none; cursor: pointer; font-size: 1.3rem; filter: grayscale(100%); transition: 0.3s; opacity: 0.6; }
+        .lang-switch { display: flex; gap: 12px; margin-left: 20px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 20px; }
+        .flag-btn { background: none; border: none; cursor: pointer; font-size: 1.4rem; filter: grayscale(100%); transition: 0.3s; opacity: 0.5; }
         .flag-btn.active { filter: grayscale(0%); opacity: 1; transform: scale(1.2); }
 
         .mobile-menu-icon { display: none; font-size: 1.8rem; color: var(--neon-blue); cursor: pointer; }
 
-        /* ===== HERO ===== */
+        /* ===== HERO ESTILO ORIGINAL ===== */
         .hero {
             height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; padding: 20px;
-            background: radial-gradient(circle at center, #1a1c2c 0%, #0a0b10 100%);
+            background: radial-gradient(circle at center, rgba(37, 99, 235, 0.1) 0%, #030005 100%);
         }
 
         .hero h1 {
-            font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px;
-            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.8rem; line-height: 1.2; margin-bottom: 20px;
+            color: #fff; text-shadow: 0 0 15px #fff, var(--text-glow);
+            text-transform: uppercase;
         }
 
-        /* ===== PROJETOS ===== */
+        .hero-tags { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 20px;}
+        .tech-tag {
+            font-size: 0.8rem; color: var(--neon-blue); border: 1px solid var(--neon-blue);
+            padding: 5px 12px; border-radius: 20px; font-weight: bold; text-transform: uppercase;
+        }
+
+        /* ===== PROJETOS ORGANIZADOS E BRILHANTES ===== */
         .projects-section { padding: 100px 5%; }
-        .section-title { text-align: center; margin-bottom: 60px; font-size: 2.5rem; color: var(--neon-blue); text-shadow: 0 0 10px rgba(0,243,255,0.3); }
+        .section-title { 
+            font-family: 'Orbitron', sans-serif;
+            text-align: center; margin-bottom: 70px; font-size: 2.8rem; 
+            color: var(--neon-blue); text-shadow: var(--text-glow);
+            text-transform: uppercase;
+        }
         
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
         
         .project-card {
-            background: var(--card-bg); border-radius: 15px; padding: 25px;
-            border: 1px solid #30363d; transition: 0.4s; text-align: center;
+            background: var(--card-bg); border-radius: 12px; padding: 30px;
+            border: 1px solid rgba(0, 243, 255, 0.2); transition: 0.5s; text-align: center;
+            position: relative; backdrop-filter: blur(5px);
         }
-        .project-card:hover { transform: translateY(-10px); border-color: var(--neon-blue); box-shadow: 0 0 25px rgba(0, 243, 255, 0.15); }
-        .project-card img { width: 100%; border-radius: 10px; margin-bottom: 20px; border: 1px solid #222; }
-        .project-card h3 { color: #fff; margin-bottom: 12px; font-size: 1.4rem; }
-        .project-card p { color: #8b949e; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.5; }
+        .project-card:hover { 
+            transform: translateY(-12px); 
+            border-color: var(--neon-blue); 
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.25);
+            background: rgba(22, 27, 34, 0.8);
+        }
+
+        .project-card img { width: 100%; border-radius: 8px; margin-bottom: 25px; border: 2px solid rgba(255,255,255,0.05); }
+        .project-card h3 { color: #fff; margin-bottom: 12px; font-size: 1.6rem; font-family: 'Orbitron', sans-serif; }
+        .project-card p { color: #8b949e; font-size: 1rem; margin-bottom: 30px; line-height: 1.6; font-weight: 300;}
 
         .btn-access {
-            display: inline-block; padding: 10px 25px; border: 1px solid var(--neon-blue);
-            color: var(--neon-blue); text-decoration: none; border-radius: 5px;
-            font-size: 0.85rem; font-weight: bold; transition: 0.3s;
+            display: inline-block; padding: 12px 30px; 
+            background: transparent;
+            border: 2px solid var(--neon-purple); color: var(--neon-purple); 
+            text-decoration: none; border-radius: 4px;
+            font-size: 0.9rem; font-weight: bold; transition: 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
         }
-        .btn-access:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 15px var(--neon-blue); }
+        .btn-access:hover { 
+            background: var(--neon-purple); color: #fff; 
+            box-shadow: 0 0 20px var(--neon-purple);
+        }
 
         /* ===== RESPONSIVIDADE ===== */
         @media (max-width: 768px) {
             .mobile-menu-icon { display: block; }
             .nav-links {
                 position: absolute; top: 80px; right: -100%; width: 100%; height: calc(100vh - 80px);
-                background: rgba(10, 11, 16, 0.98); flex-direction: column; padding-top: 40px; transition: 0.5s;
+                background: rgba(3, 0, 5, 0.98); flex-direction: column; padding-top: 50px; transition: 0.5s;
+                border-top: 1px solid rgba(255,255,255,0.05);
             }
             .nav-links.active { right: 0; }
-            .nav-links li { margin: 15px 0; }
-            .lang-switch { border: none; margin-top: 30px; padding: 0; }
-            .hero h1 { font-size: 2.2rem; }
+            .nav-links li { margin: 20px 0; }
+            .nav-links a { font-size: 1.2rem; }
+            .lang-switch { border: none; margin-top: 40px; padding: 0; gap: 20px; }
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -122,9 +177,15 @@
 
     <section class="hero" id="home">
         <h1 data-key="hero-title">Infraestrutura Avançada <br> + Python Backend</h1>
-        <p data-key="hero-sub" style="color: #8b949e; max-width: 700px; font-size: 1.1rem;">
-            Soluções em TI, Automação Inteligente e Ecossistemas SaaS escaláveis com foco em performance.
+        <p data-key="hero-sub" style="color: #8b949e; max-width: 800px; font-size: 1.2rem; font-weight: 300;">
+            Soluções em TI, Automação Inteligente e Ecossistemas SaaS escaláveis com foco em performance e segurança.
         </p>
+        <div class="hero-tags">
+            <span class="tech-tag">Python/Django</span>
+            <span class="tech-tag">Node.js/NestJS</span>
+            <span class="tech-tag">IoT & Automação</span>
+            <span class="tech-tag">APIs REST/GraphQL</span>
+        </div>
     </section>
 
     <section class="projects-section" id="ecosystem">
@@ -132,28 +193,28 @@
         
         <div class="projects-grid">
             <div class="project-card">
-                <img src="IMG-20260504-WA0000.jpg" alt="Portal ERP">
+                <img src="https://akilessimiao.github.io/img/IMG-20260504-WA0000.jpg" alt="Portal ERP">
                 <h3 data-key="p1-title">Portal ERP TD</h3>
                 <p data-key="p1-desc">Gestão comercial completa com PDV de alta performance e integração SaaS.</p>
                 <a href="#" class="btn-access" data-key="btn-open">ABRIR PORTAL</a>
             </div>
 
             <div class="project-card">
-                <img src="IMG-20260430-WA0021.jpg" alt="Portal Jus TD">
+                <img src="https://akilessimiao.github.io/img/IMG-20260430-WA0021.jpg" alt="Portal Jus TD">
                 <h3 data-key="p2-title">Portal Jus TD</h3>
                 <p data-key="p2-desc">Tecnologia jurídica para automação de documentos e gestão processual inteligente.</p>
                 <a href="#" class="btn-access" data-key="btn-open">ABRIR PORTAL</a>
             </div>
 
             <div class="project-card">
-                <img src="Screenshot_20260503-205305_WhatsApp.jpg" alt="Portal Contabil">
+                <img src="https://akilessimiao.github.io/img/Screenshot_20260503-205305_WhatsApp.jpg" alt="Portal Contabil">
                 <h3 data-key="p3-title">Portal Contábil TD</h3>
                 <p data-key="p3-desc">Sincronização em tempo real entre empresas e contabilidade via API.</p>
                 <a href="#" class="btn-access" data-key="btn-open">ABRIR PORTAL</a>
             </div>
 
             <div class="project-card">
-                <img src="ChatGPT Image 4 de mai. de 2026, 00_24_02.png" alt="Portal Rastreamento">
+                <img src="https://akilessimiao.github.io/img/ChatGPT%20Image%204%20de%20mai.%20de%202026,%2000_24_02.png" alt="Portal Rastreamento">
                 <h3 data-key="p4-title">Portal Rastreamento</h3>
                 <p data-key="p4-desc">Monitoramento de frotas e ativos com inteligência de dados e segurança 24h.</p>
                 <a href="#" class="btn-access" data-key="btn-open">ABRIR PORTAL</a>
@@ -161,12 +222,16 @@
         </div>
     </section>
 
+    <div style="text-align: center; color: #444; font-size: 0.8rem; padding: 20px 0; font-family: 'Orbitron', sans-serif;">
+        © 2026 AKILES SIMIÃO | LDT NET
+    </div>
+
     <script>
         const translations = {
             pt: {
                 "nav-home": "Home", "nav-eco": "Ecossistema", "nav-cv": "Currículo", "nav-contact": "Contato",
                 "hero-title": "Infraestrutura Avançada <br> + Python Backend",
-                "hero-sub": "Soluções em TI, Automação Inteligente e Ecossistemas SaaS escaláveis com foco em performance.",
+                "hero-sub": "Soluções em TI, Automação Inteligente e Ecossistemas SaaS escaláveis com foco em performance e segurança.",
                 "eco-title": "Ecossistema Tanque Digital",
                 "p1-title": "Portal ERP TD", "p1-desc": "Gestão comercial completa com PDV de alta performance e integração SaaS.",
                 "p2-title": "Portal Jus TD", "p2-desc": "Tecnologia jurídica para automação de documentos e gestão processual inteligente.",
@@ -177,7 +242,7 @@
             en: {
                 "nav-home": "Home", "nav-eco": "Ecosystem", "nav-cv": "Resume", "nav-contact": "Contact",
                 "hero-title": "Advanced Infrastructure <br> + Python Backend",
-                "hero-sub": "IT Solutions, Intelligent Automation, and Scalable SaaS Ecosystems focused on performance.",
+                "hero-sub": "IT Solutions, Intelligent Automation, and Scalable SaaS Ecosystems focused on performance and security.",
                 "eco-title": "Tanque Digital Ecosystem",
                 "p1-title": "ERP TD Portal", "p1-desc": "Complete commercial management with high-performance POS and SaaS integration.",
                 "p2-title": "Jus TD Portal", "p2-desc": "Legal tech for document automation and intelligent case management.",
@@ -188,17 +253,12 @@
         };
 
         function changeLang(lang) {
-            // Atualiza textos
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
                 el.innerHTML = translations[lang][key];
             });
-
-            // Atualiza botões
             document.querySelectorAll('.flag-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(`btn-${lang}`).classList.add('active');
-            
-            // Salva preferência
             localStorage.setItem('preferredLang', lang);
         }
 
@@ -206,7 +266,6 @@
             document.getElementById('navLinks').classList.toggle('active');
         }
 
-        // Carrega idioma salvo
         window.onload = () => {
             const savedLang = localStorage.getItem('preferredLang') || 'pt';
             changeLang(savedLang);
