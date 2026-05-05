@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LDT NET | Akiles Simião - Senior Python Engineer</title>
+    <title>LDT NET TELECOM | Akiles Simião - Soluções em TI & Automação</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --neon-blue: #00f3ff;
             --neon-purple: #bc13fe;
-            --dark-bg: #030005; /* Fundo quase preto para contraste */
-            --card-bg: rgba(22, 27, 34, 0.6); /* Transparente para ver o fundo */
+            --neon-green: #00ff9d;
+            --dark-bg: #030005;
+            --card-bg: rgba(22, 27, 34, 0.7);
             --text-glow: 0 0 10px rgba(0, 243, 255, 0.7);
+            --transition: all 0.3s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -24,9 +26,10 @@
             background-color: var(--dark-bg);
             color: white;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* ===== FUNDO DE PARTÍCULAS CYBERNETIC (CSS puro para não pesar) ===== */
+        /* ===== FUNDO DE PARTÍCULAS CYBERNETIC ===== */
         body::before {
             content: "";
             position: fixed;
@@ -40,6 +43,7 @@
             z-index: -1;
             opacity: 0.15;
             animation: backgroundMove 60s linear infinite;
+            pointer-events: none;
         }
 
         @keyframes backgroundMove {
@@ -47,230 +51,952 @@
             to { background-position: 550px 550px, 40px 60px, 130px 270px; }
         }
 
-        /* ===== NAVBAR ESTILO TECH ===== */
+        /* ===== NAVBAR ===== */
         nav {
-            background: rgba(3, 0, 5, 0.9);
+            background: rgba(3, 0, 5, 0.95);
             height: 80px;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 5%;
             position: fixed; width: 100%; top: 0; z-index: 1000;
             border-bottom: 2px solid var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         .logo { 
             font-family: 'Orbitron', sans-serif;
-            font-weight: bold; font-size: 1.6rem; 
+            font-weight: 700; font-size: 1.5rem; 
             color: var(--neon-blue); text-shadow: var(--text-glow);
-            letter-spacing: 2px;
+            letter-spacing: 2px; text-decoration: none;
         }
 
-        .nav-links { display: flex; list-style: none; align-items: center; }
-        .nav-links li { padding: 0 15px; }
+        .nav-links { display: flex; list-style: none; align-items: center; gap: 5px; }
+        .nav-links li { padding: 0 8px; }
         .nav-links a { 
-            color: white; text-decoration: none; font-size: 1rem; font-weight: 500;
-            transition: 0.3s; text-transform: uppercase; 
+            color: white; text-decoration: none; font-size: 0.95rem; font-weight: 500;
+            transition: var(--transition); text-transform: uppercase; 
+            padding: 8px 12px; border-radius: 4px;
         }
-        .nav-links a:hover { color: var(--neon-blue); text-shadow: var(--text-glow); }
+        .nav-links a:hover, .nav-links a.active { 
+            color: var(--neon-blue); text-shadow: var(--text-glow); 
+            background: rgba(0, 243, 255, 0.1);
+        }
 
         /* Lang Switcher */
-        .lang-switch { display: flex; gap: 12px; margin-left: 20px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 20px; }
-        .flag-btn { background: none; border: none; cursor: pointer; font-size: 1.4rem; filter: grayscale(100%); transition: 0.3s; opacity: 0.5; }
-        .flag-btn.active { filter: grayscale(0%); opacity: 1; transform: scale(1.2); }
+        .lang-switch { display: flex; gap: 8px; margin-left: 15px; border-left: 1px solid rgba(255,255,255,0.15); padding-left: 15px; }
+        .flag-btn { 
+            background: none; border: 2px solid transparent; cursor: pointer; 
+            font-size: 1.3rem; filter: grayscale(100%); transition: var(--transition); 
+            opacity: 0.5; border-radius: 50%; width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .flag-btn:hover { opacity: 0.8; transform: scale(1.1); }
+        .flag-btn.active { 
+            filter: grayscale(0%); opacity: 1; transform: scale(1.15); 
+            border-color: var(--neon-blue); box-shadow: 0 0 10px rgba(0,243,255,0.5);
+        }
 
-        .mobile-menu-icon { display: none; font-size: 1.8rem; color: var(--neon-blue); cursor: pointer; }
+        .mobile-menu-icon { display: none; font-size: 1.8rem; color: var(--neon-blue); cursor: pointer; padding: 10px; }
 
-        /* ===== HERO ESTILO ORIGINAL ===== */
+        /* ===== HERO SECTION ===== */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 20px;
-            background: radial-gradient(circle at center, rgba(37, 99, 235, 0.1) 0%, #030005 100%);
+            text-align: center; padding: 100px 20px 80px;
+            background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+            position: relative;
         }
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3.8rem; line-height: 1.2; margin-bottom: 20px;
-            color: #fff; text-shadow: 0 0 15px #fff, var(--text-glow);
-            text-transform: uppercase;
+            font-size: 3.2rem; line-height: 1.2; margin-bottom: 25px;
+            color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.8), var(--text-glow);
+            text-transform: uppercase; letter-spacing: 1px;
         }
 
-        .hero-tags { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 20px;}
+        .hero p {
+            color: #a0aec0; max-width: 750px; font-size: 1.25rem; 
+            font-weight: 300; margin-bottom: 30px; line-height: 1.7;
+        }
+
+        .hero-tags { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 25px;}
         .tech-tag {
-            font-size: 0.8rem; color: var(--neon-blue); border: 1px solid var(--neon-blue);
-            padding: 5px 12px; border-radius: 20px; font-weight: bold; text-transform: uppercase;
+            font-size: 0.85rem; color: var(--neon-blue); border: 1px solid var(--neon-blue);
+            padding: 6px 14px; border-radius: 25px; font-weight: 600; text-transform: uppercase;
+            background: rgba(0, 243, 255, 0.08); transition: var(--transition);
+        }
+        .tech-tag:hover { background: rgba(0, 243, 255, 0.2); box-shadow: 0 0 15px rgba(0,243,255,0.4); }
+
+        .hero-cta {
+            margin-top: 35px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;
         }
 
-        /* ===== PROJETOS ORGANIZADOS E BRILHANTES ===== */
-        .projects-section { padding: 100px 5%; }
+        .btn-primary {
+            padding: 14px 32px; background: linear-gradient(135deg, var(--neon-blue), #00a8cc);
+            border: none; color: #000; border-radius: 6px; font-weight: 700;
+            text-decoration: none; text-transform: uppercase; letter-spacing: 1px;
+            transition: var(--transition); box-shadow: 0 0 20px rgba(0,243,255,0.4);
+            font-size: 0.95rem;
+        }
+        .btn-primary:hover { 
+            transform: translateY(-3px); box-shadow: 0 0 35px rgba(0,243,255,0.7);
+        }
+
+        .btn-secondary {
+            padding: 14px 32px; background: transparent;
+            border: 2px solid var(--neon-purple); color: var(--neon-purple); 
+            border-radius: 6px; font-weight: 700; text-decoration: none;
+            transition: var(--transition); text-transform: uppercase; letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+        .btn-secondary:hover { 
+            background: var(--neon-purple); color: #fff; 
+            box-shadow: 0 0 25px var(--neon-purple); transform: translateY(-3px);
+        }
+
+        /* ===== SECTIONS GENERAL ===== */
+        section { padding: 90px 5%; }
         .section-title { 
             font-family: 'Orbitron', sans-serif;
-            text-align: center; margin-bottom: 70px; font-size: 2.8rem; 
+            text-align: center; margin-bottom: 60px; font-size: 2.5rem; 
             color: var(--neon-blue); text-shadow: var(--text-glow);
-            text-transform: uppercase;
+            text-transform: uppercase; position: relative; padding-bottom: 15px;
+        }
+        .section-title::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 80px; height: 3px; background: var(--neon-blue);
+            border-radius: 2px; box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* ===== SOBRE ===== */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .about-text h3 {
+            font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-bottom: 20px;
+            color: var(--neon-green);
+        }
+        .about-text p { margin-bottom: 18px; color: #cbd5e0; font-weight: 300; }
+        .about-highlights {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 25px;
+        }
+        .highlight-item {
+            display: flex; align-items: center; gap: 10px; color: #a0aec0; font-size: 0.95rem;
+        }
+        .highlight-item i { color: var(--neon-blue); font-size: 1.1rem; }
+
+        .about-image {
+            position: relative; border-radius: 12px; overflow: hidden;
+            border: 2px solid rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+        }
+        .about-image img { width: 100%; display: block; transition: var(--transition); }
+        .about-image:hover img { transform: scale(1.03); }
+
+        /* ===== SERVIÇOS ===== */
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; max-width: 1400px; margin: 0 auto;
         }
         
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .service-card {
+            background: var(--card-bg); border-radius: 12px; padding: 35px 30px;
+            border: 1px solid rgba(0, 243, 255, 0.25); transition: var(--transition);
+            position: relative; backdrop-filter: blur(8px);
+            text-align: center;
+        }
+        .service-card:hover { 
+            transform: translateY(-8px); border-color: var(--neon-blue); 
+            box-shadow: 0 10px 40px rgba(0, 243, 255, 0.25);
+            background: rgba(22, 27, 34, 0.85);
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            opacity: 0; transition: var(--transition);
+        }
+        .service-card:hover::before { opacity: 1; }
+
+        .service-icon {
+            font-size: 2.5rem; color: var(--neon-blue); margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
+        }
+        .service-card h3 { 
+            color: #fff; margin-bottom: 15px; font-size: 1.4rem; 
+            font-family: 'Orbitron', sans-serif; 
+        }
+        .service-card p { color: #a0aec0; font-size: 1rem; font-weight: 300; }
+
+        /* ===== ESTATÍSTICAS ===== */
+        .stats-section {
+            background: linear-gradient(135deg, rgba(0,243,255,0.08), rgba(188,19,254,0.08));
+            border-top: 1px solid rgba(0,243,255,0.2);
+            border-bottom: 1px solid rgba(0,243,255,0.2);
+        }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px; text-align: center; max-width: 1000px; margin: 0 auto;
+        }
+        .stat-item h4 {
+            font-family: 'Orbitron', sans-serif; font-size: 2.8rem; color: var(--neon-blue);
+            text-shadow: var(--text-glow); margin-bottom: 5px;
+        }
+        .stat-item p { color: #a0aec0; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ===== ECOSISTEMA ===== */
+        .projects-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px; max-width: 1400px; margin: 0 auto;
+        }
         
         .project-card {
-            background: var(--card-bg); border-radius: 12px; padding: 30px;
-            border: 1px solid rgba(0, 243, 255, 0.2); transition: 0.5s; text-align: center;
-            position: relative; backdrop-filter: blur(5px);
+            background: var(--card-bg); border-radius: 12px; overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.2); transition: var(--transition);
+            backdrop-filter: blur(5px); display: flex; flex-direction: column;
         }
         .project-card:hover { 
-            transform: translateY(-12px); 
-            border-color: var(--neon-blue); 
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.25);
-            background: rgba(22, 27, 34, 0.8);
+            transform: translateY(-10px); border-color: var(--neon-purple); 
+            box-shadow: 0 15px 50px rgba(188, 19, 254, 0.3);
         }
 
-        .project-card img { width: 100%; border-radius: 8px; margin-bottom: 25px; border: 2px solid rgba(255,255,255,0.05); }
-        .project-card h3 { color: #fff; margin-bottom: 12px; font-size: 1.6rem; font-family: 'Orbitron', sans-serif; }
-        .project-card p { color: #8b949e; font-size: 1rem; margin-bottom: 30px; line-height: 1.6; font-weight: 300;}
+        .project-card img { 
+            width: 100%; height: 180px; object-fit: cover; 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+        .project-card:hover img { transform: scale(1.05); }
+
+        .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-content h3 { 
+            color: #fff; margin-bottom: 12px; font-size: 1.35rem; 
+            font-family: 'Orbitron', sans-serif; 
+        }
+        .project-content p { 
+            color: #a0aec0; font-size: 0.95rem; margin-bottom: 20px; 
+            flex-grow: 1; font-weight: 300;
+        }
 
         .btn-access {
-            display: inline-block; padding: 12px 30px; 
-            background: transparent;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 12px 24px; background: transparent;
             border: 2px solid var(--neon-purple); color: var(--neon-purple); 
-            text-decoration: none; border-radius: 4px;
-            font-size: 0.9rem; font-weight: bold; transition: 0.3s;
-            text-transform: uppercase; letter-spacing: 1px;
+            text-decoration: none; border-radius: 6px;
+            font-size: 0.9rem; font-weight: 700; transition: var(--transition);
+            text-transform: uppercase; letter-spacing: 0.5px;
+            align-self: flex-start;
         }
         .btn-access:hover { 
             background: var(--neon-purple); color: #fff; 
-            box-shadow: 0 0 20px var(--neon-purple);
+            box-shadow: 0 0 25px var(--neon-purple);
+        }
+
+        /* ===== CONTATO ===== */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(3,0,5,0.95), rgba(15,10,25,0.95));
+        }
+        .contact-container {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+            max-width: 1200px; margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-bottom: 25px;
+            color: var(--neon-green);
+        }
+        .contact-item {
+            display: flex; align-items: flex-start; gap: 15px; margin-bottom: 25px;
+            padding: 15px; border-radius: 8px; background: rgba(255,255,255,0.03);
+            transition: var(--transition);
+        }
+        .contact-item:hover { background: rgba(0,243,255,0.1); }
+        .contact-item i {
+            font-size: 1.4rem; color: var(--neon-blue); margin-top: 3px;
+        }
+        .contact-item div strong { display: block; color: #fff; margin-bottom: 3px; }
+        .contact-item div span { color: #a0aec0; font-size: 0.95rem; }
+
+        .social-links { display: flex; gap: 15px; margin-top: 30px; }
+        .social-btn {
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+            color: white; font-size: 1.3rem; transition: var(--transition);
+            text-decoration: none;
+        }
+        .social-btn:hover {
+            background: var(--neon-blue); color: #000;
+            transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,243,255,0.4);
+        }
+
+        .contact-form {
+            background: var(--card-bg); padding: 40px; border-radius: 16px;
+            border: 1px solid rgba(0, 243, 255, 0.25); backdrop-filter: blur(10px);
+        }
+        .form-group { margin-bottom: 22px; }
+        .form-group label {
+            display: block; margin-bottom: 8px; color: #cbd5e0; font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .form-control {
+            width: 100%; padding: 14px 18px; background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;
+            color: white; font-family: 'Rajdhani', sans-serif; font-size: 1rem;
+            transition: var(--transition);
+        }
+        .form-control:focus {
+            outline: none; border-color: var(--neon-blue);
+            box-shadow: 0 0 0 3px rgba(0,243,255,0.2);
+        }
+        textarea.form-control { min-height: 120px; resize: vertical; }
+
+        .form-note {
+            font-size: 0.85rem; color: #718096; margin-top: 8px; font-style: italic;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(2, 0, 4, 0.98); padding: 40px 5% 25px;
+            border-top: 1px solid rgba(0,243,255,0.2); text-align: center;
+        }
+        .footer-content {
+            max-width: 1200px; margin: 0 auto;
+        }
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif; font-size: 1.4rem;
+            color: var(--neon-blue); text-shadow: var(--text-glow);
+            margin-bottom: 20px; display: inline-block; text-decoration: none;
+        }
+        .footer-links {
+            display: flex; justify-content: center; gap: 25px; margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #a0aec0; text-decoration: none; transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        .footer-links a:hover { color: var(--neon-blue); }
+        .footer-copyright {
+            color: #718096; font-size: 0.9rem; margin-top: 20px;
+            padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 992px) {
+            .about-grid, .contact-container { grid-template-columns: 1fr; }
+            .about-image { order: -1; max-width: 500px; margin: 0 auto; }
+            .hero h1 { font-size: 2.6rem; }
+            .hero p { font-size: 1.15rem; }
+        }
+
         @media (max-width: 768px) {
             .mobile-menu-icon { display: block; }
             .nav-links {
-                position: absolute; top: 80px; right: -100%; width: 100%; height: calc(100vh - 80px);
-                background: rgba(3, 0, 5, 0.98); flex-direction: column; padding-top: 50px; transition: 0.5s;
-                border-top: 1px solid rgba(255,255,255,0.05);
+                position: fixed; top: 80px; right: -100%; width: 100%; height: calc(100vh - 80px);
+                background: rgba(3, 0, 5, 0.98); flex-direction: column; 
+                padding: 40px 20px; transition: 0.4s ease;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                overflow-y: auto;
             }
             .nav-links.active { right: 0; }
-            .nav-links li { margin: 20px 0; }
-            .nav-links a { font-size: 1.2rem; }
-            .lang-switch { border: none; margin-top: 40px; padding: 0; gap: 20px; }
-            .hero h1 { font-size: 2.5rem; }
+            .nav-links li { margin: 8px 0; width: 100%; }
+            .nav-links a { 
+                font-size: 1.2rem; display: block; padding: 12px 20px; 
+                border-radius: 8px; text-align: center;
+            }
+            .lang-switch { 
+                border: none; margin-top: 30px; padding: 0; gap: 15px; 
+                justify-content: center; width: 100%;
+            }
+            
+            .hero h1 { font-size: 2.2rem; }
+            .section-title { font-size: 2rem; }
+            .about-highlights { grid-template-columns: 1fr; }
+            
+            .contact-form { padding: 30px 25px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
+
+        @media (max-width: 480px) {
+            nav { padding: 0 3%; height: 70px; }
+            .logo { font-size: 1.3rem; }
+            .hero { padding: 90px 15px 70px; }
+            .hero h1 { font-size: 1.9rem; }
+            .hero-tags { gap: 8px; }
+            .tech-tag { font-size: 0.75rem; padding: 5px 10px; }
+            .hero-cta { flex-direction: column; align-items: center; }
+            .btn-primary, .btn-secondary { width: 100%; max-width: 300px; }
+            
+            section { padding: 70px 4%; }
+            .section-title { font-size: 1.8rem; }
+            
+            .service-card { padding: 28px 22px; }
+            .service-icon { font-size: 2.2rem; }
+            
+            .stat-item h4 { font-size: 2.3rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            
+            .footer-links { gap: 15px; flex-direction: column; align-items: center; }
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .pulse { animation: pulse 2s infinite; }
+
+        /* ===== UTILITÁRIOS ===== */
+        .text-center { text-align: center; }
+        .mb-30 { margin-bottom: 30px; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
+    <!-- NAVBAR -->
     <nav>
-        <div class="logo">LDT NET</div>
+        <a href="#home" class="logo">LDT NET</a>
         <div class="mobile-menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 
         <ul class="nav-links" id="navLinks">
-            <li><a href="#home" data-key="nav-home">Home</a></li>
-            <li><a href="#ecosystem" data-key="nav-eco">Ecossistema</a></li>
-            <li><a href="curriculo-imprimir.html" data-key="nav-cv">Currículo</a></li>
-            <li><a href="https://wa.me/5584994554714" data-key="nav-contact">Contato</a></li>
+            <li><a href="#home" data-key="nav-home" class="active">Home</a></li>
+            <li><a href="#sobre" data-key="nav-about">Sobre</a></li>
+            <li><a href="#servicos" data-key="nav-services">Serviços</a></li>
+            <li><a href="#ecosistema" data-key="nav-ecosystem">Ecossistema</a></li>
+            <li><a href="curriculo-imprimir.html" data-key="nav-cv" target="_blank">Currículo</a></li>
+            <li><a href="perfil-comportamental.html" data-key="nav-profile">Perfil</a></li>
+            <li><a href="https://tanquedigital.com.br" data-key="nav-td" target="_blank">Tanque Digital</a></li>
+            <li><a href="#contato" data-key="nav-contact">Contato</a></li>
             
             <div class="lang-switch">
-                <button class="flag-btn active" onclick="changeLang('pt')" id="btn-pt">🇧🇷</button>
-                <button class="flag-btn" onclick="changeLang('en')" id="btn-en">🇺🇸</button>
+                <button class="flag-btn active" onclick="changeLang('pt')" id="btn-pt" title="Português">🇧🇷</button>
+                <button class="flag-btn" onclick="changeLang('en')" id="btn-en" title="English">🇺🇸</button>
             </div>
         </ul>
     </nav>
 
+    <!-- HERO -->
     <section class="hero" id="home">
-        <h1 data-key="hero-title">Infraestrutura Avançada <br> + Python Backend</h1>
-        <p data-key="hero-sub" style="color: #8b949e; max-width: 800px; font-size: 1.2rem; font-weight: 300;">
-            Soluções em TI, Automação Inteligente e Ecossistemas SaaS escaláveis com foco em performance e segurança.
+        <h1 data-key="hero-title">🚀 Soluções em TI & Automação Inteligente</h1>
+        <p data-key="hero-sub">
+            Infraestrutura Avançada + Desenvolvimento Fullstack. Diagnóstico preciso, configuração profissional e suporte próximo em Natal/RN. Do cabo de rede ao código, entrego soluções completas que funcionam.
         </p>
         <div class="hero-tags">
             <span class="tech-tag">Python/Django</span>
             <span class="tech-tag">Node.js/NestJS</span>
+            <span class="tech-tag">FTTH/EPON</span>
             <span class="tech-tag">IoT & Automação</span>
             <span class="tech-tag">APIs REST/GraphQL</span>
         </div>
+        <div class="hero-cta">
+            <a href="#servicos" class="btn-primary" data-key="btn-services">Ver Serviços</a>
+            <a href="https://wa.me/5584994554714" class="btn-secondary" target="_blank" data-key="btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> <span data-key="btn-whatsapp-text">WhatsApp</span>
+            </a>
+        </div>
     </section>
 
-    <section class="projects-section" id="ecosystem">
+    <!-- SOBRE -->
+    <section id="sobre">
+        <h2 class="section-title" data-key="about-title">Quem sou eu?</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3 data-key="about-subtitle">Atuo em Natal/RN com foco em soluções reais, rápidas e confiáveis.</h3>
+                <p data-key="about-p1">
+                    Minha trajetória une infraestrutura de redes FTTH, automação inteligente e desenvolvimento de software fullstack. Como fundador da LDT NET TELECOM e parceiro da Tanque Digital, entrego desde a configuração de um roteador até sistemas web completos com Python, Node.js e APIs modernas.
+                </p>
+                <p data-key="about-p2">
+                    Meu diferencial: perfil comportamental <strong>Inspirador (DISC)</strong> — comunicação clara, persuasão ética e foco em resultados que geram valor real para você.
+                </p>
+                <div class="about-highlights">
+                    <div class="highlight-item"><i class="fas fa-check-circle"></i> <span data-key="highlight-1">60+ Projetos Entregues</span></div>
+                    <div class="highlight-item"><i class="fas fa-check-circle"></i> <span data-key="highlight-2">Suporte em Natal/RN</span></div>
+                    <div class="highlight-item"><i class="fas fa-check-circle"></i> <span data-key="highlight-3">Fullstack + Infraestrutura</span></div>
+                    <div class="highlight-item"><i class="fas fa-check-circle"></i> <span data-key="highlight-4">Resposta em até 24h</span></div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://thumbs.dreamstime.com/b/futuristic-hud-interface-glowing-blue-orange-elements-radar-screen-gaming-dashboard-ui-panel-crosshairs-target-lock-tech-366212546.jpg" alt="Centro de Operações LDT NET" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTATÍSTICAS -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h4 class="pulse">60+</h4>
+                <p data-key="stat-projects">Projetos</p>
+            </div>
+            <div class="stat-item">
+                <h4>2020</h4>
+                <p data-key="stat-start">Início</p>
+            </div>
+            <div class="stat-item">
+                <h4>100%</h4>
+                <p data-key="stat-focus">Foco</p>
+            </div>
+            <div class="stat-item">
+                <h4>24h</h4>
+                <p data-key="stat-response">Resposta</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos">
+        <h2 class="section-title" data-key="services-title">Serviços Principais</h2>
+        <p class="text-center mb-30" data-key="services-sub" style="color:#a0aec0; max-width:700px; margin:0 auto 50px;">
+            Soluções completas para residências e empresas em Natal/RN
+        </p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-wifi"></i></div>
+                <h3 data-key="svc-wifi-title">Redes Wi-Fi & Cabeamento</h3>
+                <p data-key="svc-wifi-desc">Projetos completos, análise de cobertura, otimização de sinal e segurança avançada para sua rede funcionar com estabilidade total.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-home"></i></div>
+                <h3 data-key="svc-auto-title">Automação Residencial</h3>
+                <p data-key="svc-auto-desc">Luzes, tomadas, câmeras, assistentes e cenários inteligentes – tudo integrado, simples de usar e funcional no seu dia a dia.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-code"></i></div>
+                <h3 data-key="svc-dev-title">Desenvolvimento Fullstack</h3>
+                <p data-key="svc-dev-desc">Sistemas web completos com Python/Django, Node.js, APIs REST/GraphQL, MySQL e deploy em nuvem. Do conceito à produção.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-tools"></i></div>
+                <h3 data-key="svc-support-title">Manutenção & Suporte TI</h3>
+                <p data-key="svc-support-desc">Computadores, servidores, backups, recuperação de dados, segurança da informação e suporte técnico especializado.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-fiber"></i></div>
+                <h3 data-key="svc-ftth-title">Infraestrutura FTTH</h3>
+                <p data-key="svc-ftth-desc">Planejamento, instalação e gerenciamento de redes de fibra óptica com monitoramento proativo e alta disponibilidade.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-robot"></i></div>
+                <h3 data-key="svc-iot-title">IoT & Automação Industrial</h3>
+                <p data-key="svc-iot-desc">Soluções de Internet das Coisas para automação de processos, monitoramento remoto e integração hardware-software.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ECOSISTEMA -->
+    <section id="ecosistema" class="stats-section">
         <h2 class="section-title" data-key="eco-title">Ecossistema Tanque Digital</h2>
         
         <div class="projects-grid">
             <div class="project-card">
-                <img src="https://akilessimiao.github.io/img/IMG-20260504-WA0000.jpg" alt="Portal ERP">
-                <h3 data-key="p1-title">Portal ERP TD</h3>
-                <p data-key="p1-desc">Gestão comercial completa com PDV de alta performance e integração SaaS.</p>
-                <a href="#" class="btn-access" data-key="btn-open">ABRIR PORTAL</a>
+                <img src="https://akilessimiao.github.io/erptd.png" alt="Portal ERP TD" loading="lazy">
+                <div class="project-content">
+                    <h3 data-key="p1-title">Portal ERP TD</h3>
+                    <p data-key="p1-desc">Gestão comercial completa com PDV de alta performance e integração SaaS.</p>
+                    <a href="https://erp.tanquedigitall.com.br" class="btn-access" target="_blank" data-key="btn-open">
+                        <i class="fas fa-external-link-alt"></i> <span data-key="btn-open-text">ABRIR PORTAL</span>
+                    </a>
+                </div>
             </div>
 
             <div class="project-card">
-                <img src="https://akilessimiao.github.io/img/IMG-20260430-WA0021.jpg" alt="Portal Jus TD">
-                <h3 data-key="p2-title">Portal Jus TD</h3>
-                <p data-key="p2-desc">Tecnologia jurídica para automação de documentos e gestão processual inteligente.</p>
-                <a href="#" class="btn-access" data-key="btn-open">ABRIR PORTAL</a>
+                <img src="https://akilessimiao.github.io/justd.png" alt="Portal Jus TD" loading="lazy">
+                <div class="project-content">
+                    <h3 data-key="p2-title">Portal Jus TD</h3>
+                    <p data-key="p2-desc">Tecnologia jurídica para automação de documentos e gestão processual inteligente.</p>
+                    <a href="https://jus.tanquedigitall.com.br" class="btn-access" target="_blank" data-key="btn-open">
+                        <i class="fas fa-external-link-alt"></i> <span data-key="btn-open-text">ABRIR PORTAL</span>
+                    </a>
+                </div>
             </div>
 
             <div class="project-card">
-                <img src="https://akilessimiao.github.io/img/Screenshot_20260503-205305_WhatsApp.jpg" alt="Portal Contabil">
-                <h3 data-key="p3-title">Portal Contábil TD</h3>
-                <p data-key="p3-desc">Sincronização em tempo real entre empresas e contabilidade via API.</p>
-                <a href="#" class="btn-access" data-key="btn-open">ABRIR PORTAL</a>
+                <img src="https://akilessimiao.github.io/conttd.png" alt="Portal Contábil TD" loading="lazy">
+                <div class="project-content">
+                    <h3 data-key="p3-title">Portal Contábil TD</h3>
+                    <p data-key="p3-desc">Sincronização em tempo real entre empresas e contabilidade via API.</p>
+                    <a href="https://contabil.tanquedigitall.com.br" class="btn-access" target="_blank" data-key="btn-open">
+                        <i class="fas fa-external-link-alt"></i> <span data-key="btn-open-text">ABRIR PORTAL</span>
+                    </a>
+                </div>
             </div>
 
             <div class="project-card">
-                <img src="https://akilessimiao.github.io/img/ChatGPT%20Image%204%20de%20mai.%20de%202026,%2000_24_02.png" alt="Portal Rastreamento">
-                <h3 data-key="p4-title">Portal Rastreamento</h3>
-                <p data-key="p4-desc">Monitoramento de frotas e ativos com inteligência de dados e segurança 24h.</p>
-                <a href="#" class="btn-access" data-key="btn-open">ABRIR PORTAL</a>
+                <img src="https://akilessimiao.github.io/rastd.png" alt="Portal Rastreamento" loading="lazy">
+                <div class="project-content">
+                    <h3 data-key="p4-title">Portal Rastreamento</h3>
+                    <p data-key="p4-desc">Monitoramento de frotas e ativos com inteligência de dados e segurança 24h.</p>
+                    <a href="https://rastreamento.tanquedigitall.com.br" class="btn-access" target="_blank" data-key="btn-open">
+                        <i class="fas fa-external-link-alt"></i> <span data-key="btn-open-text">ABRIR PORTAL</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <div style="text-align: center; color: #444; font-size: 0.8rem; padding: 20px 0; font-family: 'Orbitron', sans-serif;">
-        © 2026 AKILES SIMIÃO | LDT NET
-    </div>
+    <!-- CONTATO -->
+    <section id="contato" class="contact-section">
+        <h2 class="section-title" data-key="contact-title">💬 Fale Comigo Agora</h2>
+        <p class="text-center mb-30" data-key="contact-sub" style="color:#a0aec0; max-width:600px; margin:0 auto 40px;">
+            Orçamento rápido • Resposta em até 24h • WhatsApp ou Formulário
+        </p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 data-key="contact-info-title">Informações de Contato</h3>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong data-key="contact-location">Localização</strong>
+                        <span>📍 Natal/RN, Brasil</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>WhatsApp</strong>
+                        <span><a href="https://wa.me/5584994554714" style="color:var(--neon-green); text-decoration:none;">(84) 99455-4714</a></span>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong data-key="contact-hours">Horário de Atendimento</strong>
+                        <span data-key="contact-hours-value">Seg-Sex: 08h-18h • Sáb: 09h-13h</span>
+                    </div>
+                </div>
 
+                <div class="contact-item">
+                    <i class="fas fa-bolt"></i>
+                    <div>
+                        <strong data-key="contact-response">Tempo de Resposta</strong>
+                        <span data-key="contact-response-value">Até 24 horas úteis</span>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/akilessimiao" class="social-btn" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/akilessimiao" class="social-btn" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://tanquedigital.com.br" class="social-btn" target="_blank" title="Tanque Digital"><i class="fas fa-building"></i></a>
+                    <a href="curriculo-imprimir.html" class="social-btn" target="_blank" title="Currículo"><i class="fas fa-file-pdf"></i></a>
+                </div>
+            </div>
+
+            <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name" data-key="form-name">Nome Completo *</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" data-key="form-email">E-mail *</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="whatsapp" data-key="form-whatsapp">WhatsApp (opcional)</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" class="form-control" placeholder="(84) 9xxxx-xxxx">
+                    <small class="form-note" data-key="form-whatsapp-note">Para contato mais rápido via mensagem</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service" data-key="form-service">Tipo de Serviço *</label>
+                    <select id="service" name="service" class="form-control" required>
+                        <option value="" data-key="form-select">Selecione uma opção...</option>
+                        <option value="auto" data-key="svc-auto-title">🏠 Automação Residencial</option>
+                        <option value="web" data-key="svc-dev-title">💻 Desenvolvimento Web</option>
+                        <option value="iot" data-key="svc-iot-title">🤖 IoT & Automação Industrial</option>
+                        <option value="software" data-key="form-software">⚙️ Desenvolvimento de Software</option>
+                        <option value="ftth" data-key="svc-ftth-title">🌐 Projetos FTTH/Redes</option>
+                        <option value="support" data-key="svc-support-title">🔧 Suporte Técnico TI</option>
+                        <option value="other" data-key="form-other">✨ Outro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject" data-key="form-subject">Assunto *</label>
+                    <input type="text" id="subject" name="subject" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" data-key="form-message">Descrição Detalhada *</label>
+                    <textarea id="message" name="message" class="form-control" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="attachment" data-key="form-attachment">Link de Anexos (opcional)</label>
+                    <input type="url" id="attachment" name="attachment" class="form-control" placeholder="https://drive.google.com/...">
+                    <small class="form-note" data-key="form-attachment-note">📎 Para arquivos: faça upload no Google Drive/Dropbox e cole o link público aqui</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-time" data-key="form-time">Melhor Horário para Contato</label>
+                    <input type="text" id="contact-time" name="contact-time" class="form-control" placeholder="Ex: Manhã, Tarde, 14h-16h...">
+                </div>
+                
+                <button type="submit" class="btn-primary" style="width:100%; margin-top:10px;" data-key="btn-send">
+                    <i class="fas fa-paper-plane"></i> <span data-key="btn-send-text">ENVIAR SOLICITAÇÃO</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <a href="#home" class="footer-logo">LDT NET TELECOM</a>
+            <p style="color:#a0aec0; margin-bottom:15px;">
+                &amp; <a href="https://tanquedigital.com.br" style="color:var(--neon-blue); text-decoration:none;">Tanque Digital</a> • Akiles Simião
+            </p>
+            
+            <div class="footer-links">
+                <a href="curriculo-imprimir.html" target="_blank" data-key="nav-cv">📄 Currículo</a>
+                <a href="perfil-comportamental.html" data-key="nav-profile">🧭 Perfil Comportamental</a>
+                <a href="https://tanquedigital.com.br" target="_blank" data-key="nav-td">🏢 Tanque Digital</a>
+                <a href="https://github.com/akilessimiao" target="_blank">🐙 GitHub</a>
+                <a href="https://linkedin.com/in/akilessimiao" target="_blank">💼 LinkedIn</a>
+            </div>
+            
+            <p class="footer-copyright">
+                © 2020-2026 LDT NET TELECOM • 📍 Natal/RN • 📱 <a href="https://wa.me/5584994554714" style="color:var(--neon-green);">(84) 99455-4714</a><br>
+                <span style="opacity:0.7" data-key="footer-dev">Desenvolvido com ❤️ por Akiles Simião • Python • Node.js • FTTH • IoT</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
     <script>
+        // ===== TRADUÇÕES =====
         const translations = {
             pt: {
-                "nav-home": "Home", "nav-eco": "Ecossistema", "nav-cv": "Currículo", "nav-contact": "Contato",
-                "hero-title": "Infraestrutura Avançada <br> + Python Backend",
-                "hero-sub": "Soluções em TI, Automação Inteligente e Ecossistemas SaaS escaláveis com foco em performance e segurança.",
+                // Navegação
+                "nav-home": "Home", "nav-about": "Sobre", "nav-services": "Serviços", 
+                "nav-ecosystem": "Ecossistema", "nav-cv": "Currículo", "nav-profile": "Perfil",
+                "nav-td": "Tanque Digital", "nav-contact": "Contato",
+                
+                // Hero
+                "hero-title": "🚀 Soluções em TI & Automação Inteligente",
+                "hero-sub": "Infraestrutura Avançada + Desenvolvimento Fullstack. Diagnóstico preciso, configuração profissional e suporte próximo em Natal/RN. Do cabo de rede ao código, entrego soluções completas que funcionam.",
+                "btn-services": "Ver Serviços", "btn-whatsapp": "WhatsApp", "btn-whatsapp-text": "WhatsApp",
+                
+                // Sobre
+                "about-title": "Quem sou eu?", "about-subtitle": "Atuo em Natal/RN com foco em soluções reais, rápidas e confiáveis.",
+                "about-p1": "Minha trajetória une infraestrutura de redes FTTH, automação inteligente e desenvolvimento de software fullstack. Como fundador da LDT NET TELECOM e parceiro da Tanque Digital, entrego desde a configuração de um roteador até sistemas web completos com Python, Node.js e APIs modernas.",
+                "about-p2": "Meu diferencial: perfil comportamental <strong>Inspirador (DISC)</strong> — comunicação clara, persuasão ética e foco em resultados que geram valor real para você.",
+                "highlight-1": "60+ Projetos Entregues", "highlight-2": "Suporte em Natal/RN",
+                "highlight-3": "Fullstack + Infraestrutura", "highlight-4": "Resposta em até 24h",
+                
+                // Stats
+                "stat-projects": "Projetos", "stat-start": "Início", "stat-focus": "Foco", "stat-response": "Resposta",
+                
+                // Serviços
+                "services-title": "Serviços Principais", "services-sub": "Soluções completas para residências e empresas em Natal/RN",
+                "svc-wifi-title": "Redes Wi-Fi & Cabeamento", "svc-wifi-desc": "Projetos completos, análise de cobertura, otimização de sinal e segurança avançada para sua rede funcionar com estabilidade total.",
+                "svc-auto-title": "Automação Residencial", "svc-auto-desc": "Luzes, tomadas, câmeras, assistentes e cenários inteligentes – tudo integrado, simples de usar e funcional no seu dia a dia.",
+                "svc-dev-title": "Desenvolvimento Fullstack", "svc-dev-desc": "Sistemas web completos com Python/Django, Node.js, APIs REST/GraphQL, MySQL e deploy em nuvem. Do conceito à produção.",
+                "svc-support-title": "Manutenção & Suporte TI", "svc-support-desc": "Computadores, servidores, backups, recuperação de dados, segurança da informação e suporte técnico especializado.",
+                "svc-ftth-title": "Infraestrutura FTTH", "svc-ftth-desc": "Planejamento, instalação e gerenciamento de redes de fibra óptica com monitoramento proativo e alta disponibilidade.",
+                "svc-iot-title": "IoT & Automação Industrial", "svc-iot-desc": "Soluções de Internet das Coisas para automação de processos, monitoramento remoto e integração hardware-software.",
+                
+                // Ecossistema
                 "eco-title": "Ecossistema Tanque Digital",
                 "p1-title": "Portal ERP TD", "p1-desc": "Gestão comercial completa com PDV de alta performance e integração SaaS.",
                 "p2-title": "Portal Jus TD", "p2-desc": "Tecnologia jurídica para automação de documentos e gestão processual inteligente.",
                 "p3-title": "Portal Contábil TD", "p3-desc": "Sincronização em tempo real entre empresas e contabilidade via API.",
                 "p4-title": "Portal Rastreamento", "p4-desc": "Monitoramento de frotas e ativos com inteligência de dados e segurança 24h.",
-                "btn-open": "ABRIR PORTAL"
+                "btn-open": "ABRIR PORTAL", "btn-open-text": "ABRIR PORTAL",
+                
+                // Contato
+                "contact-title": "💬 Fale Comigo Agora", "contact-sub": "Orçamento rápido • Resposta em até 24h • WhatsApp ou Formulário",
+                "contact-info-title": "Informações de Contato", "contact-location": "Localização",
+                "contact-hours": "Horário de Atendimento", "contact-hours-value": "Seg-Sex: 08h-18h • Sáb: 09h-13h",
+                "contact-response": "Tempo de Resposta", "contact-response-value": "Até 24 horas úteis",
+                "form-name": "Nome Completo *", "form-email": "E-mail *", "form-whatsapp": "WhatsApp (opcional)",
+                "form-whatsapp-note": "Para contato mais rápido via mensagem", "form-service": "Tipo de Serviço *",
+                "form-select": "Selecione uma opção...", "form-software": "⚙️ Desenvolvimento de Software",
+                "form-other": "✨ Outro", "form-subject": "Assunto *", "form-message": "Descrição Detalhada *",
+                "form-attachment": "Link de Anexos (opcional)", "form-attachment-note": "📎 Para arquivos: faça upload no Google Drive/Dropbox e cole o link público aqui",
+                "form-time": "Melhor Horário para Contato", "btn-send": "ENVIAR SOLICITAÇÃO", "btn-send-text": "ENVIAR SOLICITAÇÃO",
+                
+                // Footer
+                "footer-dev": "Desenvolvido com ❤️ por Akiles Simião • Python • Node.js • FTTH • IoT"
             },
             en: {
-                "nav-home": "Home", "nav-eco": "Ecosystem", "nav-cv": "Resume", "nav-contact": "Contact",
-                "hero-title": "Advanced Infrastructure <br> + Python Backend",
-                "hero-sub": "IT Solutions, Intelligent Automation, and Scalable SaaS Ecosystems focused on performance and security.",
+                // Navigation
+                "nav-home": "Home", "nav-about": "About", "nav-services": "Services", 
+                "nav-ecosystem": "Ecosystem", "nav-cv": "Resume", "nav-profile": "Profile",
+                "nav-td": "Tanque Digital", "nav-contact": "Contact",
+                
+                // Hero
+                "hero-title": "🚀 IT Solutions & Intelligent Automation",
+                "hero-sub": "Advanced Infrastructure + Fullstack Development. Precise diagnostics, professional configuration, and local support in Natal/RN. From network cables to code, I deliver complete solutions that work.",
+                "btn-services": "View Services", "btn-whatsapp": "WhatsApp", "btn-whatsapp-text": "WhatsApp",
+                
+                // About
+                "about-title": "Who am I?", "about-subtitle": "Based in Natal/RN, focused on real, fast, and reliable solutions.",
+                "about-p1": "My journey combines FTTH network infrastructure, intelligent automation, and fullstack software development. As founder of LDT NET TELECOM and partner at Tanque Digital, I deliver everything from router configuration to complete web systems with Python, Node.js, and modern APIs.",
+                "about-p2": "My differentiator: <strong>Inspirer (DISC)</strong> behavioral profile — clear communication, ethical persuasion, and focus on results that generate real value for you.",
+                "highlight-1": "60+ Projects Delivered", "highlight-2": "Local Support in Natal/RN",
+                "highlight-3": "Fullstack + Infrastructure", "highlight-4": "Response within 24h",
+                
+                // Stats
+                "stat-projects": "Projects", "stat-start": "Started", "stat-focus": "Focus", "stat-response": "Response",
+                
+                // Services
+                "services-title": "Main Services", "services-sub": "Complete solutions for homes and businesses in Natal/RN",
+                "svc-wifi-title": "Wi-Fi Networks & Cabling", "svc-wifi-desc": "Complete projects, coverage analysis, signal optimization, and advanced security for total network stability.",
+                "svc-auto-title": "Home Automation", "svc-auto-desc": "Lights, outlets, cameras, assistants, and smart scenarios – all integrated, easy to use, and functional in your daily life.",
+                "svc-dev-title": "Fullstack Development", "svc-dev-desc": "Complete web systems with Python/Django, Node.js, REST/GraphQL APIs, MySQL, and cloud deployment. From concept to production.",
+                "svc-support-title": "IT Maintenance & Support", "svc-support-desc": "Computers, servers, backups, data recovery, information security, and specialized technical support.",
+                "svc-ftth-title": "FTTH Infrastructure", "svc-ftth-desc": "Planning, installation, and management of fiber optic networks with proactive monitoring and high availability.",
+                "svc-iot-title": "IoT & Industrial Automation", "svc-iot-desc": "Internet of Things solutions for process automation, remote monitoring, and hardware-software integration.",
+                
+                // Ecosystem
                 "eco-title": "Tanque Digital Ecosystem",
                 "p1-title": "ERP TD Portal", "p1-desc": "Complete commercial management with high-performance POS and SaaS integration.",
                 "p2-title": "Jus TD Portal", "p2-desc": "Legal tech for document automation and intelligent case management.",
-                "p3-title": "Contábil TD Portal", "p3-desc": "Real-time synchronization between companies and accounting via API.",
+                "p3-title": "Accounting TD Portal", "p3-desc": "Real-time synchronization between companies and accounting via API.",
                 "p4-title": "Tracking Portal", "p4-desc": "Fleet and asset monitoring with data intelligence and 24/7 security.",
-                "btn-open": "OPEN PORTAL"
+                "btn-open": "OPEN PORTAL", "btn-open-text": "OPEN PORTAL",
+                
+                // Contact
+                "contact-title": "💬 Contact Me Now", "contact-sub": "Quick quote • Response within 24h • WhatsApp or Form",
+                "contact-info-title": "Contact Information", "contact-location": "Location",
+                "contact-hours": "Business Hours", "contact-hours-value": "Mon-Fri: 8am-6pm • Sat: 9am-1pm",
+                "contact-response": "Response Time", "contact-response-value": "Within 24 business hours",
+                "form-name": "Full Name *", "form-email": "Email *", "form-whatsapp": "WhatsApp (optional)",
+                "form-whatsapp-note": "For faster contact via message", "form-service": "Service Type *",
+                "form-select": "Select an option...", "form-software": "⚙️ Software Development",
+                "form-other": "✨ Other", "form-subject": "Subject *", "form-message": "Detailed Description *",
+                "form-attachment": "Attachment Link (optional)", "form-attachment-note": "📎 For files: upload to Google Drive/Dropbox and paste the public link here",
+                "form-time": "Best Time to Contact", "btn-send": "SEND REQUEST", "btn-send-text": "SEND REQUEST",
+                
+                // Footer
+                "footer-dev": "Developed with ❤️ by Akiles Simião • Python • Node.js • FTTH • IoT"
             }
         };
 
+        // ===== FUNÇÃO DE TRADUÇÃO =====
         function changeLang(lang) {
+            // Atualiza todos os elementos com data-key
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.getAttribute('data-key');
-                el.innerHTML = translations[lang][key];
+                if (translations[lang][key]) {
+                    // Preserva HTML interno se necessário
+                    if (el.tagName === 'STRONG' || el.innerHTML.includes('<')) {
+                        el.innerHTML = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
             });
+            
+            // Atualiza botões de idioma
             document.querySelectorAll('.flag-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(`btn-${lang}`).classList.add('active');
+            
+            // Salva preferência
             localStorage.setItem('preferredLang', lang);
+            
+            // Atualiza atributo lang do HTML
+            document.documentElement.lang = lang;
         }
 
+        // ===== MENU MOBILE =====
         function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+            
+            // Fecha menu ao clicar em link (mobile)
+            if (window.innerWidth <= 768) {
+                nav.querySelectorAll('a').forEach(link => {
+                    link.onclick = () => nav.classList.remove('active');
+                });
+            }
         }
 
-        window.onload = () => {
+        // ===== FORMULÁRIO DE CONTATO =====
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            // Simulação de envio (substitua por integração real)
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            
+            setTimeout(() => {
+                // Mostra confirmação
+                alert('✅ ' + (localStorage.getItem('preferredLang') === 'en' ? 
+                    'Message sent! We will contact you within 24 hours.' : 
+                    'Mensagem enviada! Entraremos em contato em até 24 horas.'));
+                
+                e.target.reset();
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }, 1500);
+        }
+
+        // ===== INICIALIZAÇÃO =====
+        document.addEventListener('DOMContentLoaded', () => {
+            // Carrega idioma salvo ou padrão
             const savedLang = localStorage.getItem('preferredLang') || 'pt';
             changeLang(savedLang);
-        };
+            
+            // Scroll suave para links internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href !== 'curriculo-imprimir.html' && !href.includes('http')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            // Fecha menu mobile se aberto
+                            document.getElementById('navLinks').classList.remove('active');
+                        }
+                    }
+                });
+            });
+            
+            // Highlight de seção ativa no scroll
+            const sections = document.querySelectorAll('section[id]');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // ===== PREVENIR COMPORTAMENTO INDESEJADO =====
+        // Fecha menu ao redimensionar para desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                document.getElementById('navLinks').classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
