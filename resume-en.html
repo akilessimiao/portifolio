@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Akiles Simião - Fullstack Developer & Ecosystem Founder</title>
+    <meta name="description" content="Professional Resume of Akiles Simião - Fullstack Developer, Python/Django, Node.js, FTTH & IoT Specialist">
+    
+    <style>
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 { color: #1e40af; font-size: 2.2em; margin-bottom: 5px; }
+        .header h2 { color: #3b82f6; font-size: 1.3em; font-weight: normal; margin-bottom: 15px; }
+        .contact-info {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 15px;
+        }
+        .contact-info a { color: #2563eb; text-decoration: none; font-size: 0.95em; }
+        .contact-info a:hover { text-decoration: underline; }
+        .btn-whatsapp {
+            display: inline-block; background: #25D366; color: white !important;
+            padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px;
+        }
+        .btn-whatsapp:hover { background: #128C7E; text-decoration: none; }
+        .action-buttons { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+        .btn { padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9em; text-decoration: none; }
+        .btn-print { background: #2563eb; color: white; }
+        .btn-pdf { background: #dc2626; color: white; }
+        
+        /* ===== SECTIONS ===== */
+        .section { margin-bottom: 30px; }
+        .section-title {
+            color: #1e40af; border-left: 4px solid #2563eb; padding-left: 15px;
+            margin-bottom: 15px; font-size: 1.4em;
+        }
+        .summary {
+            background: #eff6ff; padding: 20px; border-radius: 8px; border-left: 4px solid #3b82f6;
+        }
+        
+        /* ===== METRICS ===== */
+        .metrics-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0;
+        }
+        .metric-card {
+            background: linear-gradient(135deg, #2563eb, #3b82f6); color: white;
+            padding: 15px; border-radius: 8px; text-align: center;
+        }
+        .metric-number { font-size: 2em; font-weight: bold; display: block; }
+        .metric-label { font-size: 0.85em; opacity: 0.9; }
+        
+        /* ===== EXPERIENCE ===== */
+        .experience-item {
+            margin-bottom: 25px; padding: 20px; background: #f8fafc;
+            border-radius: 8px; border-left: 4px solid #2563eb;
+        }
+        .experience-header { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 10px; }
+        .company { font-weight: bold; color: #1e40af; font-size: 1.1em; }
+        .period { color: #64748b; font-size: 0.95em; }
+        .achievements { list-style: none; margin-top: 10px; }
+        .achievements li { padding: 5px 0; padding-left: 25px; position: relative; }
+        .achievements li:before { content: "✅"; position: absolute; left: 0; }
+        
+        /* ===== PROJECTS & ECOSYSTEM ===== */
+        .project-card {
+            background: #f8fafc; padding: 20px; border-radius: 8px;
+            margin-bottom: 15px; border: 1px solid #e2e8f0;
+        }
+        .project-title { color: #1e40af; font-size: 1.1em; margin-bottom: 5px; font-weight: bold; }
+        .project-tech { color: #3b82f6; font-size: 0.85em; margin-bottom: 10px; font-family: monospace; }
+        .project-link { color: #2563eb; text-decoration: none; font-weight: bold; font-size: 0.9em; }
+        .tag-ecosystem {
+            display: inline-block; background: #dbeafe; color: #1e40af;
+            font-size: 0.7em; padding: 2px 8px; border-radius: 4px;
+            margin-bottom: 10px; text-transform: uppercase; font-weight: bold;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .skill-category { background: #f1f5f9; padding: 15px; border-radius: 8px; }
+        .skill-category h4 { color: #1e40af; margin-bottom: 10px; font-size: 1em; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag { background: #2563eb; color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.85em; }
+        
+        /* ===== DISC ===== */
+        .disc-section {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            padding: 20px; border-radius: 8px; border: 2px solid #3b82f6;
+        }
+        .disc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 15px 0; }
+        .disc-item { background: white; padding: 10px; border-radius: 5px; text-align: center; }
+        .disc-value { font-weight: bold; color: #2563eb; display: block; }
+        .disc-label { font-size: 0.85em; color: #64748b; }
+        
+        /* ===== CERTIFICATIONS ===== */
+        .cert-subtitle {
+            color: #1e40af; font-size: 1.1em; font-weight: 600; margin: 20px 0 10px 0;
+            border-left: 3px solid #2563eb; padding-left: 10px;
+        }
+        .certifications-list { list-style: none; }
+        .certifications-list li { padding: 8px 0; border-bottom: 1px solid #e2e8f0; }
+        .certifications-list li:before { content: "📜 "; }
+        .enap-certs { list-style: none !important; padding-left: 0; }
+        .enap-certs li { padding: 12px 0 !important; border-bottom: 1px dashed #e2e8f0; position: relative; }
+        .enap-certs li:before { content: "" !important; }
+        .enap-certs li:last-child { border-bottom: none; }
+        .cert-title { color: #1e40af; font-size: 1em; }
+        .cert-org { font-style: italic; color: #475569; }
+        .cert-details { color: #64748b; display: block; margin-top: 4px; line-height: 1.4; }
+        .cert-code { background: #f1f5f9; padding: 2px 6px; border-radius: 3px; font-family: monospace; font-size: 0.9em; }
+        
+        /* 📊 GRADE CHART */
+        .grade-chart {
+            background: #f8fafc; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 3px solid #2563eb;
+        }
+        .grade-chart-title { font-size: 0.95em; color: #1e40af; margin-bottom: 12px; font-weight: 600; }
+        .grade-bar-container { margin-bottom: 12px; }
+        .grade-label { display: flex; justify-content: space-between; font-size: 0.85em; color: #475569; margin-bottom: 4px; }
+        .grade-bar-bg { height: 10px; background: #e2e8f0; border-radius: 5px; overflow: hidden; }
+        .grade-bar-fill { height: 100%; border-radius: 5px; transition: width 0.4s ease; }
+        .grade-excellent { background: linear-gradient(90deg, #22c55e, #16a34a); }
+        .grade-good { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+        .grade-average { background: linear-gradient(90deg, #f59e0b, #d97706); }
+        .grade-legend { display: flex; gap: 15px; font-size: 0.75em; color: #64748b; margin-top: 10px; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 4px; }
+        .legend-color { width: 12px; height: 12px; border-radius: 3px; }
+        
+        /* ===== BADGE & FOOTER ===== */
+        .anniversary-badge {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24); color: white;
+            padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; font-weight: bold;
+        }
+        .footer {
+            text-align: center; margin-top: 40px; padding-top: 20px;
+            border-top: 2px solid #e2e8f0; color: #64748b; font-size: 0.9em;
+        }
+        .footer a { color: #2563eb; text-decoration: none; }
+        
+        /* ===== PRINT & MOBILE ===== */
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; padding: 20px; }
+            .action-buttons, .btn-whatsapp { display: none !important; }
+            a { text-decoration: none !important; color: #333 !important; }
+            .grade-bar-fill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            .header h1 { font-size: 1.8em; }
+            .contact-info { flex-direction: column; align-items: center; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Akiles Simião</h1>
+            <h2>Full Stack Developer & Founder of Tanque Digital Ecosystem</h2>
+            <div class="contact-info">
+                <span>📍 Natal, RN - Brazil</span>
+                <a href="tel:+5584994554714">📱 +55 (84) 99455-4714</a>
+                <a href="mailto:ldtnettelecom@gmail.com">✉️ ldtnettelecom@gmail.com</a>
+                <a href="https://linkedin.com/in/akilessimiao" target="_blank">💼 LinkedIn</a>
+                <a href="https://github.com/akilessimiao" target="_blank">🐙 GitHub</a>
+                <a href="https://tanquedigital.com.br" target="_blank">🏢 Tanque Digital</a>
+            </div>
+            <a href="https://wa.me/5584994554714" class="btn-whatsapp" target="_blank">💬 Chat on WhatsApp</a>
+            <div class="action-buttons">
+                <button onclick="window.print()" class="btn btn-print">🖨️ Print Resume</button>
+                <button onclick="window.print()" class="btn btn-pdf">📄 Save as PDF</button>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="section">
+            <h3 class="section-title">🎯 Professional Summary</h3>
+            <div class="summary">
+                <p><strong>Full Stack Developer</strong> and Entrepreneur with 6+ years of experience building high-scale operational platforms. Founder of the <strong>Tanque Digital</strong> ecosystem, where I lead the architecture and development of specialized ERPs, Legal Management systems (Jus), and Tourism logistics platforms. Expert in <strong>PHP, Python/Django, Node.js, and SQL</strong>, focusing on business automation and API-driven resilience.</p>
+            </div>
+        </div>
+
+        <!-- Metrics -->
+        <div class="section">
+            <h3 class="section-title">📊 Results-Driven Metrics</h3>
+            <div class="metrics-grid">
+                <div class="metric-card"><span class="metric-number">60+</span><span class="metric-label">Delivered Projects</span></div>
+                <div class="metric-card"><span class="metric-number">6</span><span class="metric-label">Years Experience</span></div>
+                <div class="metric-card"><span class="metric-number">99.9%</span><span class="metric-label">Network Uptime</span></div>
+                <div class="metric-card"><span class="metric-number">40%</span><span class="metric-label">Time Reduction</span></div>
+                <div class="metric-card"><span class="metric-number">30%</span><span class="metric-label">Incident Reduction</span></div>
+                <div class="metric-card"><span class="metric-number">&lt; 2h</span><span class="metric-label">Avg. Response</span></div>
+            </div>
+        </div>
+
+        <div class="anniversary-badge">
+            🏆 6 YEARS OF TECHNICAL EXCELLENCE - LDT NET / Tanque Digital (2020-2026)
+        </div>
+
+        <!-- Ecosystem & Projects -->
+        <div class="section">
+            <h3 class="section-title">🚀 Featured Ecosystem & Projects</h3>
+            
+            <div class="project-card">
+                <span class="tag-ecosystem">Tourism & Logistics</span>
+                <h4 class="project-title">NaturezaTur</h4>
+                <p class="project-tech">PHP • SQL • API Integration • Real-time Monitoring</p>
+                <p>Comprehensive logistics platform for tourism operators in Natal. Features guest check-in automation, real-time consumption tracking via wearable IDs, and restaurant management.</p>
+                <p><strong>📊 Key Outcome:</strong> Automated complex group check-ins and synchronized real-time financial tracking for eco-tourism hubs.</p>
+            </div>
+
+            <div class="project-card">
+                <span class="tag-ecosystem">Legal Tech</span>
+                <h4 class="project-title">Jus TD</h4>
+                <p class="project-tech">Node.js • React • PostgreSQL • Document Automation</p>
+                <p>Advanced legal management platform designed for legal departments. Manages case tracking, automated document validation, and workflow orchestration.</p>
+            </div>
+
+            <div class="project-card">
+                <span class="tag-ecosystem">FinTech / Accounting</span>
+                <h4 class="project-title">Portal Contábil</h4>
+                <p class="project-tech">PHP • MySQL • WhatsApp API Integration</p>
+                <p>Self-service accounting portal that automates document flows between companies and accounting firms. Features automated ticket issuance and real-time reconciliation via WhatsApp API.</p>
+            </div>
+
+            <div class="project-card">
+                <span class="tag-ecosystem">Business Management</span>
+                <h4 class="project-title">Tanque Digital ERP & POS</h4>
+                <p class="project-tech">Python/Django • JavaScript • NFC-e API • PIX Sync</p>
+                <p>Full-featured Enterprise Resource Planning system including multi-tenant architecture, inventory management, and a high-speed Point of Sale (POS) system.</p>
+                <p><strong>📊 Result:</strong> 50% faster checkout speed compared to legacy systems through optimized API orchestration.</p>
+            </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="section">
+            <h3 class="section-title">💼 Professional Experience</h3>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <span class="company">🏢 LDT NET / Tanque Digital — Natal, Brazil</span>
+                    <span class="period">2020 – Present</span>
+                </div>
+                <p><strong>Full Stack Developer & Systems Architect</strong></p>
+                <ul class="achievements">
+                    <li>Built and deployed <strong>60+ technology solutions</strong> ranging from FTTH network monitors to vertical ERPs.</li>
+                    <li>Developed API resilience patterns to handle undocumented third-party endpoints.</li>
+                    <li>Configured OLT/ONU systems with <strong>99.9% uptime</strong> for managed network infrastructures.</li>
+                    <li>Implemented <strong>LGPD/GDPR</strong> data protection standards across all Tanque Digital sub-platforms.</li>
+                    <li>Achieved <strong>40% reduction in service time</strong> for local businesses through automated POS systems.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Behavioral Profile (DISC) -->
+        <div class="section">
+            <h3 class="section-title">🧭 Behavioral Profile (DISC)</h3>
+            <div class="disc-section">
+                <p><strong>Type: Inspiring</strong> | Extroverted • People-Oriented • Open to Calculated Risks</p>
+                <p style="margin-top: 10px;">📊 RecruTest • June 2025</p>
+                <div class="disc-grid">
+                    <div class="disc-item"><span class="disc-value">High</span><span class="disc-label">Dominance</span></div>
+                    <div class="disc-item"><span class="disc-value">Very High</span><span class="disc-label">Influence</span></div>
+                    <div class="disc-item"><span class="disc-value">Medium</span><span class="disc-label">Steadiness</span></div>
+                    <div class="disc-item"><span class="disc-value">Medium-High</span><span class="disc-label">Compliance</span></div>
+                </div>
+                <p style="margin-top: 15px;"><strong>Value Add:</strong> Accessible technical communication, quick stakeholder diagnosis, trust building, and collaborative leadership.</p>
+            </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="section">
+            <h3 class="section-title">💻 Technical Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Backend & Languages</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PHP</span><span class="skill-tag">Python (Django)</span>
+                        <span class="skill-tag">Node.js</span><span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">MySQL/Supabase</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>DevOps & Tools</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git/GitHub</span><span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Linux</span><span class="skill-tag">REST/GraphQL</span>
+                        <span class="skill-tag">IoT/FTTH</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Cybersecurity & Compliance</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">CIS Controls</span><span class="skill-tag">LGPD/GDPR</span>
+                        <span class="skill-tag">Network Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="section" id="certifications">
+            <h3 class="section-title">🎓 Certifications & Education</h3>
+            
+            <h4 class="cert-subtitle">🏛️ ENAP Certifications - Escola Virtual.Gov (2026)</h4>
+            
+            <div class="grade-chart">
+                <div class="grade-chart-title">📈 Performance in ENAP Certifications</div>
+                <div class="grade-bar-container">
+                    <div class="grade-label"><span>🤖 Generative AI</span><strong>100</strong></div>
+                    <div class="grade-bar-bg"><div class="grade-bar-fill grade-excellent" style="width: 100%"></div></div>
+                </div>
+                <div class="grade-bar-container">
+                    <div class="grade-label"><span>🛡️ CIS Controls (Cybersecurity)</span><strong>91.25</strong></div>
+                    <div class="grade-bar-bg"><div class="grade-bar-fill grade-good" style="width: 91.25%"></div></div>
+                </div>
+                <div class="grade-bar-container">
+                    <div class="grade-label"><span>⚖️ Electronic Monitoring + LGPD</span><strong>86</strong></div>
+                    <div class="grade-bar-bg"><div class="grade-bar-fill grade-average" style="width: 86%"></div></div>
+                </div>
+            </div>
+            
+            <ul class="certifications-list enap-certs">
+                <li>
+                    <strong class="cert-title">🛡️ Cybersecurity: CIS Controls 1 to 6</strong><br>
+                    <em class="cert-org">ENAP - National School of Public Administration</em> | 25h | Apr 2026 | Score: 91.25
+                </li>
+                <li>
+                    <strong class="cert-title">🤖 Generative Artificial Intelligence</strong><br>
+                    <em class="cert-org">ENAP - National School of Public Administration</em> | 2h | Apr 2026 | Score: 100
+                </li>
+            </ul>
+            
+            <h4 class="cert-subtitle" style="margin-top: 20px;">🌐 Languages</h4>
+            <ul class="certifications-list">
+                <li><strong>Portuguese:</strong> Native</li>
+                <li><strong>English:</strong> Technical (Fluent in reading technical documentation)</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>📄 Last Updated: May 2026 | 📍 Natal, RN - Brazil</p>
+            <p>© 2020-2026 <strong>Akiles Simião</strong> • LDT NET / Tanque Digital</p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
