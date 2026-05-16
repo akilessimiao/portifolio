@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Completo - TD Trade & TD Chat | Tanque Digital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+            background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        h3 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin: 25px 0 15px;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: var(--light);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+        
+        .card.featured {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf9 100%);
+            position: relative;
+        }
+        
+        .card.featured::before {
+            content: "⭐ MAIS POPULAR";
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--gray);
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .features-list li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .features-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover {
+            background: #f8fafc;
+        }
+        
+        .steps {
+            counter-reset: step;
+            margin: 20px 0;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            min-width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border-left: 4px solid var(--warning);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border-left: 4px solid var(--accent);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .access-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .access-card h4 {
+            color: var(--primary);
+            margin: 15px 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        .access-card a {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        
+        .access-card a:hover {
+            background: var(--primary-dark);
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--light);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .faq-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+        
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 10px 8px;
+            }
+        }
+        
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            transition: transform 0.2s;
+            z-index: 1000;
+        }
+        
+        .print-btn:hover {
+            transform: translateY(-2px);
+            background: var(--primary-dark);
+        }
+        
+        @media print {
+            .print-btn {
+                display: none;
+            }
+            
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Manual</button>
+    
+    <div class="container">
+        <header>
+            <h1>📘 Manual Completo</h1>
+            <p>TD Trade & TD Chat — Tanque Digital</p>
+            <span class="badge">Atualizado: Maio 2026</span>
+        </header>
+        
+        <div class="content">
+            <!-- SEÇÃO 1: VISÃO GERAL -->
+            <section>
+                <h2>🎯 1. Visão Geral das Plataformas</h2>
+                
+                <div class="access-grid">
+                    <div class="access-card">
+                        <h3>🛒 TD Trade</h3>
+                        <p>Plataforma de renda extra com tarefas diárias e sistema de indicações.</p>
+                        <h4>Funcionalidades:</h4>
+                        <ul class="features-list">
+                            <li>Assistir vídeos e acumular saldo</li>
+                            <li>Comissões em 3 níveis de rede</li>
+                            <li>Painel de controle financeiro</li>
+                            <li>Saques via PIX</li>
+                        </ul>
+                        <a href="https://trade.tanquedigital.com.br" target="_blank">Acessar TD Trade</a>
+                    </div>
+                    
+                    <div class="access-card">
+                        <h3>💬 TD Chat</h3>
+                        <p>Bot inteligente para atendimento automatizado 24/7.</p>
+                        <h4>Comandos principais:</h4>
+                        <ul class="features-list">
+                            <li><code>menu</code> — Acessar opções principais</li>
+                            <li><code>planos</code> — Ver pacotes disponíveis</li>
+                            <li><code>saques</code> — Informações sobre retiradas</li>
+                            <li><code>cadastro</code> — Iniciar novo registro</li>
+                        </ul>
+                        <a href="https://chat.tanquedigital.com.br" target="_blank">Acessar TD Chat</a>
+                    </div>
+                </div>
+                
+                <div class="success-box">
+                    <strong>✅ Sistema 100% em Nuvem:</strong> Acesse via navegador em qualquer dispositivo (celular, tablet ou computador). Zero instalação, zero configuração técnica.
+                </div>
+            </section>
+            
+            <!-- SEÇÃO 2: PACOTES E INVESTIMENTOS -->
+            <section>
+                <h2>💰 2. Pacotes e Investimentos</h2>
+                <p>Todos os pacotes são válidos por <strong>1 ano</strong>, com garantia de reembolso integral ao final do ciclo.</p>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>S1 — Iniciante</h3>
+                        <div class="price">R$ 150 <span>/mês</span></div>
+                        <ul class="features-list">
+                            <li>4 tarefas/vídeos por dia</li>
+                            <li>R$ 1,25 por tarefa</li>
+                            <li>Retorno estimado: R$ 150/mês</li>
+                            <li>Comissões por indicação</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>S2 — Básico</h3>
+                        <div class="price">R$ 270 <span>/mês</span></div>
+                        <ul class="features-list">
+                            <li>4 tarefas/vídeos por dia</li>
+                            <li>R$ 2,25 por tarefa</li>
+                            <li>Retorno estimado: R$ 270/mês</li>
+                            <li>Comissões por indicação</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card featured">
+                        <h3>⭐ M1 — Intermediário</h3>
+                        <div class="price">R$ 840 <span>/mês</span></div>
+                        <ul class="features-list">
+                            <li>8 tarefas/vídeos por dia</li>
+                            <li>R$ 3,50 por tarefa</li>
+                            <li>Retorno estimado: R$ 840/mês</li>
+                            <li>Comissões por indicação</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>M2 — Avançado</h3>
+                        <div class="price">R$ 2.700 <span>/mês</span></div>
+                        <ul class="features-list">
+                            <li>12 tarefas/vídeos por dia</li>
+                            <li>R$ 7,50 por tarefa</li>
+                            <li>Retorno estimado: R$ 2.700/mês</li>
+                            <li>Comissões por indicação</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>M3 — Especialista</h3>
+                        <div class="price">R$ 6.800 <span>/mês</span></div>
+                        <ul class="features-list">
+                            <li>15 tarefas/vídeos por dia</li>
+                            <li>R$ 15,11 por tarefa</li>
+                            <li>Retorno estimado: R$ 6.800/mês</li>
+                            <li>Comissões por indicação</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- SEÇÃO 3: COMISSÕES -->
+            <section>
+                <h2>🤝 3. Sistema de Comissões por Indicação</h2>
+                <p>Ganhe automaticamente em até <strong>3 níveis de rede</strong> ao indicar novos usuários:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pacote</th>
+                            <th>1ª Linha</th>
+                            <th>2ª Linha</th>
+                            <th>3ª Linha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>S1</strong> (R$ 150)</td>
+                            <td>R$ 2,00</td>
+                            <td>R$ 1,00</td>
+                            <td>R$ 0,50</td>
+                        </tr>
+                        <tr>
+                            <td><strong>S2</strong> (R$ 270)</td>
+                            <td>R$ 3,00</td>
+                            <td>R$ 1,50</td>
+                            <td>R$ 1,00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>M1</strong> (R$ 840) ⭐</td>
+                            <td>R$ 5,00</td>
+                            <td>R$ 3,00</td>
+                            <td>R$ 2,00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>M2</strong> (R$ 2.700)</td>
+                            <td>R$ 7,00</td>
+                            <td>R$ 4,50</td>
+                            <td>R$ 3,00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>M3</strong> (R$ 6.800)</td>
+                            <td>R$ 9,00</td>
+                            <td>R$ 6,00</td>
+                            <td>R$ 4,50</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="info-box">
+                    <strong>💡 Dica:</strong> As comissões são creditadas automaticamente assim que seu indicado realiza o pagamento do pacote. Não é necessário solicitar.
+                </div>
+            </section>
+            
+            <!-- SEÇÃO 4: PAGAMENTOS E SAQUES -->
+            <section>
+                <h2>💸 4. Pagamentos e Saques</h2>
+                
+                <h3>📥 Formas de Pagamento para Ativar Pacotes:</h3>
+                <ul class="features-list">
+                    <li><strong>PIX</strong> (método principal e mais rápido)</li>
+                    <li>Cartão de crédito (consultar disponibilidade no checkout)</li>
+                    <li>Boleto bancário (prazo de compensação: 1-3 dias úteis)</li>
+                </ul>
+                
+                <h3>📤 Saques e Retiradas:</h3>
+                <ul class="features-list">
+                    <li><strong>Método:</strong> Exclusivamente via PIX</li>
+                    <li><strong>Disponibilidade:</strong> Solicitação a qualquer momento</li>
+                    <li><strong>Processamento:</strong> Automático, conforme política da plataforma</li>
+                    <li><strong>Valor mínimo:</strong> Consulte no painel da sua conta</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <strong>⚠️ Sobre "Terça-feira":</strong><br>
+                    Não identificamos confirmação oficial nas páginas consultadas de que saques ou pagamentos ocorram exclusivamente às terças-feiras. Recomendações:
+                    <ol style="margin-top: 10px; padding-left: 20px;">
+                        <li>Verifique no painel da sua conta em <strong>TD Trade</strong> a aba "Saques"</li>
+                        <li>Consulte o bot no <strong>chat.tanquedigital.com.br</strong> digitando <code>menu → Saques</code></li>
+                        <li>Fale diretamente com um consultor via WhatsApp no site oficial</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- SEÇÃO 5: ACESSO E CADASTRO -->
+            <section>
+                <h2>🔐 5. Acesso e Cadastro</h2>
+                
+                <h3>Como se cadastrar gratuitamente:</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div>
+                            <strong>Acesse trade.tanquedigital.com.br</strong><br>
+                            Clique em "Cadastre-se grátis" e preencha seus dados básicos (nome, e-mail, WhatsApp).
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div>
+                            <strong>Defina seu PIN de Acesso</strong><br>
+                            Crie um código numérico de 4 a 6 dígitos para login futuro. Guarde com segurança!
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div>
+                            <strong>Confirme via WhatsApp</strong><br>
+                            Você receberá um código de verificação. Insira no sistema para ativar sua conta.
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div>
+                            <strong>Pronto para começar!</strong><br>
+                            Escolha seu pacote, complete as tarefas diárias e comece a acumular saldo.
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Como fazer login:</h3>
+                <div class="access-grid">
+                    <div class="access-card">
+                        <h4>🔢 Via PIN</h4>
+                        <p>Na tela inicial do TD Trade, insira seu WhatsApp e PIN de acesso.</p>
+                    </div>
+                    <div class="access-card">
+                        <h4>📱 Via WhatsApp</h4>
+                        <p>Receba um link de acesso direto no seu WhatsApp cadastrado.</p>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <strong>🔒 Segurança:</strong> Nunca compartilhe seu PIN com terceiros. A Tanque Digital jamais solicitará sua senha por mensagens não oficiais.
+                </div>
+            </section>
+            
+            <!-- SEÇÃO 6: FUNCIONAMENTO DAS TAREFAS -->
+            <section>
+                <h2>🎬 6. Como Funcionam as Tarefas Diárias</h2>
+                
+                <h3>Passo a passo para completar tarefas:</h3>
+                <ol class="features-list" style="list-style: decimal; padding-left: 20px;">
+                    <li>Faça login no <strong>TD Trade</strong></li>
+                    <li>Vá até a seção <strong>"Tarefas"</strong> ou <strong>"Vídeos"</strong></li>
+                    <li>Clique em "Assistir" em um vídeo disponível</li>
+                    <li>Assista ao conteúdo completo (não pule)</li>
+                    <li>Após o término, o valor é creditado automaticamente</li>
+                    <li>Repita até completar sua cota diária conforme seu pacote</li>
+                </ol>
+                
+                <div class="success-box">
+                    <strong>✅ Dica de produtividade:</strong> Reserve 10-15 minutos por dia para completar todas as tarefas. A consistência garante o retorno máximo do seu investimento.
+                </div>
+            </section>
+            
+            <!-- SEÇÃO 7: SUPORTE E FAQ -->
+            <section>
+                <h2>❓ 7. Suporte e Perguntas Frequentes</h2>
+                
+                <div class="faq-item">
+                    <strong>Esqueci meu PIN de acesso. Como recuperar?</strong>
+                    Use a opção "Esqueci meu PIN" na tela de login ou digite <code>suporte</code> no TD Chat.
+                </div>
+                
+                <div class="faq-item">
+                    <strong>Posso cancelar meu pacote antes de 1 ano?</strong>
+                    Os pacotes têm validade de 1 ano com garantia de reembolso ao final do ciclo. Consulte os Termos de Uso para políticas de cancelamento antecipado.
+                </div>
+                
+                <div class="faq-item">
+                    <strong>Qual o limite mínimo para saque?</strong>
+                    Esta informação pode variar. Consulte no painel da sua conta em "Minha Carteira" ou digite <code>saques</code> no bot do chat.
+                </div>
+                
+                <div class="faq-item">
+                    <strong>Preciso instalar algum aplicativo?</strong>
+                    Não! As plataformas são 100% em nuvem e acessíveis via navegador em qualquer dispositivo.
+                </div>
+                
+                <div class="faq-item">
+                    <strong>Como falar com um consultor humano?</strong>
+                    No TD Chat, digite <code>consultor</code> ou <code>humano</code>. Você também pode acessar o site oficial e clicar em "Falar com Consultor".
+                </div>
+                
+                <h3>📞 Canais de Suporte Oficiais:</h3>
+                <ul class="features-list">
+                    <li>💬 <strong>TD Chat:</strong> chat.tanquedigital.com.br (bot 24/7)</li>
+                    <li>🌐 <strong>Site Oficial:</strong> tanquedigital.com.br</li>
+                    <li>🛒 <strong>Loja de Equipamentos:</strong> Acessível pelo site principal</li>
+                    <li>📱 <strong>WhatsApp Oficial:</strong> Link disponível no site</li>
+                </ul>
+            </section>
+            
+            <!-- SEÇÃO 8: LINKS RÁPIDOS -->
+            <section>
+                <h2>🔗 8. Links Rápidos</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>🚀 Acesso Direto</h4>
+                        <ul class="features-list">
+                            <li><a href="https://trade.tanquedigital.com.br" target="_blank">trade.tanquedigital.com.br</a></li>
+                            <li><a href="https://chat.tanquedigital.com.br" target="_blank">chat.tanquedigital.com.br</a></li>
+                            <li><a href="https://tanquedigital.com.br" target="_blank">tanquedigital.com.br</a></li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>📚 Recursos</h4>
+                        <ul class="features-list">
+                            <li>Manual do Usuário (no painel)</li>
+                            <li>Termos de Uso e Privacidade</li>
+                            <li>Política de Reembolso</li>
+                            <li>Central de Ajuda</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- ALERTA FINAL -->
+            <div class="warning-box" style="margin-top: 30px;">
+                <strong>⚠️ Aviso Importante:</strong><br>
+                Sempre confirme informações de pagamento, prazos e políticas diretamente na plataforma oficial. Desconfie de promessas de ganhos exagerados e nunca compartilhe senhas, PINs ou dados sensíveis com terceiros. A Tanque Digital é uma plataforma de serviços digitais legítima — verifique sempre a URL antes de inserir qualquer informação.
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>📘 Manual Técnico — TD Trade & TD Chat | Tanque Digital</p>
+            <p>Este documento é informativo. Para informações oficiais, acesse sempre os canais verificados da plataforma.</p>
+            <p style="margin-top: 10px;">
+                <a href="https://tanquedigital.com.br" target="_blank">tanquedigital.com.br</a> • 
+                <a href="https://trade.tanquedigital.com.br" target="_blank">trade.tanquedigital.com.br</a> • 
+                <a href="https://chat.tanquedigital.com.br" target="_blank">chat.tanquedigital.com.br</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Melhorar experiência de impressão
+        document.querySelector('.print-btn').addEventListener('click', function() {
+            setTimeout(() => {
+                alert('💡 Dica: Na janela de impressão, ative "Gráficos de plano de fundo" para melhor visualização.');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
