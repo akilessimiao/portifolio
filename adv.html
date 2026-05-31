@@ -1,0 +1,392 @@
+
+# Criar um wireframe conceitual em HTML para o Tanque Digital JUS
+# Estrutura: Ecossistema (Escritório + Correspondente + Cliente)
+
+html_content = """<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanque Digital JUS - Wireframe Conceitual</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        /* Header */
+        .header { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; padding: 40px 20px; text-align: center; border-radius: 12px; margin-bottom: 30px; }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header p { font-size: 1.2em; opacity: 0.9; }
+        .header .tagline { background: rgba(255,255,255,0.15); display: inline-block; padding: 8px 20px; border-radius: 20px; margin-top: 15px; font-size: 0.95em; }
+        
+        /* Three Pillars */
+        .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 40px; }
+        .pillar { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-top: 4px solid; transition: transform 0.3s; }
+        .pillar:hover { transform: translateY(-5px); }
+        .pillar.escritorio { border-top-color: #3182ce; }
+        .pillar.correspondente { border-top-color: #38a169; }
+        .pillar.cliente { border-top-color: #dd6b20; }
+        .pillar h2 { font-size: 1.4em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .pillar .icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.3em; }
+        .escritorio .icon { background: #ebf8ff; color: #3182ce; }
+        .correspondente .icon { background: #f0fff4; color: #38a169; }
+        .cliente .icon { background: #fffaf0; color: #dd6b20; }
+        .pillar ul { list-style: none; }
+        .pillar li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 8px; }
+        .pillar li:last-child { border-bottom: none; }
+        .pillar li::before { content: "✓"; color: #38a169; font-weight: bold; }
+        .pillar .cta { display: block; margin-top: 20px; padding: 12px; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 600; color: white; }
+        .escritorio .cta { background: #3182ce; }
+        .correspondente .cta { background: #38a169; }
+        .cliente .cta { background: #dd6b20; }
+        
+        /* Features Section */
+        .section { background: white; border-radius: 12px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .section h2 { color: #1a365d; font-size: 1.6em; margin-bottom: 20px; border-left: 4px solid #3182ce; padding-left: 15px; }
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .feature { background: #f8fafc; padding: 20px; border-radius: 8px; border-left: 3px solid #3182ce; }
+        .feature h3 { color: #2c5282; font-size: 1.1em; margin-bottom: 8px; }
+        .feature p { color: #666; font-size: 0.95em; }
+        
+        /* Pricing */
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .pricing-card { background: #f8fafc; border-radius: 10px; padding: 25px; text-align: center; border: 2px solid #e2e8f0; }
+        .pricing-card.highlight { border-color: #3182ce; background: #ebf8ff; position: relative; }
+        .pricing-card.highlight::before { content: "MAIS POPULAR"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #3182ce; color: white; padding: 4px 15px; border-radius: 12px; font-size: 0.75em; font-weight: bold; }
+        .pricing-card h3 { color: #1a365d; font-size: 1.2em; margin-bottom: 10px; }
+        .pricing-card .price { font-size: 2em; color: #3182ce; font-weight: bold; margin: 15px 0; }
+        .pricing-card .price span { font-size: 0.5em; color: #666; font-weight: normal; }
+        .pricing-card ul { list-style: none; text-align: left; margin: 15px 0; }
+        .pricing-card li { padding: 6px 0; font-size: 0.9em; color: #555; }
+        .pricing-card li::before { content: "•"; color: #3182ce; margin-right: 8px; }
+        
+        /* How it Works */
+        .steps { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+        .step { flex: 1; text-align: center; position: relative; }
+        .step::after { content: "→"; position: absolute; right: -15px; top: 20px; color: #cbd5e0; font-size: 1.5em; }
+        .step:last-child::after { display: none; }
+        .step-number { width: 50px; height: 50px; background: linear-gradient(135deg, #3182ce, #2c5282); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3em; font-weight: bold; margin: 0 auto 15px; }
+        .step h3 { color: #2c5282; font-size: 1em; margin-bottom: 8px; }
+        .step p { font-size: 0.85em; color: #666; }
+        
+        /* Testimonials */
+        .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .testimonial { background: #f8fafc; padding: 20px; border-radius: 8px; }
+        .testimonial .quote { font-style: italic; color: #555; margin-bottom: 15px; font-size: 0.95em; }
+        .testimonial .author { display: flex; align-items: center; gap: 10px; }
+        .testimonial .avatar { width: 40px; height: 40px; background: #cbd5e0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #4a5568; }
+        .testimonial .name { font-weight: 600; color: #2c5282; font-size: 0.9em; }
+        .testimonial .role { font-size: 0.8em; color: #718096; }
+        .stars { color: #ecc94b; margin-bottom: 10px; }
+        
+        /* Footer CTA */
+        .footer-cta { background: linear-gradient(135deg, #1a365d, #2c5282); color: white; padding: 40px; border-radius: 12px; text-align: center; }
+        .footer-cta h2 { font-size: 1.8em; margin-bottom: 15px; }
+        .footer-cta p { margin-bottom: 25px; opacity: 0.9; }
+        .buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s; }
+        .btn-primary { background: white; color: #1a365d; }
+        .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+        .btn:hover { transform: scale(1.05); }
+        
+        /* Correspondent Specific */
+        .correspondent-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .corr-feature { display: flex; gap: 15px; align-items: flex-start; background: #f0fff4; padding: 20px; border-radius: 8px; }
+        .corr-feature .icon-box { width: 50px; height: 50px; background: #c6f6d5; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5em; flex-shrink: 0; }
+        .corr-feature h3 { color: #276749; margin-bottom: 5px; }
+        .corr-feature p { color: #4a5568; font-size: 0.9em; }
+        
+        /* Client Portal */
+        .client-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .flow-item { background: #fffaf0; padding: 20px; border-radius: 8px; text-align: center; }
+        .flow-item .emoji { font-size: 2em; margin-bottom: 10px; }
+        .flow-item h3 { color: #c05621; font-size: 1em; margin-bottom: 8px; }
+        .flow-item p { font-size: 0.85em; color: #666; }
+        
+        @media (max-width: 768px) {
+            .pillars, .features-grid, .pricing-grid, .testimonials, .steps, .correspondent-features, .client-flow { grid-template-columns: 1fr; }
+            .steps { flex-direction: column; }
+            .step::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🏛️ Tanque Digital JUS</h1>
+            <p>O ecossistema completo da advocacia moderna</p>
+            <div class="tagline">🤝 Conectamos Escritórios + Correspondentes + Clientes</div>
+        </div>
+        
+        <!-- Three Pillars -->
+        <div class="pillars">
+            <div class="pillar escritorio">
+                <h2><span class="icon">🏢</span> Para Escritórios</h2>
+                <ul>
+                    <li>Gestão completa de processos</li>
+                    <li>Atualizações automáticas dos tribunais</li>
+                    <li>CRM jurídico inteligente</li>
+                    <li>Controle de prazos com alertas</li>
+                    <li>Automação de documentos</li>
+                    <li>Relatórios analytics</li>
+                    <li>Contratação de correspondentes</li>
+                </ul>
+                <a href="#" class="cta">Começar Grátis →</a>
+            </div>
+            <div class="pillar correspondente">
+                <h2><span class="icon">⚖️</span> Para Correspondentes</h2>
+                <ul>
+                    <li>Cadastro gratuito de perfil</li>
+                    <li>Receba demandas da sua região</li>
+                    <li>Honorários transparentes</li>
+                    <li>Repasse em até 48h</li>
+                    <li>App mobile para diligências</li>
+                    <li>Sistema de avaliações</li>
+                    <li>Carteira de clientes crescente</li>
+                </ul>
+                <a href="#" class="cta">Cadastrar-se →</a>
+            </div>
+            <div class="pillar cliente">
+                <h2><span class="icon">👤</span> Para Clientes</h2>
+                <ul>
+                    <li>Acompanhe seu processo 24h</li>
+                    <li>Receba atualizações automáticas</li>
+                    <li>Envie documentos digitalmente</li>
+                    <li>Chat direto com advogado</li>
+                    <li>Visualize prazos e audiências</li>
+                    <li>Assine contratos online</li>
+                    <li>Transparência total</li>
+                </ul>
+                <a href="#" class="cta">Acessar Portal →</a>
+            </div>
+        </div>
+        
+        <!-- How it Works for Correspondents -->
+        <div class="section">
+            <h2>⚖️ Como funciona para Correspondentes?</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Cadastre-se</h3>
+                    <p>Crie seu perfil profissional com OAB, áreas de atuação e localização</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Receba Demandas</h3>
+                    <p>Escritórios te encontram por cidade e especialidade</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Execute</h3>
+                    <p>Realize audiências, diligências e protocolos via app</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Receba</h3>
+                    <p>Honorários depositados em até 48h após comprovação</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Correspondent Features -->
+        <div class="section">
+            <h2>💼 Vantagens exclusivas para Correspondentes</h2>
+            <div class="correspondent-features">
+                <div class="corr-feature">
+                    <div class="icon-box">📍</div>
+                    <div>
+                        <h3>Geolocalização Inteligente</h3>
+                        <p>Seja encontrado por escritórios que precisam de serviços na sua cidade. Filtros por comarca, vara e especialidade.</p>
+                    </div>
+                </div>
+                <div class="corr-feature">
+                    <div class="icon-box">💰</div>
+                    <div>
+                        <h3>Honorários Transparentes</h3>
+                        <p>Tabela de valores visível antes de aceitar. Sem surpresas. Repasse via PIX em até 48h após entrega do comprovante.</p>
+                    </div>
+                </div>
+                <div class="corr-feature">
+                    <div class="icon-box">⭐</div>
+                    <div>
+                        <h3>Reputação que Vale</h3>
+                        <p>Sistema de avaliação mútua. Correspondentes 5 estrelas recebem prioridade nas demandas e bônus.</p>
+                    </div>
+                </div>
+                <div class="corr-feature">
+                    <div class="icon-box">📱</div>
+                    <div>
+                        <h3>App Mobile Completo</h3>
+                        <p>Receba notificações, anexe fotos de diligências, assine digitalmente e envie comprovantes tudo pelo celular.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Client Portal -->
+        <div class="section">
+            <h2>👤 Portal do Cliente — Transparência Total</h2>
+            <div class="client-flow">
+                <div class="flow-item">
+                    <div class="emoji">🔐</div>
+                    <h3>Login Seguro</h3>
+                    <p>Acesse com CPF e senha ou biometria</p>
+                </div>
+                <div class="flow-item">
+                    <div class="emoji">📋</div>
+                    <h3>Processos</h3>
+                    <p>Visualize todos seus processos e status</p>
+                </div>
+                <div class="flow-item">
+                    <div class="emoji">📅</div>
+                    <h3>Prazos</h3>
+                    <p>Audiências, prazos e compromissos</p>
+                </div>
+                <div class="flow-item">
+                    <div class="emoji">💬</div>
+                    <h3>Comunicação</h3>
+                    <p>Chat direto com seu advogado</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Features for Offices -->
+        <div class="section">
+            <h2>🏢 Funcionalidades para Escritórios</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3>🔄 Gestão de Processos</h3>
+                    <p>Controle completo com atualizações automáticas dos tribunais via push. Intimações e publicações em tempo real.</p>
+                </div>
+                <div class="feature">
+                    <h3>👥 CRM Jurídico</h3>
+                    <p>Gestão inteligente de clientes, histórico de comunicações, segmentação por área e valor processual.</p>
+                </div>
+                <div class="feature">
+                    <h3>⏰ Controle de Prazos</h3>
+                    <p>Alertas inteligentes por email, WhatsApp e push. Nunca mais perca um prazo processual.</p>
+                </div>
+                <div class="feature">
+                    <h3>📄 Automação de Documentos</h3>
+                    <p>Geração automática de petições, contratos e procurações com templates personalizados e merge de dados.</p>
+                </div>
+                <div class="feature">
+                    <h3>📊 Analytics</h3>
+                    <p>Métricas de produtividade, tempo médio de resposta, taxa de êxito e previsão de receita.</p>
+                </div>
+                <div class="feature">
+                    <h3>🔒 LGPD & Segurança</h3>
+                    <p>Criptografia end-to-end, conformidade LGPD, backup automático e auditoria de acessos.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pricing -->
+        <div class="section">
+            <h2>💳 Planos e Preços</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>🌱 Starter</h3>
+                    <div class="price">R$ 97<span>/mês</span></div>
+                    <ul>
+                        <li>Até 3 usuários</li>
+                        <li>50 processos</li>
+                        <li>CRM básico</li>
+                        <li>Alertas de prazos</li>
+                        <li>1 correspondente ativo</li>
+                        <li>Suporte por email</li>
+                    </ul>
+                </div>
+                <div class="pricing-card highlight">
+                    <h3>⚖️ Professional</h3>
+                    <div class="price">R$ 197<span>/mês</span></div>
+                    <ul>
+                        <li>Até 10 usuários</li>
+                        <li>Processos ilimitados</li>
+                        <li>CRM avançado + automação</li>
+                        <li>Portal do cliente</li>
+                        <li>Marketplace de correspondentes</li>
+                        <li>Relatórios analytics</li>
+                        <li>Suporte prioritário</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <h3>🏢 Enterprise</h3>
+                    <div class="price">R$ 497<span>/mês</span></div>
+                    <ul>
+                        <li>Usuários ilimitados</li>
+                        <li>API de integração</li>
+                        <li>White label</li>
+                        <li>Gerente de conta dedicado</li>
+                        <li>Treinamento presencial</li>
+                        <li>SLA garantido</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px; color: #666; font-size: 0.9em;">
+                💡 <strong>Correspondentes:</strong> Cadastro e uso do app são <strong>100% gratuitos</strong>. Pagamos você, não cobramos de você.
+            </p>
+        </div>
+        
+        <!-- Testimonials -->
+        <div class="section">
+            <h2>⭐ O que dizem sobre nós</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <div class="quote">"Consegui aumentar minha renda em 40% trabalhando como correspondente nas horas vagas. O app é prático e o pagamento é sempre pontual."</div>
+                    <div class="author">
+                        <div class="avatar">DR</div>
+                        <div>
+                            <div class="name">Dr. Ricardo Almeida</div>
+                            <div class="role">Correspondente — São Paulo/SP</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <div class="quote">"Reduzimos em 60% o tempo gasto em busca de correspondentes. A avaliação por estrelas nos dá segurança na contratação."</div>
+                    <div class="author">
+                        <div class="avatar">MF</div>
+                        <div>
+                            <div class="name">Dra. Maria Fernanda</div>
+                            <div class="role">Sócia — Costa & Advogados</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <div class="quote">"Meus clientes adoram o portal. Eles acompanham tudo em tempo real e param de ligar toda hora perguntando sobre o processo."</div>
+                    <div class="author">
+                        <div class="avatar">JL</div>
+                        <div>
+                            <div class="name">Dr. João Lucas</div>
+                            <div class="role">Advogado — Curitiba/PR</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer CTA -->
+        <div class="footer-cta">
+            <h2>🚀 Pronto para transformar sua advocacia?</h2>
+            <p>Escolha seu perfil e comece agora. Teste gratuito de 14 dias, sem cartão de crédito.</p>
+            <div class="buttons">
+                <a href="#" class="btn btn-primary">🏢 Sou Escritório</a>
+                <a href="#" class="btn btn-secondary">⚖️ Sou Correspondente</a>
+                <a href="#" class="btn btn-secondary">👤 Sou Cliente</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>"""
+
+# Salvar o arquivo
+with open('/mnt/agents/output/tanque_digital_jus_wireframe.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("✅ Wireframe HTML criado com sucesso!")
+print(f"📄 Arquivo: /mnt/agents/output/tanque_digital_jus_wireframe.html")
+print(f"📊 Tamanho: {len(html_content):,} caracteres")
