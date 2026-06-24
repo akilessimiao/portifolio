@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrato de Prestação de Serviços - WeTax Contabilidade</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 60px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #0066cc;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #0066cc;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .header h2 {
+            color: #555;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+
+        .section h2 {
+            color: #0066cc;
+            font-size: 22px;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .section h3 {
+            color: #333;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section h4 {
+            color: #555;
+            font-size: 16px;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .section ul, .section ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: #f0f7ff;
+            border-left: 4px solid #0066cc;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+
+        .payment-box {
+            background: #fff8e1;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .payment-box h4 {
+            color: #b8860b;
+            margin-bottom: 10px;
+        }
+
+        .signature {
+            margin-top: 60px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .signature-box {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .signature-line {
+            border-top: 2px solid #333;
+            padding-top: 10px;
+            margin-top: 80px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background: #0066cc;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .btn-print {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,102,204,0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .btn-print:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,102,204,0.6);
+        }
+
+        .btn-print:active {
+            transform: translateY(0);
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        .check-list li::before {
+            content: "✅ ";
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 20px;
+                max-width: 100%;
+            }
+
+            .btn-print {
+                display: none !important;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+
+            a {
+                color: #333;
+                text-decoration: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-print" onclick="window.print()">🖨️ Imprimir Documento</button>
+
+    <div class="container">
+        
+        <!-- CABEÇALHO -->
+        <div class="header">
+            <img src="logo.png" alt="TANQUE DIGITAL" class="logo">
+            <h1>Contrato de Prestação de Serviços</h1>
+            <h2>Automação de Atendimento - WeTax Contabilidade Digital</h2>
+            <p style="margin-top: 15px; color: #777;">Documento gerado em 25 de Junho de 2026</p>
+        </div>
+
+        <!-- CONTRATO -->
+        <div class="section">
+            <h2>CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE AUTOMAÇÃO DE ATENDIMENTO</h2>
+            
+            <p>Pelo presente instrumento particular, as partes abaixo qualificadas celebram entre si este Contrato de Prestação de Serviços, mediante as cláusulas e condições seguintes:</p>
+
+            <h3>DAS PARTES</h3>
+
+            <div class="highlight">
+                <strong>CONTRATADO:</strong><br>
+                <strong>AKILES LEOPOLDO NUNES SIMIÃO</strong> (TANQUE DIGITAL), pessoa jurídica de direito privado, inscrita no CNPJ/MF sob o nº <strong>06.270.840/0001-50</strong>, com sede em Natal/RN, doravante denominado simplesmente <strong>CONTRATADO</strong>.
+            </div>
+
+            <div class="highlight">
+                <strong>CONTRATANTE:</strong><br>
+                <strong>WETAX CONTABILIDADE DIGITAL</strong>, pessoa jurídica de direito privado, inscrita no CNPJ/MF sob o nº <strong>59.950.013/0001-74</strong>, com sede em <strong>Rio Claro/SP</strong>, neste ato representada por <strong>LUIZ ANTONIO CARTIELLI</strong>, doravante denominada simplesmente <strong>CONTRATANTE</strong>.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA PRIMEIRA – DO OBJETO</h2>
+            <p>1.1. O presente contrato tem por objeto a prestação de serviços de <strong>AUTOMAÇÃO DE ATENDIMENTO AO CLIENTE</strong> pela CONTRATADA em favor da CONTRATANTE, compreendendo:</p>
+            <ul>
+                <li>a) Desenvolvimento e implementação de sistema de automação de atendimento integrado a todas as redes sociais da CONTRATANTE (Instagram, Facebook, WhatsApp Business, LinkedIn, Telegram, entre outras);</li>
+                <li>b) Integração do sistema de automação com o site oficial da CONTRATANTE (https://wetax.com.br/);</li>
+                <li>c) Criação de chatbots inteligentes para triagem e resposta automática de dúvidas frequentes;</li>
+                <li>d) Implementação de fluxos de atendimento personalizados para diferentes tipos de clientes (prospectos, clientes ativos, ex-clientes);</li>
+                <li>e) Configuração de respostas automáticas para perguntas frequentes sobre: abertura de empresa, migração de contador, contabilidade online, honorários, prazos, documentação, entre outros;</li>
+                <li>f) Integração com sistema de CRM para registro e acompanhamento de leads e clientes;</li>
+                <li>g) Configuração de notificações e alertas para a equipe da CONTRATANTE sobre novos contatos e atendimentos pendentes;</li>
+                <li>h) Treinamento da equipe da CONTRATANTE para utilização e manutenção do sistema;</li>
+                <li>i) Elaboração de manual descritivo completo do sistema implementado;</li>
+                <li>j) Suporte técnico durante o período de implantação e por 90 (noventa) dias após a entrega final.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA SEGUNDA – DAS OBRIGAÇÕES DA CONTRATADA</h2>
+            <p>2.1. São obrigações da CONTRATADA:</p>
+            <ul>
+                <li>a) Desenvolver e implementar o sistema de automação de atendimento conforme especificações acordadas entre as partes;</li>
+                <li>b) Entregar o sistema em pleno funcionamento, integrado a todas as redes sociais e ao site da CONTRATANTE;</li>
+                <li>c) Fornecer manual descritivo completo contendo: arquitetura do sistema, fluxos de atendimento, configurações, procedimentos de manutenção e troubleshooting;</li>
+                <li>d) Realizar treinamento da equipe da CONTRATANTE para utilização do sistema;</li>
+                <li>e) Prestar suporte técnico durante o período de implantação e por 90 (noventa) dias após a entrega final;</li>
+                <li>f) Manter sigilo sobre todas as informações e dados da CONTRATANTE aos quais tiver acesso;</li>
+                <li>g) Cumprir os prazos estabelecidos neste contrato.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA TERCEIRA – DAS OBRIGAÇÕES DA CONTRATANTE</h2>
+            <p>3.1. São obrigações da CONTRATANTE:</p>
+            <ul>
+                <li>a) Fornecer todas as informações, acessos, credenciais e dados necessários para a implementação do sistema;</li>
+                <li>b) Disponibilizar hospedagem e infraestrutura de banco de dados para o sistema;</li>
+                <li>c) Efetuar os pagamentos nas datas e condições estabelecidas neste contrato;</li>
+                <li>d) Designar um responsável técnico para acompanhar o projeto e fornecer feedbacks;</li>
+                <li>e) Realizar testes e validações do sistema conforme solicitado pela CONTRATADA;</li>
+                <li>f) Fornecer conteúdo (textos, imagens, vídeos) necessário para configuração dos fluxos de atendimento.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA QUARTA – DO VALOR E FORMA DE PAGAMENTO</h2>
+            <p>4.1. Pela prestação dos serviços objeto deste contrato, a CONTRATANTE pagará à CONTRATADA o valor total de <strong>R$ 60.000,00 (sessenta mil reais)</strong>.</p>
+            <p>4.2. O pagamento será realizado em <strong>4 (quatro) parcelas de R$ 15.000,00 (quinze mil reais)</strong> cada, conforme seguinte cronograma:</p>
+
+            <div class="payment-box">
+                <h4>💰 PARCELA 1 – ENTRADA</h4>
+                <p><strong>Valor:</strong> R$ 15.000,00 (quinze mil reais)<br>
+                <strong>Vencimento:</strong> Até 3 (três) dias úteis após o envio do escopo detalhado do projeto e manual descritivo inicial pela CONTRATADA<br>
+                <strong>Condição:</strong> Pagamento para início dos trabalhos</p>
+            </div>
+
+            <div class="payment-box">
+                <h4>💰 PARCELA 2 – 50% DO PROJETO</h4>
+                <p><strong>Valor:</strong> R$ 15.000,00 (quinze mil reais)<br>
+                <strong>Vencimento:</strong> Até 3 (três) dias úteis após a CONTRATADA demonstrar que o projeto atingiu 50% (cinquenta por cento) de conclusão<br>
+                <strong>Condição:</strong> Apresentação de relatório de progresso com demonstração das funcionalidades implementadas</p>
+            </div>
+
+            <div class="payment-box">
+                <h4>💰 PARCELA 3 – 75% DO PROJETO</h4>
+                <p><strong>Valor:</strong> R$ 15.000,00 (quinze mil reais)<br>
+                <strong>Vencimento:</strong> Até 3 (três) dias úteis após a CONTRATADA demonstrar que o projeto atingiu 75% (setenta e cinco por cento) de conclusão<br>
+                <strong>Condição:</strong> Apresentação de relatório de progresso com demonstração das funcionalidades implementadas</p>
+            </div>
+
+            <div class="payment-box">
+                <h4>💰 PARCELA 4 – FINAL (100%)</h4>
+                <p><strong>Valor:</strong> R$ 15.000,00 (quinze mil reais)<br>
+                <strong>Vencimento:</strong> Até 3 (três) dias úteis após a entrega final do projeto, com sistema 100% funcional, manual descritivo completo e treinamento da equipe realizados<br>
+                <strong>Condição:</strong> Aprovação final do sistema pela CONTRATANTE</p>
+            </div>
+
+            <div class="highlight">
+                <strong>4.3. FORMA DE PAGAMENTO – PIX</strong><br>
+                Todos os pagamentos deverão ser realizados via <strong>PIX</strong>, utilizando a seguinte chave:<br><br>
+                <strong>🔑 Chave PIX (CNPJ): 06.270.840/0001-50</strong>
+            </div>
+
+            <p>4.4. A CONTRATADA emitirá recibo ou nota fiscal para cada pagamento recebido.</p>
+            <p>4.5. O atraso no pagamento de qualquer parcela acarretará multa de 2% (dois por cento) sobre o valor da parcela, acrescido de juros de mora de 1% (um por cento) ao mês.</p>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA QUINTA – DO PRAZO DE EXECUÇÃO</h2>
+            <p>5.1. O prazo total para execução dos serviços objeto deste contrato é de <strong>90 (noventa) dias corridos</strong>, contados a partir do recebimento da primeira parcela pela CONTRATADA.</p>
+            <p>5.2. O cronograma de execução será definido em conjunto pelas partes após o início dos trabalhos, respeitando o prazo total estabelecido.</p>
+            <p>5.3. Eventuais prorrogações de prazo deverão ser solicitadas por escrito e justificadas, sendo concedidas mediante acordo entre as partes.</p>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA SEXTA – DA HOSPEDAGEM E BANCO DE DADOS</h2>
+            <p>6.1. A hospedagem do sistema e o banco de dados serão de responsabilidade da CONTRATANTE, que deverá fornecer toda a infraestrutura necessária para o funcionamento do sistema.</p>
+            <p>6.2. A CONTRATADA não se responsabiliza por custos de hospedagem, domínio, banco de dados ou qualquer outra infraestrutura necessária para o funcionamento do sistema.</p>
+            <p>6.3. A CONTRATANTE garante que possui licença válida para todos os softwares e serviços utilizados na hospedagem.</p>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA SÉTIMA – DA PROPRIEDADE INTELECTUAL</h2>
+            <p>7.1. Todo o código-fonte, documentação, manuais e materiais desenvolvidos pela CONTRATADA para a execução deste contrato serão de propriedade exclusiva da CONTRATANTE após a quitação integral do valor contratado.</p>
+            <p>7.2. A CONTRATADA reserva-se o direito de utilizar o projeto como portfólio, desde que não divulgue informações confidenciais da CONTRATANTE.</p>
+            <p>7.3. Quaisquer bibliotecas, frameworks ou ferramentas de terceiros utilizadas no desenvolvimento permanecerão sob suas respectivas licenças originais.</p>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA OITAVA – DO SIGILO E CONFIDENCIALIDADE</h2>
+            <p>8.1. As partes comprometem-se a manter o mais absoluto sigilo sobre todas as informações, dados, documentos e conhecimentos técnicos aos quais tiverem acesso em decorrência deste contrato.</p>
+            <p>8.2. A obrigação de sigilo permanecerá válida por 5 (cinco) anos após o término deste contrato.</p>
+            <p>8.3. A quebra de sigilo sujeitará a parte infratora ao pagamento de indenização por perdas e danos, sem prejuízo de outras sanções legais.</p>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA NONA – DA GARANTIA E SUPORTE</h2>
+            <p>9.1. A CONTRATADA garante o funcionamento do sistema por <strong>90 (noventa) dias</strong> após a entrega final.</p>
+            <p>9.2. Durante o período de garantia, a CONTRATADA realizará correções de bugs e ajustes necessários sem custo adicional.</p>
+            <p>9.3. A garantia não cobre:</p>
+            <ul>
+                <li>a) Problemas causados por mau uso ou operação incorreta do sistema pela CONTRATANTE;</li>
+                <li>b) Alterações realizadas por terceiros não autorizados pela CONTRATADA;</li>
+                <li>c) Problemas de infraestrutura (hospedagem, banco de dados, internet);</li>
+                <li>d) Atualizações de sistemas operacionais, navegadores ou APIs de redes sociais que afetem o funcionamento do sistema.</li>
+            </ul>
+            <p>9.4. Após o período de garantia, serviços de manutenção, atualizações e novas funcionalidades serão orçados separadamente.</p>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA DÉCIMA – DA RESCISÃO</h2>
+            <p>10.1. O presente contrato poderá ser rescindido:</p>
+            <ul>
+                <li>a) Por acordo mútuo entre as partes;</li>
+                <li>b) Por inadimplemento de qualquer das cláusulas contratuais;</li>
+                <li>c) Por falência, recuperação judicial ou dissolução de qualquer das partes;</li>
+                <li>d) Por motivo de força maior que impeça a continuidade do contrato.</li>
+            </ul>
+            <p>10.2. Em caso de rescisão por iniciativa da CONTRATANTE antes da conclusão do projeto:</p>
+            <ul>
+                <li>a) Se o projeto estiver com menos de 50% de conclusão: a CONTRATANTE pagará proporcionalmente aos serviços já realizados;</li>
+                <li>b) Se o projeto estiver com 50% ou mais de conclusão: a CONTRATANTE pagará o valor integral do contrato.</li>
+            </ul>
+            <p>10.3. Em caso de rescisão por iniciativa da CONTRATADA antes da conclusão do projeto:</p>
+            <ul>
+                <li>a) A CONTRATADA deverá devolver os valores recebidos proporcionalmente aos serviços não realizados;</li>
+                <li>b) A CONTRATADA deverá entregar todo o material desenvolvido até o momento.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA DÉCIMA PRIMEIRA – DAS PENALIDADES</h2>
+            <p>11.1. O descumprimento de qualquer cláusula deste contrato sujeitará a parte infratora ao pagamento de multa de 10% (dez por cento) sobre o valor total do contrato, sem prejuízo de perdas e danos.</p>
+            <p>11.2. A CONTRATADA que atrasar a entrega do projeto além do prazo estabelecido ficará sujeita a multa de 0,5% (meio por cento) sobre o valor total do contrato por dia de atraso, limitada a 10% (dez por cento).</p>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA DÉCIMA SEGUNDA – DO FORO</h2>
+            <p>12.1. As partes elegem o foro da Comarca de Natal/RN para dirimir quaisquer dúvidas ou litígios oriundos deste contrato, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
+        </div>
+
+        <div class="section">
+            <h2>CLÁUSULA DÉCIMA TERCEIRA – DAS DISPOSIÇÕES GERAIS</h2>
+            <p>13.1. Este contrato constitui o acordo integral entre as partes e substitui quaisquer negociações, acordos ou entendimentos anteriores.</p>
+            <p>13.2. Qualquer alteração neste contrato deverá ser feita por escrito e assinada por ambas as partes.</p>
+            <p>13.3. A tolerância de qualquer das partes quanto ao descumprimento de qualquer cláusula não constituirá novação ou precedente.</p>
+            <p>13.4. Este contrato obriga as partes, seus herdeiros e sucessores a qualquer título.</p>
+        </div>
+
+        <!-- ASSINATURAS CONTRATO -->
+        <div class="section">
+            <p>E por estarem assim justas e contratadas, as partes assinam o presente instrumento em 2 (duas) vias de igual teor e forma, na presença de 2 (duas) testemunhas.</p>
+            <p style="margin-top: 30px;"><strong>Natal/RN, _____ de _______________ de 2026.</strong></p>
+
+            <div class="signature">
+                <div class="signature-box">
+                    <div class="signature-line">
+                        <strong>AKILES LEOPOLDO NUNES SIMIÃO</strong><br>
+                        TANQUE DIGITAL<br>
+                        CNPJ: 06.270.840/0001-50<br>
+                        CONTRATADO
+                    </div>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-line">
+                        <strong>LUIZ ANTONIO CARTIELLI</strong><br>
+                        WETAX CONTABILIDADE DIGITAL<br>
+                        CNPJ: 59.950.013/0001-74<br>
+                        CONTRATANTE
+                    </div>
+                </div>
+            </div>
+
+            <div class="signature" style="margin-top: 40px;">
+                <div class="signature-box">
+                    <div class="signature-line">
+                        <strong>TESTEMUNHA 1</strong><br>
+                        Nome: ___________________________<br>
+                        CPF: ____________________________
+                    </div>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-line">
+                        <strong>TESTEMUNHA 2</strong><br>
+                        Nome: ___________________________<br>
+                        CPF: ____________________________
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE BREAK -->
+        <div class="page-break"></div>
+
+        <!-- ESCOPO DO PROJETO -->
+        <div class="header">
+            <img src="logo.png" alt="TANQUE DIGITAL" class="logo">
+            <h1>Anexo I - Escopo Detalhado do Projeto</h1>
+            <h2>Projeto de Automação de Atendimento - WeTax Contabilidade</h2>
+            <p style="margin-top: 15px; color: #777;">Versão 1.0 | Junho de 2026</p>
+        </div>
+
+        <div class="section">
+            <h2>1. RESUMO EXECUTIVO</h2>
+            <p>Este documento descreve detalhadamente o escopo do projeto de automação de atendimento para a WeTax Contabilidade Digital, contemplando o desenvolvimento e implementação de soluções integradas de chatbots, fluxos de atendimento automatizado e integração com múltiplos canais de comunicação.</p>
+        </div>
+
+        <div class="section">
+            <h2>2. OBJETIVOS DO PROJETO</h2>
+            <h3>2.1. Objetivo Geral</h3>
+            <p>Implementar sistema completo de automação de atendimento para otimizar o relacionamento com clientes e prospects da WeTax, reduzindo tempo de resposta e aumentando a eficiência operacional.</p>
+            
+            <h3>2.2. Objetivos Específicos</h3>
+            <ul>
+                <li>Automatizar 80% das dúvidas frequentes dos clientes</li>
+                <li>Reduzir tempo de resposta inicial de 2 horas para menos de 1 minuto</li>
+                <li>Integrar todos os canais de comunicação em uma única plataforma</li>
+                <li>Aumentar taxa de conversão de leads em 40%</li>
+                <li>Disponibilizar atendimento 24/7 sem intervenção humana</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. ESCOPO TÉCNICO DETALHADO</h2>
+            
+            <h3>3.1. MÓDULO 1 - CHATBOT INTELIGENTE MULTI-CANAL</h3>
+            <h4>Canais de Integração:</h4>
+            <ul class="check-list">
+                <li>WhatsApp Business API</li>
+                <li>Instagram Direct</li>
+                <li>Facebook Messenger</li>
+                <li>Telegram</li>
+                <li>Site (widget de chat)</li>
+                <li>E-mail automatizado</li>
+            </ul>
+
+            <h4>Funcionalidades:</h4>
+            <ul>
+                <li>Reconhecimento de linguagem natural (NLP)</li>
+                <li>Respostas contextualizadas e personalizadas</li>
+                <li>Transferência inteligente para atendente humano</li>
+                <li>Agendamento automático de reuniões</li>
+                <li>Envio de documentos e links</li>
+                <li>Coleta e validação de dados do cliente</li>
+            </ul>
+
+            <h3>3.2. MÓDULO 2 - FLUXOS DE ATENDIMENTO</h3>
+            
+            <h4>Fluxo de Abertura de Empresa:</h4>
+            <div class="code-block">Cliente → Saudação → Tipo de Empresa → CNAE → Documentação Necessária → Simulação de Custos → Agendamento → Follow-up</div>
+
+            <h4>Fluxo de Migração de Contador:</h4>
+            <div class="code-block">Cliente → Identificação → Situação Atual → Dores e Necessidades → Proposta de Valor → Documentação para Transferência → Cronograma → Acompanhamento</div>
+
+            <h4>Fluxo de Contabilidade Online:</h4>
+            <div class="code-block">Cliente → Tipo de Serviço → Porte da Empresa → Faturamento Mensal → Número de Funcionários → Proposta Personalizada → Contrato Digital → Onboarding</div>
+
+            <h4>Fluxo de Suporte a Clientes Ativos:</h4>
+            <div class="code-block">Cliente → Autenticação → Categoria da Dúvida → Resposta Automática → Satisfação → Encerramento ou Escalonamento</div>
+
+            <h4>Fluxo de Recuperação de Ex-Clientes:</h4>
+            <div class="code-block">Ex-Cliente → Identificação → Motivo do Cancelamento → Oferta Especial → Retorno → Reativação</div>
+
+            <h3>3.3. MÓDULO 3 - BASE DE CONHECIMENTO</h3>
+            <h4>Categorias de Conteúdo:</h4>
+            <ul>
+                <li><strong>A) Abertura de Empresa:</strong> Tipos de empresas (MEI, ME, EPP, LTDA, SA), Documentação necessária, Prazos e custos, Enquadramentos tributários, Alvarás e licenças, CNAEs mais comuns</li>
+                <li><strong>B) Contabilidade Digital:</strong> Vantagens da contabilidade online, Funcionalidades do sistema, Segurança da informação, Integrações disponíveis, Suporte técnico</li>
+                <li><strong>C) Obrigações Fiscais:</strong> DAS, DASN-SIMEI, Declaração Anual do Simples Nacional, SPED Fiscal e Contribuições, EFD-Reinf, DIRPF e DIRPJ, DCTF</li>
+                <li><strong>D) Departamento Pessoal:</strong> Folha de pagamento, eSocial, FGTS e INSS, Férias e 13º salário, Rescisões contratuais, Admissão de funcionários</li>
+                <li><strong>E) Migração de Contador:</strong> Processo de transferência, Documentação necessária, Prazos legais, Certidões negativas, Baixa na junta comercial, Transferência de alvarás</li>
+            </ul>
+
+            <h3>3.4. MÓDULO 4 - INTEGRAÇÃO COM CRM</h3>
+            <h4>Funcionalidades:</h4>
+            <ul>
+                <li>Registro automático de todos os atendimentos</li>
+                <li>Criação e atualização de leads</li>
+                <li>Segmentação de clientes</li>
+                <li>Histórico completo de interações</li>
+                <li>Score de qualificação de leads</li>
+                <li>Alertas e notificações para equipe comercial</li>
+                <li>Relatórios de conversão e funil de vendas</li>
+            </ul>
+
+            <h3>3.5. MÓDULO 5 - PAINEL ADMINISTRATIVO</h3>
+            <h4>Dashboard Gerencial:</h4>
+            <ul>
+                <li>Total de atendimentos (dia/semana/mês)</li>
+                <li>Tempo médio de resposta</li>
+                <li>Taxa de resolução no primeiro contato</li>
+                <li>Satisfação do cliente (NPS)</li>
+                <li>Leads convertidos</li>
+                <li>Canais mais utilizados</li>
+                <li>Principais dúvidas</li>
+                <li>Picos de atendimento</li>
+            </ul>
+
+            <h3>3.6. MÓDULO 6 - AUTOMAÇÕES ESPECÍFICAS</h3>
+            <ul>
+                <li><strong>Automação de Boas-Vindas:</strong> Mensagem automática para novos contatos, Apresentação da WeTax, Menu de opções interativo, Coleta de informações básicas</li>
+                <li><strong>Automação de Follow-up:</strong> Lembretes automáticos de documentos pendentes, Acompanhamento de prazos, Notificações de vencimentos, Pesquisa de satisfação pós-atendimento</li>
+                <li><strong>Automação de Campanhas:</strong> Disparo de mensagens em massa (respeitando LGPD), Segmentação por perfil de cliente, Agendamento de campanhas, A/B testing de mensagens</li>
+                <li><strong>Automação de Documentação:</strong> Envio automático de contratos, Coleta de assinaturas digitais, Armazenamento em nuvem, Notificação de documentos recebidos</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. ARQUITETURA DA SOLUÇÃO</h2>
+            <h3>4.1. Diagrama de Componentes:</h3>
+            <div class="code-block">[CANAIS DE ENTRADA] → [API GATEWAY] → [ORQUESTRADOR DE CHATBOT] → [NLP - PROCESSAMENTO DE LINGUAGEM] → [BASE DE CONHECIMENTO] ←→ [MOTOR DE REGRAS] → [INTEGRADOR CRM] → [BANCO DE DADOS] → [PAINEL ADMINISTRATIVO]</div>
+
+            <h3>4.2. Tecnologias Utilizadas:</h3>
+            <ul>
+                <li><strong>Backend:</strong> Node.js / Python</li>
+                <li><strong>Frontend:</strong> React.js</li>
+                <li><strong>Banco de Dados:</strong> PostgreSQL / MongoDB</li>
+                <li><strong>NLP:</strong> Dialogflow / Rasa / IBM Watson</li>
+                <li><strong>APIs:</strong> WhatsApp Business API, Graph API (Facebook), Instagram API</li>
+                <li><strong>CRM:</strong> Integração com sistema existente ou desenvolvimento customizado</li>
+                <li><strong>Hospedagem:</strong> Infraestrutura do cliente (conforme contrato)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. CRONOGRAMA DE IMPLEMENTAÇÃO</h2>
+            
+            <h3>FASE 1 - PLANEJAMENTO E CONFIGURAÇÃO (Dias 1-15)</h3>
+            <ul>
+                <li>Kick-off do projeto</li>
+                <li>Levantamento de requisitos detalhado</li>
+                <li>Mapeamento de processos atuais</li>
+                <li>Definição de personas e jornadas</li>
+                <li>Configuração do ambiente de desenvolvimento</li>
+                <li>Setup de APIs e integrações básicas</li>
+            </ul>
+            <p><strong>Entregáveis:</strong> Documento de requisitos aprovado, Arquitetura da solução, Ambiente de desenvolvimento configurado</p>
+
+            <h3>FASE 2 - DESENVOLVIMENTO DOS FLUXOS (Dias 16-45)</h3>
+            <ul>
+                <li>Desenvolvimento do chatbot base</li>
+                <li>Criação dos fluxos de atendimento</li>
+                <li>Implementação da base de conhecimento</li>
+                <li>Integração com WhatsApp Business</li>
+                <li>Integração com Instagram/Facebook</li>
+                <li>Desenvolvimento do widget para site</li>
+            </ul>
+            <p><strong>Entregáveis:</strong> Chatbot funcional em ambiente de teste, Fluxos de atendimento implementados, Base de conhecimento inicial</p>
+
+            <h3>FASE 3 - INTEGRAÇÕES E CRM (Dias 46-65)</h3>
+            <ul>
+                <li>Integração completa com CRM</li>
+                <li>Desenvolvimento do painel administrativo</li>
+                <li>Implementação de relatórios</li>
+                <li>Configuração de automações</li>
+                <li>Testes de integração</li>
+            </ul>
+            <p><strong>Entregáveis:</strong> CRM integrado e funcional, Painel administrativo operacional, Relatórios gerenciais disponíveis</p>
+
+            <h3>FASE 4 - TESTES E AJUSTES (Dias 66-80)</h3>
+            <ul>
+                <li>Testes funcionais completos</li>
+                <li>Testes de carga e performance</li>
+                <li>Testes de usabilidade</li>
+                <li>Correção de bugs</li>
+                <li>Ajustes finos nos fluxos</li>
+                <li>Validação com a equipe WeTax</li>
+            </ul>
+            <p><strong>Entregáveis:</strong> Relatório de testes, Sistema ajustado e validado, Homologação do cliente</p>
+
+            <h3>FASE 5 - TREINAMENTO E GO-LIVE (Dias 81-90)</h3>
+            <ul>
+                <li>Treinamento da equipe administrativa</li>
+                <li>Treinamento dos atendentes</li>
+                <li>Elaboração do manual do usuário</li>
+                <li>Implantação em produção</li>
+                <li>Acompanhamento pós-implantação</li>
+                <li>Suporte intensivo (30 dias)</li>
+            </ul>
+            <p><strong>Entregáveis:</strong> Equipe treinada, Manual do usuário, Sistema em produção, Relatório de go-live</p>
+        </div>
+
+        <div class="section">
+            <h2>6. CRITÉRIOS DE ACEITAÇÃO</h2>
+            
+            <h3>6.1. Critérios Técnicos:</h3>
+            <ul class="check-list">
+                <li>Sistema operando 99% do tempo (SLA)</li>
+                <li>Tempo de resposta &lt; 2 segundos</li>
+                <li>Suporte a 1000 conversas simultâneas</li>
+                <li>Integração 100% funcional com todos os canais</li>
+                <li>CRM sincronizado em tempo real</li>
+                <li>Painel administrativo com todos os relatórios</li>
+            </ul>
+
+            <h3>6.2. Critérios Funcionais:</h3>
+            <ul class="check-list">
+                <li>Todos os fluxos de atendimento operacionais</li>
+                <li>Base de conhecimento com mínimo de 200 perguntas/respostas</li>
+                <li>Transferência para atendente humano funcionando</li>
+                <li>Automações de follow-up ativas</li>
+                <li>Notificações e alertas configurados</li>
+            </ul>
+
+            <h3>6.3. Critérios de Usabilidade:</h3>
+            <ul class="check-list">
+                <li>Interface intuitiva e amigável</li>
+                <li>Navegação simplificada</li>
+                <li>Design responsivo (mobile/desktop)</li>
+                <li>Acessibilidade básica</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. RISCOS E MITIGAÇÕES</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>RISCO</th>
+                        <th>PROBABILIDADE</th>
+                        <th>IMPACTO</th>
+                        <th>MITIGAÇÃO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Atraso na aprovação das APIs</td>
+                        <td>Média</td>
+                        <td>Alto</td>
+                        <td>Iniciar processo imediatamente</td>
+                    </tr>
+                    <tr>
+                        <td>Mudança de requisitos</td>
+                        <td>Alta</td>
+                        <td>Médio</td>
+                        <td>Reuniões semanais de alinhamento</td>
+                    </tr>
+                    <tr>
+                        <td>Instabilidade na hospedagem</td>
+                        <td>Baixa</td>
+                        <td>Alto</td>
+                        <td>Ambiente de backup configurado</td>
+                    </tr>
+                    <tr>
+                        <td>Resistência da equipe</td>
+                        <td>Média</td>
+                        <td>Médio</td>
+                        <td>Treinamento adequado e suporte</td>
+                    </tr>
+                    <tr>
+                        <td>Integrações não funcionarem</td>
+                        <td>Baixa</td>
+                        <td>Alto</td>
+                        <td>Testes antecipados e ambiente de sandbox</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- PAGE BREAK -->
+        <div class="page-break"></div>
+
+        <!-- MANUAL DESCRITIVO TÉCNICO -->
+        <div class="header">
+            <img src="logo.png" alt="TANQUE DIGITAL" class="logo">
+            <h1>Anexo II - Manual Descritivo Técnico</h1>
+            <h2>Sistema de Automação de Atendimento WeTax</h2>
+            <p style="margin-top: 15px; color: #777;">Versão 1.0 | Junho de 2026</p>
+        </div>
+
+        <div class="section">
+            <h2>1. INTRODUÇÃO</h2>
+            <p>Este Manual Descritivo Técnico tem como objetivo documentar a arquitetura, os procedimentos de instalação, configuração, operação e manutenção do <strong>Sistema de Automação de Atendimento</strong> desenvolvido pela TANQUE DIGITAL para a WETAX CONTABILIDADE DIGITAL.</p>
+            <p>Este documento é destinado aos administradores de sistemas (TI) e gestores operacionais da WeTax, garantindo a correta utilização da infraestrutura de hospedagem de propriedade da contratante.</p>
+        </div>
+
+        <div class="section">
+            <h2>2. ARQUITETURA DO SISTEMA</h2>
+            <p>O sistema foi desenvolvido utilizando uma arquitetura de microsserviços moderna, escalável e segura.</p>
+            
+            <h3>2.1. Stack Tecnológica</h3>
+            <ul>
+                <li><strong>Frontend (Painel Administrativo e Widget):</strong> React.js, TypeScript, Tailwind CSS</li>
+                <li><strong>Backend (API e Orquestrador):</strong> Node.js (Express/NestJS) e Python (para processamento de NLP)</li>
+                <li><strong>Banco de Dados Relacional:</strong> PostgreSQL (dados de usuários, leads, transações)</li>
+                <li><strong>Banco de Dados NoSQL:</strong> MongoDB (armazenamento de logs de conversas e histórico de chatbots)</li>
+                <li><strong>Cache e Filas:</strong> Redis (gerenciamento de sessões e filas de mensagens)</li>
+                <li><strong>Infraestrutura:</strong> Docker e Docker Compose para containerização</li>
+            </ul>
+
+            <h3>2.2. Diagrama Lógico</h3>
+            <div class="code-block">[Usuário Final] → [Redes Sociais / Site] → [Webhooks / APIs Públicas] → [API Gateway / Load Balancer] → [Servidor de Aplicação (Node.js/Python)] → [Motor de NLP e Regras] + [Gerenciador de Sessões (Redis)] + [Integrador CRM] → [Banco de Dados (PostgreSQL + MongoDB)] → [Painel Administrativo (React)]</div>
+        </div>
+
+        <div class="section">
+            <h2>3. REQUISITOS DE INFRAESTRUTURA (HOSPEDAGEM)</h2>
+            <p>Conforme estabelecido em contrato, a infraestrutura de hospedagem e banco de dados é de responsabilidade da <strong>WETAX</strong>. A equipe de TI da WeTax deve garantir o seguinte ambiente mínimo:</p>
+            
+            <h3>3.1. Servidor de Aplicação</h3>
+            <ul>
+                <li><strong>Sistema Operacional:</strong> Ubuntu 22.04 LTS ou Debian 11 (64-bit)</li>
+                <li><strong>Processador (vCPU):</strong> Mínimo de 4 vCPUs</li>
+                <li><strong>Memória RAM:</strong> Mínimo de 8 GB (Recomendado 16 GB)</li>
+                <li><strong>Armazenamento:</strong> 100 GB SSD NVMe (com expansão conforme crescimento do banco de logs)</li>
+                <li><strong>Rede:</strong> IP Público fixo, Porta 80 e 443 liberadas</li>
+            </ul>
+
+            <h3>3.2. Softwares Pré-requisitos</h3>
+            <ul>
+                <li>Docker Engine (versão 24.0 ou superior)</li>
+                <li>Docker Compose (versão 2.20 ou superior)</li>
+                <li>Nginx (como Reverse Proxy)</li>
+                <li>Certbot (para certificados SSL Let's Encrypt)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. INSTALAÇÃO E DEPLOY</h2>
+            
+            <h3>4.1. Configuração do Ambiente</h3>
+            <p>1. Clonar o repositório oficial fornecido pela TANQUE DIGITAL no servidor da WeTax.</p>
+            <p>2. Copiar o arquivo <code>.env.example</code> para <code>.env</code> e preencher as variáveis de ambiente:</p>
+            <div class="code-block">
+# Banco de Dados<br>
+DB_HOST=localhost<br>
+DB_PORT=5432<br>
+DB_USER=wetax_user<br>
+DB_PASSWORD=SENHA_SEGURA_AQUI<br>
+DB_NAME=wetax_automation<br><br>
+# Redis<br>
+REDIS_HOST=localhost<br>
+REDIS_PORT=6379<br><br>
+# APIs e Webhooks<br>
+WHATSAPP_API_TOKEN=SEU_TOKEN_META<br>
+FACEBOOK_APP_SECRET=SEU_SECRET<br>
+TELEGRAM_BOT_TOKEN=SEU_TOKEN_TELEGRAM<br><br>
+# Segurança<br>
+JWT_SECRET=CHAVE_SECRETA_JWT<br>
+ENCRYPTION_KEY=CHAVE_DE_CRIPTOGRAFIA_AES
+            </div>
+
+            <h3>4.2. Execução dos Containers</h3>
+            <p>No diretório raiz do projeto, execute o comando para subir a aplicação:</p>
+            <div class="code-block">docker-compose up -d --build</div>
+
+            <h3>4.3. Configuração do Nginx (Reverse Proxy)</h3>
+            <p>Configurar o Nginx para apontar para a porta <code>3000</code> (Frontend) e <code>8080</code> (Backend API), garantindo a terminação SSL via Certbot.</p>
+        </div>
+
+        <div class="section">
+            <h2>5. CONFIGURAÇÃO DE INTEGRAÇÕES (APIs)</h2>
+            
+            <h3>5.1. WhatsApp Business API (Meta)</h3>
+            <ol>
+                <li>Acessar o <em>Meta for Developers</em> e criar um App do tipo <em>Business</em>.</li>
+                <li>Gerar o <em>System User Token</em> com permissões de <code>whatsapp_business_messaging</code>.</li>
+                <li>No Painel Administrativo da WeTax, ir em <strong>Configurações &gt; Canais &gt; WhatsApp</strong> e colar o Token.</li>
+                <li>Configurar o Webhook no Meta apontando para: <code>https://api.wetax.com.br/webhooks/whatsapp</code></li>
+            </ol>
+
+            <h3>5.2. Instagram e Facebook Messenger</h3>
+            <ol>
+                <li>Vincular a página do Facebook e a conta do Instagram Business no <em>Meta Business Suite</em>.</li>
+                <li>No Painel da WeTax, ir em <strong>Configurações &gt; Canais &gt; Meta</strong> e autenticar via OAuth 2.0.</li>
+                <li>Configurar o Webhook para: <code>https://api.wetax.com.br/webhooks/meta</code></li>
+            </ol>
+
+            <h3>5.3. Telegram</h3>
+            <ol>
+                <li>Criar o bot via <em>BotFather</em> no Telegram e copiar o Token.</li>
+                <li>Inserir o Token em <strong>Configurações &gt; Canais &gt; Telegram</strong> no painel.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>6. MANUAL OPERACIONAL (PAINEL ADMINISTRATIVO)</h2>
+            <p>O acesso ao painel é feito via <code>https://painel.wetax.com.br</code> (ou domínio configurado).</p>
+            
+            <h3>6.1. Dashboard (Visão Geral)</h3>
+            <ul>
+                <li><strong>Atendimentos em Andamento:</strong> Número de chats abertos no momento.</li>
+                <li><strong>Fila de Espera:</strong> Chats aguardando transferência para atendente humano.</li>
+                <li><strong>Métricas de Conversão:</strong> Gráfico de leads capturados vs. clientes fechados.</li>
+                <li><strong>SLA de Resposta:</strong> Tempo médio de primeira resposta do bot.</li>
+            </ul>
+
+            <h3>6.2. Gestão de Fluxos (Chatbot Builder)</h3>
+            <ul>
+                <li><strong>Criar Novo Fluxo:</strong> Clique em "Novo Fluxo", defina o gatilho (ex: palavra-chave "abertura") e adicione blocos de ação (Texto, Imagem, Botões, Input de Dados).</li>
+                <li><strong>Condições Lógicas:</strong> Utilize o bloco "If/Else" para criar ramificações baseadas na resposta do usuário.</li>
+                <li><strong>Publicação:</strong> Após editar, clique em "Publicar" para que as alterações entrem em vigor em todos os canais.</li>
+            </ul>
+
+            <h3>6.3. Base de Conhecimento (FAQ)</h3>
+            <ul>
+                <li>Acesse a aba <strong>Base de Conhecimento</strong>.</li>
+                <li>Clique em "Adicionar Pergunta".</li>
+                <li>Insira a pergunta e as possíveis variações.</li>
+                <li>Defina a resposta padrão e, se necessário, anexe um PDF ou link.</li>
+            </ul>
+
+            <h3>6.4. Gestão de Atendentes Humanos</h3>
+            <ul>
+                <li><strong>Adicionar Usuário:</strong> Vá em <strong>Equipe &gt; Adicionar Membro</strong>. Defina o perfil (Admin, Supervisor, Atendente).</li>
+                <li><strong>Atribuição de Chats:</strong> Os atendentes podem acessar a "Caixa de Entrada Unificada" para assumir chats que o bot não conseguiu resolver.</li>
+                <li><strong>Status:</strong> O atendente deve alterar seu status para "Online" para receber transferências automáticas.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. MANUTENÇÃO E TROUBLESHOOTING</h2>
+            
+            <h3>7.1. Verificação de Logs</h3>
+            <p>Para diagnosticar erros, acesse os logs dos containers via SSH:</p>
+            <div class="code-block">
+# Logs do Backend<br>
+docker-compose logs -f backend --tail=100<br><br>
+# Logs do Worker de Mensagens<br>
+docker-compose logs -f worker --tail=100
+            </div>
+
+            <h3>7.2. Problemas Comuns e Soluções</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Problema</th>
+                        <th>Causa Provável</th>
+                        <th>Solução</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bot não responde no WhatsApp</td>
+                        <td>Token da Meta expirado ou Webhook desconectado</td>
+                        <td>Renovar o Token no Meta Developers e verificar a URL do Webhook no Painel</td>
+                    </tr>
+                    <tr>
+                        <td>Erro 502 Bad Gateway</td>
+                        <td>Serviço do Backend caiu ou Nginx mal configurado</td>
+                        <td>Reiniciar o container: <code>docker-compose restart backend</code>. Verificar logs.</td>
+                    </tr>
+                    <tr>
+                        <td>Lentidão no Painel</td>
+                        <td>Banco de dados sobrecarregado ou falta de RAM</td>
+                        <td>Verificar uso de recursos no servidor (<code>htop</code>). Otimizar queries ou aumentar a RAM.</td>
+                    </tr>
+                    <tr>
+                        <td>Mensagens duplicadas</td>
+                        <td>Webhook recebendo confirmação duas vezes</td>
+                        <td>Ajustar a lógica de idempotência no código ou verificar configurações do Meta</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>8. SEGURANÇA E BACKUP</h2>
+            
+            <h3>8.1. Boas Práticas de Segurança</h3>
+            <ul>
+                <li><strong>Senhas:</strong> Alterar as senhas padrão do banco de dados e do painel administrativo imediatamente após o deploy.</li>
+                <li><strong>Firewall:</strong> Manter apenas as portas 22 (SSH), 80 (HTTP) e 443 (HTTPS) abertas para o público.</li>
+                <li><strong>Atualizações:</strong> Manter o sistema operacional e as imagens Docker atualizadas com os patches de segurança mais recentes.</li>
+            </ul>
+
+            <h3>8.2. Rotina de Backup (Responsabilidade da WeTax)</h3>
+            <p>A TANQUE DIGITAL recomenda a implementação da seguinte rotina de backup na infraestrutura da WeTax:</p>
+            <ol>
+                <li><strong>Backup Diário (02:00 da manhã):</strong> Dump do banco PostgreSQL e MongoDB.</li>
+                <li><strong>Backup Semanal (Domingo 03:00):</strong> Snapshot completo do servidor (imagem do disco).</li>
+                <li><strong>Armazenamento:</strong> Os backups devem ser enviados para um storage externo (ex: AWS S3, Azure Blob ou outro servidor off-site) para garantir a recuperação em caso de desastre.</li>
+            </ol>
+
+            <h3>8.3. Conformidade com a LGPD</h3>
+            <p>O sistema possui uma função nativa de <strong>"Anonimização de Dados"</strong>. Caso um cliente solicite a exclusão de seus dados, o administrador deve acessar o perfil do lead no CRM e clicar em "Solicitar Exclusão LGPD". O sistema apagará os dados pessoais, mantendo apenas os dados anonimizados para fins estatísticos.</p>
+        </div>
+
+        <div class="section">
+            <h2>9. SUPORTE E CONTATOS</h2>
+            
+            <h3>9.1. Suporte Técnico (Período de Garantia)</h3>
+            <p>Durante os 90 (noventa) dias de garantia contratual, o suporte técnico será prestado pela TANQUE DIGITAL.</p>
+            <ul>
+                <li><strong>Horário de Atendimento:</strong> Segunda a Sexta, das 09:00 às 18:00.</li>
+                <li><strong>Canal de Suporte:</strong> E-mail e WhatsApp dedicados (fornecidos no Kick-off).</li>
+                <li><strong>SLA de Resposta:</strong> Até 4 horas úteis para incidentes críticos.</li>
+            </ul>
+
+            <h3>9.2. Contatos Oficiais</h3>
+            <div class="highlight">
+                <strong>TANQUE DIGITAL</strong><br>
+                <strong>Representante:</strong> Akiles Leopoldo Nunes Simião<br>
+                <strong>CNPJ:</strong> 06.270.840/0001-50<br>
+                <strong>E-mail:</strong> suporte@tanquedigital.com.br<br>
+                <strong>WhatsApp:</strong> (XX) XXXXX-XXXX
+            </div>
+        </div>
+
+        <!-- ASSINATURAS FINAL -->
+        <div class="section">
+            <p style="margin-top: 30px;"><strong>Rio Claro/SP, 25 de Junho de 2026</strong></p>
+
+            <div class="signature">
+                <div class="signature-box">
+                    <div class="signature-line">
+                        <strong>AKILES LEOPOLDO NUNES SIMIÃO</strong><br>
+                        TANQUE DIGITAL<br>
+                        Desenvolvedor e Responsável Técnico<br>
+                        CNPJ: 06.270.840/0001-50
+                    </div>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-line">
+                        <strong>LUIZ ANTONIO CARTIELLI</strong><br>
+                        WETAX CONTABILIDADE DIGITAL<br>
+                        Gestor do Projeto e Responsável pela Infraestrutura<br>
+                        CNPJ: 59.950.013/0001-74
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RODAPÉ -->
+        <div style="text-align: center; margin-top: 60px; padding-top: 30px; border-top: 2px solid #0066cc; color: #777;">
+            <img src="logo.png" alt="TANQUE DIGITAL" style="max-width: 150px; margin-bottom: 15px;">
+            <p><strong>TANQUE DIGITAL</strong> - Soluções em Automação e Tecnologia</p>
+            <p>CNPJ: 06.270.840/0001-50 | Natal/RN</p>
+            <p style="margin-top: 10px; font-size: 12px;">Documento gerado eletronicamente - Válido sem assinatura física quando acompanhado de assinatura digital</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Script para melhorar a experiência de impressão
+        window.addEventListener('beforeprint', function() {
+            document.body.style.background = 'white';
+        });
+        
+        window.addEventListener('afterprint', function() {
+            document.body.style.background = '#f5f5f5';
+        });
+
+        // Atalho de teclado Ctrl+P para imprimir
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'p') {
+                window.print();
+            }
+        });
+    </script>
+
+</body>
+</html>
