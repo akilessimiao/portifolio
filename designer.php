@@ -656,7 +656,7 @@ $mainSite = "https://tanquedigital.com.br";
             <div class="hero-avatar">
                 <div class="avatar-wrapper">
                     <!-- Substitua pelo caminho do seu avatar -->
-                    <img src="avatar.jpg" alt="Akiles Leopoldo - Designer Tanque Digital" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%2300D4FF%22 width=%22200%22 height=%22200%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2280%22 fill=%22%230A2540%22 font-family=%22Arial%22 font-weight=%22bold%22>AL</text></svg>'">
+                    <img src="Screenshot_20260628-183938_Google-removebg-preview.png" alt="Akiles Leopoldo - Designer Tanque Digital" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect fill=%22%2300D4FF%22 width=%22200%22 height=%22200%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2280%22 fill=%22%230A2540%22 font-family=%22Arial%22 font-weight=%22bold%22>AL</text></svg>'">
                     
                     <div class="floating-icon icon-1"><i class="fas fa-pen-nib"></i></div>
                     <div class="floating-icon icon-2"><i class="fas fa-palette"></i></div>
